@@ -5,10 +5,10 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody2D rb;
-    public float moveSpeed = 0.5f;
+    public const float moveSpeed = 2f;
     public Vector2 PlayerInput;
     public Vector2 forceToApply;
-    public float forceDamping = 1.2f;
+    public const float forceDamping = 1.2f;
 
     // Start is called before the first frame update
     void Start()
@@ -27,15 +27,13 @@ public class PlayerMovement : MonoBehaviour
     {
         if (PlayerInput.x > 0)
         {
-            //rb.SetRotation(-90);
-            //transform.localScale = Vector3.one;
+            rb.SetRotation(-90);
         }
         else
         {
             if (PlayerInput.x < 0)
             {
-                //rb.SetRotation(90);
-                //transform.localScale = new Vector3(-1, 1, 1);
+                rb.SetRotation(90);
             }
         }
 
