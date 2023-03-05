@@ -13,6 +13,11 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(false);
     }
 
+    public void ButoonPressed()
+    {
+        Resume();
+    }
+
     // Update is called once per frame
     void Update()
     {
