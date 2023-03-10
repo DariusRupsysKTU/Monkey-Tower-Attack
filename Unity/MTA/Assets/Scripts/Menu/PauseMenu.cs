@@ -14,11 +14,6 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(false);
     }
 
-    public void ButoonPressed()
-    {
-        Resume();
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -49,18 +44,13 @@ public class PauseMenu : MonoBehaviour
         GameIsPaused = true;
     }
 
-    public void BackToMainMenu()
+    public void PressedResume()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        Resume();
     }
 
-    public void LoadMenu()
+    public void PressedBackToMainMenu()
     {
-
-    }
-
-    public void QuitGame()
-    {
-        
+        SceneManager.LoadScene(0);
     }
 }
