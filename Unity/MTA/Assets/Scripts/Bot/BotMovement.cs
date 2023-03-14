@@ -35,7 +35,10 @@ public class BotMovement : MonoBehaviour
         thisBotPosition = thisBotRB.position;
         playerPosition = playerRB.position;
 
-        MoveBot(playerPosition);
+        if (playerObject != null)
+        {
+            MoveBot(playerPosition);
+        }
 
         if (touchedPlayer)
         {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public Rigidbody2D rb;
+    public Rigidbody2D playerRB;
     public const float moveSpeed = 2f;
     public Vector2 PlayerInput;
     public Vector2 forceToApply;
@@ -13,29 +13,18 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb = gameObject.GetComponent<Rigidbody2D>();
+        playerRB = gameObject.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-            PlayerInput = new Vector2(Input.GetAxisRaw("Horizontal"),
-                Input.GetAxisRaw("Vertical")).normalized;
+        PlayerInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
     }
 
     void FixedUpdate()
     {
-        if (PlayerInput.x > 0)
-        {
-            rb.SetRotation(-90);
-        }
-        else
-        {
-            if (PlayerInput.x < 0)
-            {
-                rb.SetRotation(90);
-            }
-        }
+        ChangePlayerRotation();
 
         Vector2 moveForce = PlayerInput * moveSpeed;
         moveForce += forceToApply;
@@ -44,7 +33,27 @@ public class PlayerMovement : MonoBehaviour
         {
             forceToApply = Vector2.zero;
         }
-        rb.velocity = moveForce;
+        playerRB.velocity = moveForce;
+    }
+
+    private void ChangePlayerRotation()
+    {
+        if (PlayerInput.x == 1)
+        {
+            playerRB.transform.eulerAngles = new Vector3(0f, 0f, 270f);
+        }
+        else if (PlayerInput.x == -1)
+        {
+            playerRB.transform.eulerAngles = new Vector3(0f, 0f, 90f);
+        }
+        else if (PlayerInput.y == 1)
+        {
+            playerRB.transform.eulerAngles = new Vector3(0f, 0f, 0f);
+        }
+        else if (PlayerInput.y == -1)
+        {
+            playerRB.transform.eulerAngles = new Vector3(0f, 0f, 180f);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

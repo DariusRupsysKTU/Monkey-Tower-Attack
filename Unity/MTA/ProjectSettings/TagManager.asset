@@ -44,3 +44,6 @@ TagManager:
   - name: Floor
     uniqueID: 1881955339
     locked: 0
+  - name: Highest
+    uniqueID: 3263337349
+    locked: 0
