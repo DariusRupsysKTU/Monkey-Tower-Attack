@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class Shoot : MonoBehaviour
 {
-    [SerializeField] GameObject player;
     [SerializeField] GameObject firePoint;
     [SerializeField] GameObject bulletPrefab;
-    [SerializeField] float bulletSpeed;
-    [SerializeField] float bulletDestroyTime;
 
     void Update()
     {

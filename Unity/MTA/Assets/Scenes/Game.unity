@@ -3058,7 +3058,7 @@ GameObject:
   - component: {fileID: 459476744}
   - component: {fileID: 459476743}
   m_Layer: 0
-  m_Name: Scene Manager
+  m_Name: Player Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3077,11 +3077,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monkeyPrefabs:
-  - {fileID: 5069111372308449979, guid: 8851ceaff2f8b644b96aaf56541865ff, type: 3}
-  - {fileID: 5034175957308263398, guid: 20ca0465cd2fd2b4396041dcbad941fb, type: 3}
-  - {fileID: 1744751022089306542, guid: efce41466a966fa47a6060752fa27acf, type: 3}
-  - {fileID: 5259788736102079934, guid: e9aa2c24a04ff3f42b45666b8731389c, type: 3}
-  - {fileID: 8453895833738750638, guid: 52192c52fa20fb748ad62a177a33453c, type: 3}
+  - {fileID: 7300625157608538561, guid: 7c51ca1eeaf4ffc4ba6f599c4c748583, type: 3}
+  - {fileID: 7999094116260179961, guid: 3271bca0cb95b0b43803e62b236bafbf, type: 3}
+  - {fileID: 5009499456608819798, guid: 18bea5d70a6d0a6459f8bcb12222f09e, type: 3}
+  - {fileID: 3089422883426321464, guid: 41bdb308b400bd44e90cd6cdb518fbde, type: 3}
+  - {fileID: 7188594997016744906, guid: 60c6c28a10ecd39438000e82c0b6a823, type: 3}
   spawnPoint: {fileID: 459476744}
 --- !u!4 &459476744
 Transform:
@@ -3147,14 +3147,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 548c3c98af71b4849a89d3d44b3077cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inRange: 0
+  isPickUp: 1
   interactKey: 101
+  aboveTextPrefab: {fileID: 3372254261170174560, guid: 4dd1f5bd67992f74d8655d85e255530c, type: 3}
   interactAction:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 613865322}
-        m_TargetAssemblyTypeName: InteractableControler, Assembly-CSharp
-        m_MethodName: Interact
+      - m_Target: {fileID: 613865320}
+        m_TargetAssemblyTypeName: Interaction, Assembly-CSharp
+        m_MethodName: PickUp
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3202,8 +3203,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 446ee376f6c275b4a99d7bca6697fc8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPickUp: 1
-  interactionSpent: 0
 --- !u!212 &613865323
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4021,8 +4020,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 446ee376f6c275b4a99d7bca6697fc8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPickUp: 0
-  interactionSpent: 0
 --- !u!58 &2025220889
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -4051,14 +4048,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 548c3c98af71b4849a89d3d44b3077cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inRange: 0
+  isPickUp: 0
   interactKey: 101
+  aboveTextPrefab: {fileID: 0}
   interactAction:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2025220888}
-        m_TargetAssemblyTypeName: InteractableControler, Assembly-CSharp
-        m_MethodName: Interact
+      - m_Target: {fileID: 2025220890}
+        m_TargetAssemblyTypeName: Interaction, Assembly-CSharp
+        m_MethodName: PickUp
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -5,18 +5,25 @@ using UnityEngine.Events;
 
 public class Interaction : MonoBehaviour
 {
-    public bool inRange;
-    public KeyCode interactKey;
-    public UnityEvent interactAction;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private bool isPickUp;
+    [SerializeField] private KeyCode interactKey;
+    [SerializeField] private GameObject aboveTextPrefab;
 
-    // Update is called once per frame
+    private GameObject player;
+    private GameObject aboveText;
+    private AboveTextAnimations aboveTextAnimations;
+
+    public UnityEvent interactAction;
+
+    private bool inRange;
+
     void Update()
     {
+        if (player != null)
+        {
+            aboveText.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 0.2f, player.transform.position.z);
+        }
+
         if(inRange)
         {
             if (Input.GetKeyDown(interactKey))
@@ -27,18 +34,42 @@ public class Interaction : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") && isPickUp)
         {
+            player = collision.gameObject;
+            AddAboveText();
             inRange = true;
-            Debug.Log("Player is in range");
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") && isPickUp)
         {
+            player = null;
+            RemoveAboveText();
             inRange = false;
-            Debug.Log("Player is NOT in range");
+        }
+    }
+
+    private void AddAboveText()
+    {
+        aboveText = Instantiate(aboveTextPrefab, this.transform.position, this.transform.rotation);
+        aboveText.transform.localScale = new Vector3(0f, 0f, 0f);
+        aboveTextAnimations = aboveText.GetComponent<AboveTextAnimations>();
+        aboveTextAnimations.PlayFadeInAnimation();
+    }
+
+    private void RemoveAboveText()
+    {
+        aboveTextAnimations.PlayFadeOutAnimation();
+        Destroy(aboveText.gameObject, 1f);
+    }
+
+    public void PickUp()
+    {
+        if (isPickUp)
+        {
+            Destroy(this.gameObject);
         }
     }
 }
