@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
@@ -12,9 +14,11 @@ public class Inventory : MonoBehaviour
 
     [Header("Currency")]
     public int currency = 0;
+    public TextMeshPro currencyUI;
 
     public void IncreaseCurrency(int amount)
     {
         currency += amount;
+        currencyUI.text = "Money:" + currency + "$";
     }
 }

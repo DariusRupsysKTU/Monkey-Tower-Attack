@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Currency
+  - TextMeshPro
   layers:
   - Default
   - TransparentFX
