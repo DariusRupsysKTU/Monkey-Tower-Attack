@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+    public static Inventory instance;
+
     public static bool inventoryActive = true;
 
     public GameObject inventoryUi;
