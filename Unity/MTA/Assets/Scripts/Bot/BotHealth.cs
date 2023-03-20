@@ -18,7 +18,7 @@ public class BotHealth : MonoBehaviour
         if (botHealth <= 0)
         {
             anim.SetTrigger("bloon1_death");
-            Destroy(this.gameObject, 2f);
+            Destroy(this.gameObject, 0.5f);
         }
     }
 }
