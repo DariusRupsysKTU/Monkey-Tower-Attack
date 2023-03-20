@@ -8323,7 +8323,7 @@ GameObject:
   - component: {fileID: 1184270818}
   - component: {fileID: 1184270817}
   m_Layer: 5
-  m_Name: Money
+  m_Name: CurrencyDisplay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
