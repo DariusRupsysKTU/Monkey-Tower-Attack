@@ -14,7 +14,7 @@ public class Inventory : MonoBehaviour
 
     [Header("Currency")]
     public int currency = 0;
-    public TextMeshPro currencyUI;
+    public Text currencyUI;
 
     public void IncreaseCurrency(int amount)
     {
