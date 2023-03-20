@@ -7,6 +7,46 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 74470441534945713, guid: 8851ceaff2f8b644b96aaf56541865ff, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 74470441534945713, guid: 8851ceaff2f8b644b96aaf56541865ff, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 0.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 74470441534945713, guid: 8851ceaff2f8b644b96aaf56541865ff, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 2693551433273002202, guid: 8851ceaff2f8b644b96aaf56541865ff, type: 3}
+      propertyPath: m_Size.x
+      value: 0.16185504
+      objectReference: {fileID: 0}
+    - target: {fileID: 2693551433273002202, guid: 8851ceaff2f8b644b96aaf56541865ff, type: 3}
+      propertyPath: m_Size.y
+      value: 0.15991963
+      objectReference: {fileID: 0}
+    - target: {fileID: 2693551433273002202, guid: 8851ceaff2f8b644b96aaf56541865ff, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.00042689964
+      objectReference: {fileID: 0}
+    - target: {fileID: 2693551433273002202, guid: 8851ceaff2f8b644b96aaf56541865ff, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.0004742071
+      objectReference: {fileID: 0}
+    - target: {fileID: 2693551433273002202, guid: 8851ceaff2f8b644b96aaf56541865ff, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2693551433273002202, guid: 8851ceaff2f8b644b96aaf56541865ff, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 0.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 2693551433273002202, guid: 8851ceaff2f8b644b96aaf56541865ff, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.16
+      objectReference: {fileID: 0}
     - target: {fileID: 4437472910273664127, guid: 8851ceaff2f8b644b96aaf56541865ff, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -55,6 +95,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 5069111372308449977, guid: 8851ceaff2f8b644b96aaf56541865ff, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1143562896, guid: b88f6f9fb8fc6104a8a6a638a3d1d4ec, type: 3}
     - target: {fileID: 5069111372308449979, guid: 8851ceaff2f8b644b96aaf56541865ff, type: 3}
       propertyPath: m_Name
       value: Monkey1
