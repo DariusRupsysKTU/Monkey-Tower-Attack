@@ -23,7 +23,7 @@ public class Bullet : MonoBehaviour
             botHealth.DamageBot(damage);
         }
 
-        if (other.transform.tag != "Player" && other.transform.tag != "Bullet")
+        if (other.transform.tag != "Player" && other.transform.tag != "Bullet" && other.transform.tag != "Currency")
         {
             Destroy(gameObject);
         }
