@@ -9,11 +9,13 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 PlayerInput;
     public Vector2 forceToApply;
     public const float forceDamping = 1.2f;
+    public GameObject firePoint;
 
     // Start is called before the first frame update
     void Start()
     {
         playerRB = gameObject.GetComponent<Rigidbody2D>();
+        firePoint = playerRB.transform.GetChild(0).gameObject;
     }
 
     // Update is called once per frame
@@ -24,7 +26,10 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        ChangePlayerRotation();
+        if (firePoint != null)
+        {
+            ChangeFirePointRotation();
+        }
 
         Vector2 moveForce = PlayerInput * moveSpeed;
         moveForce += forceToApply;
@@ -36,23 +41,23 @@ public class PlayerMovement : MonoBehaviour
         playerRB.velocity = moveForce;
     }
 
-    private void ChangePlayerRotation()
+    private void ChangeFirePointRotation()
     {
         if (PlayerInput.x == 1)
         {
-            playerRB.transform.eulerAngles = new Vector3(0f, 0f, 270f);
+            firePoint.transform.eulerAngles = new Vector3(0f, 0f, 270f);
         }
         else if (PlayerInput.x == -1)
         {
-            playerRB.transform.eulerAngles = new Vector3(0f, 0f, 90f);
+            firePoint.transform.eulerAngles = new Vector3(0f, 0f, 90f);
         }
         else if (PlayerInput.y == 1)
         {
-            playerRB.transform.eulerAngles = new Vector3(0f, 0f, 0f);
+            firePoint.transform.eulerAngles = new Vector3(0f, 0f, 0f);
         }
         else if (PlayerInput.y == -1)
         {
-            playerRB.transform.eulerAngles = new Vector3(0f, 0f, 180f);
+            firePoint.transform.eulerAngles = new Vector3(0f, 0f, 180f);
         }
     }
 
