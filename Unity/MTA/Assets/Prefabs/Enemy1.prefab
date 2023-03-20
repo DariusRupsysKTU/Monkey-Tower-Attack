@@ -138,8 +138,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1038cf64b9b58b24eb85f6b33ce63522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveVelocity: 1
-  moveUntilDistance: 0.2
+  moveVelocity: 0.5
+  moveUntilDistance: 0.1
   visionRange: 1
 --- !u!114 &595362465391882267
 MonoBehaviour:
