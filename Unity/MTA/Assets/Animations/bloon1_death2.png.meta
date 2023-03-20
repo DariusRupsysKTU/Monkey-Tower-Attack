@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 68fc46a168009dc45bade9e090a303bf
+guid: fffb12a740f487341a7c631ab63da56e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -70,7 +70,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -117,190 +117,190 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bloon1_death_spritesheet_0
+      name: bloon1_death2_0
       rect:
         serializedVersion: 2
         x: 0
         y: 32
         width: 16
         height: 16
-      alignment: 9
-      pivot: {x: 16, y: 16}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 359b0fb47a96feb4b897ceeed89b5c75
-      internalID: -1401119260
+      spriteID: e0f501aecd22ee2449858fc5fa4a68cd
+      internalID: -1854732335
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bloon1_death_spritesheet_1
+      name: bloon1_death2_1
       rect:
         serializedVersion: 2
         x: 16
         y: 32
         width: 16
         height: 16
-      alignment: 9
-      pivot: {x: 16, y: 16}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8f467a871772d0b47ae219fced2356a6
-      internalID: -750875314
+      spriteID: 407bfa9eec421034fad67831fbbaaab6
+      internalID: 295393862
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bloon1_death_spritesheet_2
+      name: bloon1_death2_2
       rect:
         serializedVersion: 2
         x: 32
         y: 32
         width: 16
         height: 16
-      alignment: 9
-      pivot: {x: 16, y: 16}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1ec9a919a3583b04183d101b43bd2523
-      internalID: -1971248679
+      spriteID: 84e1d7fabd8bce64b8d2cc89681a385b
+      internalID: -2021150038
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bloon1_death_spritesheet_3
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 32
-        width: 16
-        height: 16
-      alignment: 9
-      pivot: {x: 16, y: 16}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6e232913b0910a24ea2079ba3420ec00
-      internalID: -2022844701
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bloon1_death_spritesheet_4
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 32
-        width: 16
-        height: 16
-      alignment: 9
-      pivot: {x: 16, y: 16}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 45d8210cfe46e3b46934985b7c049d2b
-      internalID: 1985211868
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bloon1_death_spritesheet_5
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 32
-        width: 16
-        height: 16
-      alignment: 9
-      pivot: {x: 16, y: 16}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0ae8fc09d5d240e429064c8b667c36b1
-      internalID: -1304888888
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bloon1_death_spritesheet_6
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 32
-        width: 16
-        height: 16
-      alignment: 9
-      pivot: {x: 16, y: 16}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 835145f8833e03343b6647c8319fb3a0
-      internalID: 1054625584
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bloon1_death_spritesheet_7
+      name: bloon1_death2_3
       rect:
         serializedVersion: 2
         x: 0
         y: 16
         width: 16
         height: 16
-      alignment: 9
-      pivot: {x: 16, y: 16}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6df5f9ca6ef87bf40a9917675208a8d1
-      internalID: -22389699
+      spriteID: 05712af0fcbed2444b0bcb907f97222b
+      internalID: -2009982644
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bloon1_death_spritesheet_8
+      name: bloon1_death2_4
       rect:
         serializedVersion: 2
         x: 16
         y: 16
         width: 16
         height: 16
-      alignment: 9
-      pivot: {x: 16, y: 16}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4ad909bb9eeedb74e8f5c37c7d541ad8
-      internalID: -1734910212
+      spriteID: 88e9d24a116192b40a88f0b9101bff03
+      internalID: -1573007552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bloon1_death2_5
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f9e9b706e68d384297717428b825b83
+      internalID: -290288676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bloon1_death2_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5cf2db9b49f3204d84e65001e31b45f
+      internalID: -1394944428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bloon1_death2_7
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 317d1e846cf13464b85b00e6c7f48043
+      internalID: 2116823554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bloon1_death2_8
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbdb79a54ddc9ab479b3005ad4f45447
+      internalID: -139681551
       vertices: []
       indices: 
       edges: []
@@ -316,27 +316,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      bloon1_death_spritesheet_1: -750875314
-      bloon1_death_spritesheet_16: -608314803
-      bloon1_death_spritesheet_7: -22389699
-      bloon1_death_spritesheet_12: -1225679285
-      bloon1_death_spritesheet_3: -2022844701
-      bloon1_death_spritesheet_5: -1304888888
-      bloon1_death_spritesheet_9: -173435165
-      bloon1_death_spritesheet_11: -1558744293
-      bloon1_death_spritesheet_0: -1401119260
-      bloon1_death_spritesheet_13: -860004467
-      bloon1_death_spritesheet_2: -1971248679
-      bloon1_death_spritesheet_18: -935184144
-      bloon1_death_spritesheet_14: -115937782
-      bloon1_death_spritesheet_15: 379177233
-      bloon1_death_spritesheet_20: 884510581
-      bloon1_death_spritesheet_8: -1734910212
-      bloon1_death_spritesheet_17: 413122222
-      bloon1_death_spritesheet_19: -322644419
-      bloon1_death_spritesheet_4: 1985211868
-      bloon1_death_spritesheet_10: -453119375
-      bloon1_death_spritesheet_6: 1054625584
+      bloon1_death2_0: -1854732335
+      bloon1_death2_2: -2021150038
+      bloon1_death2_1: 295393862
+      bloon1_death2_5: -290288676
+      bloon1_death2_3: -2009982644
+      bloon1_death2_8: -139681551
+      bloon1_death2_7: 2116823554
+      bloon1_death2_4: -1573007552
+      bloon1_death2_6: -1394944428
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
