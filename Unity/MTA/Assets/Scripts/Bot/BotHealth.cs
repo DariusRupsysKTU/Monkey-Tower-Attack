@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BotHealth : MonoBehaviour
 {
+    private Animator anim;
     public int botHealth;
 
     public void DamageBot(int amount)
@@ -12,7 +13,8 @@ public class BotHealth : MonoBehaviour
 
         if (botHealth <= 0)
         {
-            Destroy(this.gameObject);
+            //Destroy(this.gameObject);
+            anim.SetTrigger("bloon1_death");
         }
     }
 }

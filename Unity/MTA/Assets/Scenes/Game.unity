@@ -2445,6 +2445,31 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 732304263}
   m_CullTransparentMesh: 1
+--- !u!1 &801358678 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3599225625270089545, guid: f4a283beb2403494db25159e8673f457, type: 3}
+  m_PrefabInstance: {fileID: 3599225624769618295}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &801358687
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 801358678}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 02d700f5b104d1f4bb18b628ce517a84, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &923367357
 GameObject:
   m_ObjectHideFlags: 0
@@ -4280,12 +4305,20 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3599225625270089524, guid: f4a283beb2403494db25159e8673f457, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3599225625270089524, guid: f4a283beb2403494db25159e8673f457, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3599225625270089524, guid: f4a283beb2403494db25159e8673f457, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.857
+      value: -0.7991
       objectReference: {fileID: 0}
     - target: {fileID: 3599225625270089524, guid: f4a283beb2403494db25159e8673f457, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.491
+      value: 0.4289
       objectReference: {fileID: 0}
     - target: {fileID: 3599225625270089524, guid: f4a283beb2403494db25159e8673f457, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4318,6 +4351,18 @@ PrefabInstance:
     - target: {fileID: 3599225625270089524, guid: f4a283beb2403494db25159e8673f457, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3599225625270089525, guid: f4a283beb2403494db25159e8673f457, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1734213940, guid: d1548388ce03cd34fbf7154ca8697133, type: 3}
+    - target: {fileID: 3599225625270089527, guid: f4a283beb2403494db25159e8673f457, type: 3}
+      propertyPath: m_Radius
+      value: 0.07655129
+      objectReference: {fileID: 0}
+    - target: {fileID: 3599225625270089527, guid: f4a283beb2403494db25159e8673f457, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.00037809048
       objectReference: {fileID: 0}
     - target: {fileID: 3599225625270089545, guid: f4a283beb2403494db25159e8673f457, type: 3}
       propertyPath: m_Name
