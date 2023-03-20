@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
-    public static Inventory instance;
+    public static Inventory instance = new Inventory();
 
     public static bool inventoryActive = true;
 
