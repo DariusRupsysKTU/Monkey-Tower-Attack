@@ -6,7 +6,22 @@ using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
-   // public static Inventory instance = new Inventory();
+    public static Inventory instance { get; private set; }
+
+    private void Awake()
+    {
+        if (!instance)
+        {
+            instance = this;
+        }
+        else if (this != instance)
+        {
+            Destroy(gameObject);
+        }
+
+        DontDestroyOnLoad(this);
+    }
+
     public static bool inventoryActive = true;
 
     public GameObject inventoryUi;
