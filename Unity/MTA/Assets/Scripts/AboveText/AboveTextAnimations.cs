@@ -11,5 +11,4 @@ public class AboveTextAnimations : MonoBehaviour
     public void PlayFadeInAnimation() => animator.Play(fadeInAnimation.name, 0);
 
     public void PlayFadeOutAnimation() => animator.Play(fadeOutAnimation.name, 0);
-
 }

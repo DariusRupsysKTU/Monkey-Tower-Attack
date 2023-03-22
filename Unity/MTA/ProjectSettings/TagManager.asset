@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Currency
   - TextMeshPro
+  - Bullet
   layers:
   - Default
   - TransparentFX
@@ -45,6 +46,9 @@ TagManager:
     locked: 0
   - name: Floor
     uniqueID: 1881955339
+    locked: 0
+  - name: Mid
+    uniqueID: 4121705527
     locked: 0
   - name: Highest
     uniqueID: 3263337349

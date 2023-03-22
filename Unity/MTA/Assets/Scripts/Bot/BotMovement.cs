@@ -7,6 +7,7 @@ public class BotMovement : MonoBehaviour
     [SerializeField] float moveVelocity;
     [SerializeField] float moveUntilDistance;
     [SerializeField] float visionRange;
+    [SerializeField] BotHealth botHealthScript;
 
     private GameObject playerObject;
     private Rigidbody2D playerRB;
@@ -28,7 +29,7 @@ public class BotMovement : MonoBehaviour
         thisBotPosition = thisBotRB.position;
         playerPosition = playerRB.position;
 
-        if (playerObject != null)
+        if (playerObject != null && botHealthScript.botHealth > 0)
         {
             MoveBot(playerPosition);
         }
