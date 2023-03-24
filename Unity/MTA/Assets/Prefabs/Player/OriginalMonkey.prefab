@@ -126,6 +126,7 @@ MonoBehaviour:
   playerRB: {fileID: 0}
   PlayerInput: {x: 0, y: 0}
   forceToApply: {x: 0, y: 0}
+  firePoint: {fileID: 0}
 --- !u!114 &4437472910273664127
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -7,6 +7,10 @@ TagManager:
   - Currency
   - TextMeshPro
   - Bullet
+  - SpawnPoint
+  - Rooms
+  - Grid
+  - RoomTracker
   layers:
   - Default
   - TransparentFX
