@@ -31,6 +31,11 @@ public class RoomTemplates : MonoBehaviour
         }    
     }
 
+    void Start()
+    {
+        Invoke(nameof(NotEnoughRoomsCheck), 1f);
+    }
+
     void Update()
     {
         if (waitTime <= 0 && spawnedBoss == false)
@@ -61,5 +66,13 @@ public class RoomTemplates : MonoBehaviour
     void RestartScene() 
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    void NotEnoughRoomsCheck()
+    {
+        if (maxRooms > 5 && roomCounter == 5)
+        {
+            RestartScene();
+        }
     }
 }
