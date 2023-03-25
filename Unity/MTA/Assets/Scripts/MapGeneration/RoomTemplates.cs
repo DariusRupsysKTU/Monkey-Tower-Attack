@@ -13,6 +13,7 @@ public class RoomTemplates : MonoBehaviour
     public GameObject closedRoom;
 
     public List<GameObject> rooms;
+    [Range(5, 25)]
     public int maxRooms;
     public bool tooManyRooms;
 
@@ -70,7 +71,7 @@ public class RoomTemplates : MonoBehaviour
 
     void NotEnoughRoomsCheck()
     {
-        if (maxRooms > 5 && roomCounter == 5)
+        if (Mathf.Abs(maxRooms - roomCounter) > 1)
         {
             RestartScene();
         }
