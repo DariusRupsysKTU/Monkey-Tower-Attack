@@ -1291,7 +1291,7 @@ MonoBehaviour:
   - {fileID: 7502620155734241190, guid: e5f906f7a12702341a1f754e9412a17f, type: 3}
   closedRoom: {fileID: 4427424700248012996, guid: de4e4ecabfbd52541972a2ff3b9a14f4, type: 3}
   rooms: []
-  maxRooms: 25
+  maxRooms: 15
   tooManyRooms: 0
   waitTime: 2
   boss: {fileID: 8300221843905418558, guid: 65b0a82a1bc039944a20dc6d7691a1bc, type: 3}
