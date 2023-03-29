@@ -57,7 +57,7 @@ public class RoomTemplates : MonoBehaviour
 
         for (int i = 0; i < rooms.Count; i++)
         {
-            if (rooms[i].transform.name == "ClosedRoom(Clone)")
+            if (rooms[i].transform.name == "ClosedRoom")
             {
                 Invoke(nameof(RestartScene), 1f);
             }

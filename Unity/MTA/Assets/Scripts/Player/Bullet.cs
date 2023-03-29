@@ -27,7 +27,8 @@ public class Bullet : MonoBehaviour
             botHealth.DamageBot(damage);
         }
 
-        if (other.transform.tag != "Player" && other.transform.tag != "Bullet" && other.transform.tag != "Currency" && other.transform.tag != "SpawnPoint")
+        if (other.transform.tag != "Player" && other.transform.tag != "Bullet" && other.transform.tag != "Currency" && 
+        other.transform.tag != "SpawnPoint" && other.transform.tag != "RoomTracker")
         {
             DestroyBullet(0f);
         }
