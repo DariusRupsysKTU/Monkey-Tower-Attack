@@ -21,4 +21,8 @@ public class BotHealth : MonoBehaviour
             Destroy(this.gameObject, 0.5f);
         }
     }
+    void Update()
+    {
+
+    }
 }
