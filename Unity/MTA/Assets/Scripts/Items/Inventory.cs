@@ -18,8 +18,6 @@ public class Inventory : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        DontDestroyOnLoad(this);
     }
 
     public static bool inventoryActive = true;
