@@ -42,7 +42,7 @@ public class EnemyManager : MonoBehaviour
                 }
                 else if (i != 0)
                 {
-                    AddEnemySpawner(rooms[i]);
+                    AddEnemySpawner(rooms[i], i);
                 }
             }
         }
@@ -52,7 +52,7 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-    void AddEnemySpawner(GameObject room)
+    void AddEnemySpawner(GameObject room, int roomIndex)
     {
         //spawns EnemySpawner game object
         Vector2 roomCenter = room.transform.position;
@@ -63,7 +63,9 @@ public class EnemyManager : MonoBehaviour
         EnemySpawner enemySpawnerScript = spawner.GetComponent<EnemySpawner>();
         
         //changer EnemySpawner script variables
-        enemySpawnerScript.enemy = enemies[Random.Range(0, enemies.Length)];
+        int enemyChangeInterval = rooms.Count / enemies.Length;
+        int enemyIndex = roomIndex / enemyChangeInterval;
+        enemySpawnerScript.enemy = enemies[enemyIndex];
         enemySpawnerScript.enemiesLeftToSpawn = Random.Range(0, maxEnemiesPerRoom + 1);
         enemySpawnerScript.timeBetweenSpawns = Random.Range(1, 3);
         int coinFlip = Random.Range(0, 2);

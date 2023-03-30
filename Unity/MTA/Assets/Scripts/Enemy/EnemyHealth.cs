@@ -20,5 +20,9 @@ public class EnemyHealth : MonoBehaviour
             anim.SetTrigger("bloon1_death");
             Destroy(this.gameObject, 0.5f);
         }
+        else
+        {
+            anim.Play("bloon_hit");
+        }
     }
 }
