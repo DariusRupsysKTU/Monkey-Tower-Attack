@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1734579054692322905}
   - component: {fileID: 1734579055161432897}
   - component: {fileID: 1734579055161432896}
-  - component: {fileID: -7352038800684278262}
   m_Layer: 0
   m_Name: ClosedRoom
   m_TagString: Untagged
@@ -3601,15 +3600,3 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
---- !u!114 &-7352038800684278262
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1734579055161432911}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71f58b405c2d019459ae7cbc7a0f1163, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

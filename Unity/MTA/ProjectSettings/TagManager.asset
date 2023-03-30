@@ -11,6 +11,8 @@ TagManager:
   - Rooms
   - Grid
   - RoomTracker
+  - Enemy
+  - EnemyManager
   layers:
   - Default
   - TransparentFX

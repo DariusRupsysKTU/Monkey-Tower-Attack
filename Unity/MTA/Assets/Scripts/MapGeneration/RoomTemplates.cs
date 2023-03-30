@@ -16,11 +16,6 @@ public class RoomTemplates : MonoBehaviour
     [Range(5, 25)]
     public int maxRooms;
     public bool tooManyRooms;
-
-    public float waitTime;
-    private bool spawnedBoss = false;
-    public GameObject boss;
-
     public int roomCounter = 1;
     public int waitingRooms = 4;
 
@@ -39,25 +34,9 @@ public class RoomTemplates : MonoBehaviour
 
     void Update()
     {
-        if (waitTime <= 0 && spawnedBoss == false)
-        {
-            for (int i = 0; i < rooms.Count; i++)
-            {
-                if (i == rooms.Count-1)
-                {
-                    Instantiate(boss, rooms[i].transform.position, Quaternion.identity);
-                    spawnedBoss = true;
-                }
-            }
-        }
-        else
-        {
-            waitTime -= Time.deltaTime;
-        }
-
         for (int i = 0; i < rooms.Count; i++)
         {
-            if (rooms[i].transform.name == "ClosedRoom")
+            if (rooms[i].transform.name == "ClosedRoom" || rooms[i].transform.name == "ClosedRoom(Clone)")
             {
                 Invoke(nameof(RestartScene), 1f);
             }

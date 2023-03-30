@@ -21,10 +21,10 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) 
     {
-        BotHealth botHealth = other.GetComponent<BotHealth>();
+        EnemyHealth botHealth = other.GetComponent<EnemyHealth>();
         if (botHealth != null)
         {
-            botHealth.DamageBot(damage);
+            botHealth.DamageEnemy(damage);
         }
 
         if (other.transform.tag != "Player" && other.transform.tag != "Bullet" && other.transform.tag != "Currency" && 

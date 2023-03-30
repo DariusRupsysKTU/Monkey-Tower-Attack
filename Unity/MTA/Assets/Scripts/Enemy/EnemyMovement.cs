@@ -2,36 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BotMovement : MonoBehaviour
+public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] float moveVelocity;
     [SerializeField] float moveUntilDistance;
     [SerializeField] float visionRange;
-    [SerializeField] BotHealth botHealthScript;
+    [SerializeField] EnemyHealth enemyHealthScript;
 
     private GameObject playerObject;
     private Rigidbody2D playerRB;
     private PlayerHealth playerHealth;
-    private Rigidbody2D thisBotRB;
+    private Rigidbody2D thisEnemyRB;
 
-    private Vector2 thisBotPosition;
+    private Vector2 thisEnemyPosition;
     private Vector2 playerPosition;
     
     private void Awake() 
     {
-        thisBotRB = this.GetComponent<Rigidbody2D>();
+        thisEnemyRB = this.GetComponent<Rigidbody2D>();
     }
 
     void Update()
     {
         FindPlayer();
 
-        thisBotPosition = thisBotRB.position;
+        thisEnemyPosition = thisEnemyRB.position;
         playerPosition = playerRB.position;
 
-        if (playerObject != null && botHealthScript.botHealth > 0)
+        if (playerObject != null && enemyHealthScript.enemyHealth > 0)
         {
-            MoveBot(playerPosition);
+            MoveEnemy(playerPosition);
         }
     }
 
@@ -45,17 +45,17 @@ public class BotMovement : MonoBehaviour
         }
     }
 
-    private void MoveBot(Vector2 targetPosition)
+    private void MoveEnemy(Vector2 targetPosition)
     {
-        float distance = Vector2.Distance(thisBotPosition, targetPosition);
+        float distance = Vector2.Distance(thisEnemyPosition, targetPosition);
 
         if (distance <= visionRange && distance > moveUntilDistance)
         {
-            thisBotRB.position = Vector2.MoveTowards(thisBotPosition, targetPosition, moveVelocity * Time.deltaTime);
+            thisEnemyRB.position = Vector2.MoveTowards(thisEnemyPosition, targetPosition, moveVelocity * Time.deltaTime);
         }
         else
         {
-            thisBotRB.velocity = Vector2.zero;
+            thisEnemyRB.velocity = Vector2.zero;
         }
     }
 
@@ -64,6 +64,7 @@ public class BotMovement : MonoBehaviour
         if (other.transform.tag == "Player")
         {
             playerHealth.DamagePlayer(1);
+            thisEnemyRB.constraints = RigidbodyConstraints2D.FreezeAll;
         }
     }
 
@@ -72,6 +73,12 @@ public class BotMovement : MonoBehaviour
         if (other.transform.tag == "Player")
         {
             playerHealth.DamagePlayer(1);
+            thisEnemyRB.constraints = RigidbodyConstraints2D.FreezeAll;
         }
+    }
+
+    private void OnCollisionExit2D(Collision2D other) 
+    {
+        thisEnemyRB.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 }

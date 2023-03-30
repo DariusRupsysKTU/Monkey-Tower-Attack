@@ -2,27 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BotHealth : MonoBehaviour
+public class EnemyHealth : MonoBehaviour
 {
     private Animator anim;
-    public int botHealth;
+    public int enemyHealth;
 
     private void Start()
     {
         anim = GetComponent<Animator>();
     }
 
-    public void DamageBot(int amount)
+    public void DamageEnemy(int amount)
     {
-        botHealth -= amount;
-        if (botHealth <= 0)
+        enemyHealth -= amount;
+        if (enemyHealth <= 0)
         {
             anim.SetTrigger("bloon1_death");
             Destroy(this.gameObject, 0.5f);
         }
-    }
-    void Update()
-    {
-
     }
 }
