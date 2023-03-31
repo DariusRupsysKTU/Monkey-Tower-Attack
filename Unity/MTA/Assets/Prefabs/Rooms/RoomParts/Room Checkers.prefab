@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8191088285747453288}
   m_Layer: 0
   m_Name: T Check
-  m_TagString: Untagged
+  m_TagString: RoomChecker
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -94,6 +94,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomFound: 0
+  neededDoors: 
+  notNeededDoors: 
 --- !u!1 &2418355867012192784
 GameObject:
   m_ObjectHideFlags: 0
@@ -143,7 +145,7 @@ GameObject:
   - component: {fileID: 4346521124829557692}
   m_Layer: 0
   m_Name: R Check
-  m_TagString: Untagged
+  m_TagString: RoomChecker
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -223,6 +225,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomFound: 0
+  neededDoors: 
+  notNeededDoors: 
 --- !u!1 &7939782425338268182
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,7 +241,7 @@ GameObject:
   - component: {fileID: 3609965939511488428}
   m_Layer: 0
   m_Name: L Check
-  m_TagString: Untagged
+  m_TagString: RoomChecker
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -317,6 +321,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomFound: 0
+  neededDoors: 
+  notNeededDoors: 
 --- !u!1 &9045346666179204195
 GameObject:
   m_ObjectHideFlags: 0
@@ -331,7 +337,7 @@ GameObject:
   - component: {fileID: 8024652073370097149}
   m_Layer: 0
   m_Name: B Check
-  m_TagString: Untagged
+  m_TagString: RoomChecker
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -411,3 +417,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomFound: 0
+  neededDoors: 
+  notNeededDoors: 

@@ -27,8 +27,14 @@ public class Bullet : MonoBehaviour
             botHealth.DamageEnemy(damage);
         }
 
+        ItemHealth itemHealth = other.GetComponent<ItemHealth>();
+        if (itemHealth != null)
+        {
+            itemHealth.DamageItem(damage);
+        }
+
         if (other.transform.tag != "Player" && other.transform.tag != "Bullet" && other.transform.tag != "Currency" && 
-        other.transform.tag != "SpawnPoint" && other.transform.tag != "RoomTracker")
+        other.transform.tag != "SpawnPoint" && other.transform.tag != "RoomTracker" && other.transform.tag != "RoomChecker")
         {
             DestroyBullet(0f);
         }

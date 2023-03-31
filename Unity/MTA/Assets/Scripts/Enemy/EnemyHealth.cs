@@ -14,15 +14,23 @@ public class EnemyHealth : MonoBehaviour
 
     public void DamageEnemy(int amount)
     {
-        enemyHealth -= amount;
-        if (enemyHealth <= 0)
-        {
-            anim.SetTrigger("bloon1_death");
-            Destroy(this.gameObject, 0.5f);
-        }
-        else
+        if (enemyHealth > 0)
         {
             anim.Play("bloon_hit");
         }
+
+        enemyHealth -= amount;
+
+        if (enemyHealth <= 0)
+        {
+            float deathTime = 0.05f;
+            Invoke(nameof(DeathAnimation), deathTime);
+            Destroy(this.gameObject, deathTime + 0.5f);
+        }
+    }
+
+    private void DeathAnimation()
+    {
+        anim.SetTrigger("bloon1_death");
     }
 }

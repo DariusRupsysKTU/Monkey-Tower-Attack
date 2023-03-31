@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class Interaction : MonoBehaviour
 {
-    [SerializeField] private bool isPickUp;
+    public bool isPickUp;
     [SerializeField] private KeyCode interactKey;
     [SerializeField] private GameObject aboveTextPrefab;
 
@@ -16,6 +16,19 @@ public class Interaction : MonoBehaviour
     public UnityEvent interactAction;
 
     private bool inRange;
+
+    void Start() 
+    {
+        if (!isPickUp)
+        {
+            GetComponent<CircleCollider2D>().enabled = false;
+            this.transform.tag = "Untagged";
+        }    
+        else
+        {
+            this.transform.tag = "Currency";
+        }
+    }
 
     void Update()
     {

@@ -2519,11 +2519,12 @@ GameObject:
   - component: {fileID: 613865323}
   - component: {fileID: 613865322}
   - component: {fileID: 613865320}
+  - component: {fileID: 613865326}
   - component: {fileID: 613865319}
   - component: {fileID: 613865325}
   m_Layer: 0
   m_Name: Item
-  m_TagString: Currency
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2556,7 +2557,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 548c3c98af71b4849a89d3d44b3077cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPickUp: 1
+  isPickUp: 0
   interactKey: 101
   aboveTextPrefab: {fileID: 3372254261170174560, guid: 4dd1f5bd67992f74d8655d85e255530c, type: 3}
   interactAction:
@@ -2677,8 +2678,22 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.1}
+  m_Size: {x: 0.05, y: 0.1}
   m_EdgeRadius: 0
+--- !u!114 &613865326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613865318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2892252623a861e4ba68088127d38575, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionScript: {fileID: 613865320}
+  itemHealth: 2
 --- !u!1001 &624663040
 PrefabInstance:
   m_ObjectHideFlags: 0
