@@ -7,6 +7,7 @@ public class ScreenActivator : MonoBehaviour
     public GameObject screenUI;
     public bool startActive;
     public float screenTime;
+    public TransitionPlayer transitionScript;
 
     private bool opposite;
 
@@ -14,11 +15,18 @@ public class ScreenActivator : MonoBehaviour
     {
         opposite = !startActive;
         screenUI.SetActive(startActive);
-        Invoke(nameof(ChangeScreen), screenTime);
+        StartCoroutine(nameof(ChangeScreen));
+        // Invoke(nameof(ChangeScreen), screenTime);
     }
 
-    private void ChangeScreen()
+    IEnumerator ChangeScreen()
     {
+        yield return new WaitForSeconds(screenTime);
+        if (this.transform.name == "LoadingCanvas")
+        {
+            transitionScript.PlayLoadingFadeOut();
+        }
+        yield return new WaitForSeconds(screenTime);
         screenUI.SetActive(opposite);
     }
 }
