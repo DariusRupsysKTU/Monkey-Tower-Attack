@@ -30,7 +30,7 @@ public class Options : MonoBehaviour
 
         for(int i = 0; i < resolutions.Length; i++)
         {
-            string option = resolutions[i].width + "x" + resolutions[i].height;
+            string option = resolutions[i].width + "x" + resolutions[i].height + " (" + resolutions[i].refreshRate + "Hz)";
             resolutionList.Add(option);
 
             if (resolutions[i].Equals(Screen.currentResolution))
