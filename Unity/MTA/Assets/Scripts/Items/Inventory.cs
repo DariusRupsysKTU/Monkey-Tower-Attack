@@ -18,6 +18,9 @@ public class Inventory : MonoBehaviour
     public KeyCode key3;
     public KeyCode key4;
 
+    //public Color pressedColor = new Color(0.6698113f, 0.647063f, 0.647063f, 1f);
+    //public Color normalColor = new Color(1f, 1f, 1f, 1f);
+
     private void Start()
     {
         key1 = KeyCode.Alpha1;
@@ -31,9 +34,8 @@ public class Inventory : MonoBehaviour
         // Checks if user clicked the button
         if (Input.GetKeyDown(key1))
         {
-            FadeToColor(item1.colors.normalColor, item1);
+            FadeToColor(item1.colors.pressedColor, item1);
             item1.onClick.Invoke();
-            Debug.Log("Pressed 1");
         }
         else if (Input.GetKeyUp(key1))
         {
@@ -74,7 +76,7 @@ public class Inventory : MonoBehaviour
 
     void FadeToColor(Color color, Button button)
     {
-        Graphic graphic = GetComponent<Graphic>();
+        Graphic graphic = button.GetComponent<Graphic>();
         graphic.CrossFadeColor(color, button.colors.fadeDuration, true, true);
     }
 
