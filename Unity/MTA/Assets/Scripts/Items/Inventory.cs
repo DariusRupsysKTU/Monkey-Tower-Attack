@@ -8,6 +8,7 @@ public class Inventory : MonoBehaviour
 {
     public static Inventory instance { get; private set; }
 
+    [Header("Inventory items")]
     [SerializeField] private Button item1;
     [SerializeField] private Button item2;
     [SerializeField] private Button item3;
