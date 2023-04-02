@@ -6,7 +6,8 @@ using UnityEngine.EventSystems;
 public class CurrencyPickUp : MonoBehaviour
 {
     public int value = 100;
-   // public Inventory inventory;
+    private int score = 0;
+    // public Inventory inventory;
 
     /*private void Start()
     {
@@ -19,6 +20,8 @@ public class CurrencyPickUp : MonoBehaviour
         {
             Destroy(gameObject);
             Inventory.instance.IncreaseCurrency(value);
+            score = PlayerPrefs.GetInt("Score") + 50;
+            PlayerPrefs.SetInt("Score", score);
         }
     }
 }

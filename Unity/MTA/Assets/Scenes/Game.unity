@@ -7237,6 +7237,9 @@ MonoBehaviour:
   inventoryUi: {fileID: 50444171}
   currency: 0
   currencyUI: {fileID: 1184270817}
+  score: 0
+  scoreUI: {fileID: 1228075001}
+  highscoreUI: {fileID: 592046452}
 --- !u!1 &1629923464
 GameObject:
   m_ObjectHideFlags: 0

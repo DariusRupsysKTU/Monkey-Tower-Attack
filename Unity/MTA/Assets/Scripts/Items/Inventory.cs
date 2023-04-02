@@ -28,6 +28,8 @@ public class Inventory : MonoBehaviour
         key2 = KeyCode.Alpha2;
         key3 = KeyCode.Alpha3;
         key4 = KeyCode.Alpha4;
+
+        highscoreUI.text = "Highscore: " + PlayerPrefs.GetInt("Highscore").ToString();
     }
 
     void Update()
@@ -73,6 +75,8 @@ public class Inventory : MonoBehaviour
             FadeToColor(item4.colors.normalColor, item4);
         }
 
+        score = PlayerPrefs.GetInt("Score");
+        scoreUI.text = "Score: " + PlayerPrefs.GetInt("Score").ToString();
     }
 
     void FadeToColor(Color color, Button button)
@@ -98,6 +102,17 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    private void OnApplicationQuit()
+    {
+        if(PlayerPrefs.GetInt("Score") > PlayerPrefs.GetInt("Highscore"))
+        {
+            PlayerPrefs.SetInt("Highscore", PlayerPrefs.GetInt("Score"));
+        }
+        
+        PlayerPrefs.SetInt("Score", 0);
+        score = 0;
+    }
+
     public static bool inventoryActive = true;
 
     public GameObject inventoryUi;
@@ -111,4 +126,9 @@ public class Inventory : MonoBehaviour
         currency += amount;
         currencyUI.text = "Money: " + currency + "$";
     }
+
+    [Header("Score")]
+    public double score = 0;
+    public Text scoreUI = null;
+    public Text highscoreUI = null;
 }

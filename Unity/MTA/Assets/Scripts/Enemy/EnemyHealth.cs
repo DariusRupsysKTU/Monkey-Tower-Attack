@@ -32,5 +32,7 @@ public class EnemyHealth : MonoBehaviour
     private void DeathAnimation()
     {
         anim.SetTrigger("bloon1_death");
+        int score = PlayerPrefs.GetInt("Score") + 100;
+        PlayerPrefs.SetInt("Score", score);
     }
 }
