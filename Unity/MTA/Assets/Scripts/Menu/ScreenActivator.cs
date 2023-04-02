@@ -16,14 +16,13 @@ public class ScreenActivator : MonoBehaviour
         opposite = !startActive;
         screenUI.SetActive(startActive);
         StartCoroutine(nameof(ChangeScreen));
-        // Invoke(nameof(ChangeScreen), screenTime);
     }
 
     IEnumerator ChangeScreen()
     {
-        yield return new WaitForSeconds(screenTime);
         if (this.transform.name == "LoadingCanvas")
         {
+            yield return new WaitForSeconds(screenTime);
             transitionScript.PlayLoadingFadeOut();
         }
         yield return new WaitForSeconds(screenTime);
