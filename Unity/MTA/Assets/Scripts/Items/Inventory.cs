@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Inventory : MonoBehaviour
+public class Inventory : MonoBehaviour, DataPersistence
 {
     public static Inventory instance { get; private set; }
 
@@ -125,6 +125,20 @@ public class Inventory : MonoBehaviour
     {
         currency += amount;
         currencyUI.text = "Money: " + currency + "$";
+    }
+
+    public void LoadData(GameData data)
+    {
+        this.currency = data.currency;
+        this.score = data.score;
+        
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.currency = currency;
+        data.score = score;
+
     }
 
     [Header("Score")]
