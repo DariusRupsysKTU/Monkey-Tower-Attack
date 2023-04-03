@@ -19,6 +19,18 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2693551433273002202, guid: 8851ceaff2f8b644b96aaf56541865ff, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2693551433273002202, guid: 8851ceaff2f8b644b96aaf56541865ff, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 0.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 2693551433273002202, guid: 8851ceaff2f8b644b96aaf56541865ff, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.16
+      objectReference: {fileID: 0}
     - target: {fileID: 5069111372308449976, guid: 8851ceaff2f8b644b96aaf56541865ff, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -66,21 +78,34 @@ PrefabInstance:
     - target: {fileID: 5069111372308449977, guid: 8851ceaff2f8b644b96aaf56541865ff, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 3625043607559282579, guid: 19fb86013d8c24d6cb8410c0aadf30fa, type: 3}
+      objectReference: {fileID: -172815827, guid: 8f9f93aec5aa45441861fdbcb699e6af, type: 3}
+    - target: {fileID: 5069111372308449977, guid: 8851ceaff2f8b644b96aaf56541865ff, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069111372308449977, guid: 8851ceaff2f8b644b96aaf56541865ff, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069111372308449977, guid: 8851ceaff2f8b644b96aaf56541865ff, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5069111372308449979, guid: 8851ceaff2f8b644b96aaf56541865ff, type: 3}
       propertyPath: m_Name
       value: Monkey3
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 74470441534945713, guid: 8851ceaff2f8b644b96aaf56541865ff, type: 3}
+    - {fileID: 2693551433273002202, guid: 8851ceaff2f8b644b96aaf56541865ff, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8851ceaff2f8b644b96aaf56541865ff, type: 3}
 --- !u!1 &5009499456608819798 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5069111372308449979, guid: 8851ceaff2f8b644b96aaf56541865ff, type: 3}
   m_PrefabInstance: {fileID: 278177375126606061}
   m_PrefabAsset: {fileID: 0}
---- !u!60 &8497542196150996396
-PolygonCollider2D:
+--- !u!61 &-7677027790422772772
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -96,7 +121,33 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 0.5}
+    oldSize: {x: 0.16, y: 0.16}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.16, y: 0.16}
+  m_EdgeRadius: 0
+--- !u!60 &8497542196150996396
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5009499456608819798}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.16, y: 0.16}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -108,3 +159,23 @@ PolygonCollider2D:
       - {x: -0.5, y: 0}
       - {x: 0, y: -0.25}
       - {x: 0.5, y: 0}
+--- !u!95 &-1743874047950983982
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5009499456608819798}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 390ac3eace934ad48bc0d9ff796bc9a9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
