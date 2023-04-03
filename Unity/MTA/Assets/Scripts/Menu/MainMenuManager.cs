@@ -27,11 +27,18 @@ public class MainMenuManager : MonoBehaviour
     {
         PlayerPrefs.SetInt(nameof(selectedMonkey), selectedMonkey);
         SceneManager.LoadScene(1);
+        SaveSystemManager.instance.NewGame();
+    }
+
+    public void LoadGame()
+    {
+        SaveSystemManager.instance.LoadGame();
     }
 
     public void BackToMainMenu()
     {
         SceneManager.LoadScene(0);
+        SaveSystemManager.instance.SaveGame();
     }
 
     public void QuitGame()

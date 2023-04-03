@@ -127,8 +127,22 @@ public class Inventory : MonoBehaviour
         currencyUI.text = "Money: " + currency + "$";
     }
 
+    public void LoadData(GameData data)
+    {
+        this.currency = data.currency;
+        this.score = data.score;
+        currencyUI.text = "Money: " + currency + "$";
+        PlayerPrefs.SetInt("Score", score);
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.currency = currency;
+        data.score = score;
+    }
+
     [Header("Score")]
-    public double score = 0;
+    public int score = 0;
     public Text scoreUI = null;
     public Text highscoreUI = null;
 }
