@@ -52,6 +52,5 @@ public class PauseMenu : MonoBehaviour
     public void PressedBackToMainMenu()
     {
         SceneManager.LoadScene(0);
-        SaveSystemManager.instance.SaveGame();
     }
 }

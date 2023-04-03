@@ -29,11 +29,10 @@ public class PlayerData
 
     public PlayerData(GameObject player)
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        //health = player;
+        health = player.GetComponent<PlayerHealth>().playerHealth;
         //money = GetComponent<Inventory>();
 
-        //position = new float[3];
+        position = new float[3];
         position[0] = player.transform.position.x;
         position[1] = player.transform.position.y;
         position[2] = player.transform.position.z;
