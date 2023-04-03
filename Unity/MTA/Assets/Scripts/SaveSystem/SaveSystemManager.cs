@@ -63,6 +63,7 @@ public class SaveSystemManager : MonoBehaviour
         // Save the data to a file.
         Debug.Log("Saved currency count = " + gameData.currency);
         Debug.Log("Saved score count = " + gameData.score);
+        dataHandler.Save(gameData);
     }
 
     private void OnApplicationQuit()

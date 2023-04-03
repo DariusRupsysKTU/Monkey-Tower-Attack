@@ -109,8 +109,8 @@ public class Inventory : MonoBehaviour
             PlayerPrefs.SetInt("Highscore", PlayerPrefs.GetInt("Score"));
         }
         
-        PlayerPrefs.SetInt("Score", 0);
-        score = 0;
+        //PlayerPrefs.SetInt("Score", 0);
+        //score = 0;
     }
 
     public static bool inventoryActive = true;
