@@ -7,12 +7,12 @@ public class ShopMenu : MonoBehaviour
 {
     public static bool ShopOpened = false;
     public GameObject player;
-    //public GameObject shopMenuUI;
+    public GameObject shopMenuUI;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        //shopMenuUI.SetActive(false);
+        shopMenuUI.SetActive(false);
     }
 
 
@@ -24,13 +24,13 @@ public class ShopMenu : MonoBehaviour
         {
             if (ShopOpened)
             {
-                //shopMenuUI.SetActive(false);
+                shopMenuUI.SetActive(false);
                 Time.timeScale = 1f;
                 ShopOpened = false;
             }
             else
             {
-                //shopMenuUI.SetActive(true);
+                shopMenuUI.SetActive(true);
                 Time.timeScale = 0f;
                 ShopOpened = true;
             }
