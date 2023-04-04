@@ -31,6 +31,7 @@ public class EnemyHealth : MonoBehaviour
 
     private void DeathAnimation()
     {
+        this.gameObject.GetComponent<Collider2D>().enabled = false;
         anim.SetTrigger("bloon1_death");
         int score = PlayerPrefs.GetInt("Score") + 100;
         PlayerPrefs.SetInt("Score", score);

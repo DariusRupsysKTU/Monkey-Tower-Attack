@@ -61,7 +61,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other) 
     {
-        if (other.transform.tag == "Player")
+        if (other.transform.tag == "Player" && enemyHealthScript.enemyHealth > 0)
         {
             playerHealth.DamagePlayer(1);
             thisEnemyRB.constraints = RigidbodyConstraints2D.FreezeAll;
@@ -70,7 +70,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D other) 
     {
-        if (other.transform.tag == "Player")
+        if (other.transform.tag == "Player" && enemyHealthScript.enemyHealth > 0)
         {
             playerHealth.DamagePlayer(1);
             thisEnemyRB.constraints = RigidbodyConstraints2D.FreezeAll;

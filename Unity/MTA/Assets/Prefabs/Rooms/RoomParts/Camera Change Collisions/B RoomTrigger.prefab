@@ -73,3 +73,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraChange: {x: 0, y: -2.08, z: 0}
   playerChange: {x: 0, y: -0.5, z: 0}
+  cameraMoveSpeed: 0.3

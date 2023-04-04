@@ -38,7 +38,7 @@ public class RoomTemplates : MonoBehaviour
         {
             if (rooms[i].transform.name == "ClosedRoom" || rooms[i].transform.name == "ClosedRoom(Clone)")
             {
-                Invoke(nameof(RestartScene), 1f);
+                RestartScene();
             }
         }
     }
