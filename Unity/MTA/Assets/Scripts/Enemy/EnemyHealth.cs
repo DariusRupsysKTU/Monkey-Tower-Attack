@@ -23,6 +23,11 @@ public class EnemyHealth : MonoBehaviour
 
         if (enemyHealth == 0)
         {
+            int score = PlayerPrefs.GetInt("Score") + 100;
+            PlayerPrefs.SetInt("Score", score);
+
+            GetComponent<LootBag>().InstantiateLoot(transform.position);
+
             float deathTime = 0.05f;
             Invoke(nameof(DeathAnimation), deathTime);
             Destroy(this.gameObject, deathTime + 0.5f);
@@ -33,7 +38,5 @@ public class EnemyHealth : MonoBehaviour
     {
         this.gameObject.GetComponent<Collider2D>().enabled = false;
         anim.SetTrigger("bloon1_death");
-        int score = PlayerPrefs.GetInt("Score") + 100;
-        PlayerPrefs.SetInt("Score", score);
     }
 }

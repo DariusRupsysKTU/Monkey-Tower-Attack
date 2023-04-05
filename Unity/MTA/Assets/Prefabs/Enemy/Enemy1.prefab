@@ -168,10 +168,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2d89ddb089d6cd4f96edadb983a5157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  droppedItemPrefab: {fileID: 8065731131234961515, guid: 68bc8282226eb334cbe02260d0f8c299, type: 3}
+  droppedItemPrefab: {fileID: 8658960504137280955, guid: caaeab3680953b44d864e95f247f9ddb, type: 3}
   lootList:
   - {fileID: 11400000, guid: 630e3f4024c5f8945ba8157312971e62, type: 2}
-  - {fileID: 11400000, guid: 630e3f4024c5f8945ba8157312971e62, type: 2}
+  - {fileID: 11400000, guid: ea0ee4c820fbbcb40b697410c65abe3b, type: 2}
+  - {fileID: 11400000, guid: 9260ec87ca319de498933a7a17fedbaf, type: 2}
+  dropRarestPossible: 1
+  dropForce: 1
 --- !u!95 &8300221844116258911
 Animator:
   serializedVersion: 5

@@ -139,7 +139,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e15791084895eb408b61e26be08da15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  linePrefab: {fileID: 5704299734401964647, guid: 7c7d8558824db8146bbe7d25885d6e09, type: 3}
   moveVelocity: 0.5
   moveUntilDistance: 0.1
   visionRange: 0.5
@@ -169,10 +168,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2d89ddb089d6cd4f96edadb983a5157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  droppedItemPrefab: {fileID: 8065731131234961515, guid: 68bc8282226eb334cbe02260d0f8c299, type: 3}
+  droppedItemPrefab: {fileID: 8658960504137280955, guid: caaeab3680953b44d864e95f247f9ddb, type: 3}
   lootList:
   - {fileID: 11400000, guid: 630e3f4024c5f8945ba8157312971e62, type: 2}
-  - {fileID: 11400000, guid: 630e3f4024c5f8945ba8157312971e62, type: 2}
+  - {fileID: 11400000, guid: ea0ee4c820fbbcb40b697410c65abe3b, type: 2}
+  - {fileID: 11400000, guid: 9260ec87ca319de498933a7a17fedbaf, type: 2}
+  dropRarestPossible: 1
+  dropForce: 1
 --- !u!95 &2435229319191695604
 Animator:
   serializedVersion: 5
