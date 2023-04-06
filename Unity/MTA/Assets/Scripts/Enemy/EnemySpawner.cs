@@ -9,18 +9,23 @@ public class EnemySpawner : MonoBehaviour
     public float timeBetweenSpawns;
     public bool randomSpawn;
     public Vector2 roomCenter;
-    public GameObject enemyManager;
+    public EnemyManager enemyManagerScript;
     
     private float spawnRange = 0.1f;
     private Vector2 spawnerPosition;
 
-    private float topWall = 0.7f;
-    private float bottomWall = -0.7f;
-    private float rightWall = 1.5f;
-    private float leftWall = -1.5f;
+    private float topWall;
+    private float bottomWall;
+    private float rightWall;
+    private float leftWall;
 
     void Start() 
     {
+        enemyManagerScript = this.transform.parent.gameObject.GetComponent<EnemyManager>();
+        topWall = enemyManagerScript.topWall;
+        bottomWall = enemyManagerScript.bottomWall;
+        rightWall = enemyManagerScript.rightWall;
+        leftWall = enemyManagerScript.leftWall;
         spawnerPosition = this.transform.position;
         StartCoroutine(nameof(SpawnEnemies));    
     }
@@ -45,7 +50,11 @@ public class EnemySpawner : MonoBehaviour
             }
 
             GameObject currentEnemy = Instantiate(enemy, spawnPosition, Quaternion.identity);
-            currentEnemy.transform.parent = enemyManager.transform;
+            currentEnemy.transform.parent = this.transform;
+            if (currentEnemy.name == "Enemy1(Clone)")
+            {
+                currentEnemy.GetComponent<EnemyMovement>().enabled = true;
+            }
             enemiesLeftToSpawn--;
             
             yield return new WaitForSeconds(timeBetweenSpawns);

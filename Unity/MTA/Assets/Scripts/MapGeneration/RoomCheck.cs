@@ -15,8 +15,9 @@ public class RoomCheck : MonoBehaviour
             roomFound = true;
 
             string roomName = other.transform.parent.name;
-            string roomDirections = roomName.Substring(0, roomName.IndexOf('('));
             string roomCheckName = this.transform.name.Substring(0, 1);
+            string roomDirections = roomName.Substring(0, roomName.IndexOf('('));
+
             // Debug.Log("Room: " + roomDirections + " found by: " + this.transform.parent.parent.parent.name);
             
             if ((roomCheckName == "T" && roomDirections.Contains('B')) ||
