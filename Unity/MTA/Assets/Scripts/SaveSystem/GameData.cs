@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class GameData
 {
-    public double currency;
+    public int currency;
     public int score;
 
     public Vector2 playerPosition;

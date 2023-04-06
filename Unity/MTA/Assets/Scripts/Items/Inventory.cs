@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Inventory : MonoBehaviour
+public class Inventory : MonoBehaviour, DataPersistence
 {
     public static Inventory instance { get; private set; }
 
@@ -78,6 +78,7 @@ public class Inventory : MonoBehaviour
             FadeToColor(item4.colors.normalColor, item4);
         }
 
+        // Updates the player score
         score = PlayerPrefs.GetInt("Score");
         scoreUI.text = "Score: " + PlayerPrefs.GetInt("Score").ToString();
     }
@@ -112,8 +113,8 @@ public class Inventory : MonoBehaviour
             PlayerPrefs.SetInt("Highscore", PlayerPrefs.GetInt("Score"));
         }
         
-        //PlayerPrefs.SetInt("Score", 0);
-        //score = 0;
+        PlayerPrefs.SetInt("Score", 0);
+        score = 0;
     }
 
     public static bool inventoryActive = true;
@@ -121,7 +122,7 @@ public class Inventory : MonoBehaviour
     public GameObject inventoryUi;
 
     [Header("Currency")]
-    public double currency = 0;
+    public int currency = 0;
     public Text currencyUI = null;
 
     public void IncreaseCurrency(int amount)
