@@ -21,6 +21,7 @@ public class FileDataHandler
         // Directory path for different OS
         string fullPath = Path.Combine(dataDirPath, dataFileName);
         GameData loadedData = null;
+
         if (File.Exists(fullPath))
         {
             try

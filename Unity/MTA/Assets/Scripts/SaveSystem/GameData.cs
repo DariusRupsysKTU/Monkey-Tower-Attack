@@ -7,6 +7,7 @@ public class GameData
 {
     public double currency;
     public int score;
+
     public Vector2 playerPosition;
 
     public GameData()

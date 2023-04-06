@@ -34,7 +34,7 @@ public class Inventory : MonoBehaviour
 
     void Update()
     {
-        // Checks if user clicked the button
+        // Checks if user clicked button 1
         if (Input.GetKeyDown(key1))
         {
             FadeToColor(item1.colors.pressedColor, item1);
@@ -45,7 +45,8 @@ public class Inventory : MonoBehaviour
             FadeToColor(item1.colors.normalColor, item1);
         }
 
-        if(Input.GetKeyDown(key2))
+        // Checks if user clicked button 2
+        if (Input.GetKeyDown(key2))
         {
             FadeToColor(item2.colors.pressedColor, item2);
             item2.onClick.Invoke();
@@ -55,7 +56,8 @@ public class Inventory : MonoBehaviour
             FadeToColor(item2.colors.normalColor, item2);
         }
 
-        if(Input.GetKeyDown(key3))
+        // Checks if user clicked button 3
+        if (Input.GetKeyDown(key3))
         {
             FadeToColor(item3.colors.pressedColor, item3);
             item3.onClick.Invoke();
@@ -65,7 +67,8 @@ public class Inventory : MonoBehaviour
             FadeToColor(item3.colors.normalColor, item3);
         }
 
-        if(Input.GetKeyDown(key4))
+        // Checks if user clicked button 4
+        if (Input.GetKeyDown(key4))
         {
             FadeToColor(item4.colors.pressedColor, item4);
             item4.onClick.Invoke();

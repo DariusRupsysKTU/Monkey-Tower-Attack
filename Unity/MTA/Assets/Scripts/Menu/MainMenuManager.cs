@@ -1,13 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenuManager : MonoBehaviour
 {
     public GameObject mainMenuUI;
     public GameObject optionMenuUI;
     public GameObject monkeySelectionMenuUI;
+
+    public Button continueButton;
 
     public int selectedMonkey = 0;
 
@@ -16,6 +20,16 @@ public class MainMenuManager : MonoBehaviour
         mainMenuUI.SetActive(true);
         optionMenuUI.SetActive(false);
         monkeySelectionMenuUI.SetActive(false);
+
+        /*if(SaveSystemManager.instance == null)
+        {
+            continueButton.gameObject.SetActive(false);
+        }*/
+    }
+
+    private void Awake()
+    {
+        
     }
 
     public void ChangeMonkeySelection(int selection)
@@ -32,6 +46,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void LoadGame()
     {
+        SceneManager.LoadScene(1);
         SaveSystemManager.instance.LoadGame();
     }
 
