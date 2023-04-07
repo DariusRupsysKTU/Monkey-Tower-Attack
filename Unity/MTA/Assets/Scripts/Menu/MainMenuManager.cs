@@ -40,6 +40,7 @@ public class MainMenuManager : MonoBehaviour
     public void PlayGame()
     {
         PlayerPrefs.SetInt(nameof(selectedMonkey), selectedMonkey);
+        PlayerPrefs.SetInt("NewGame", 1);
         SceneManager.LoadScene(1);
         SaveSystemManager.instance.NewGame();
     }
@@ -48,6 +49,7 @@ public class MainMenuManager : MonoBehaviour
     {
         SceneManager.LoadScene(1);
         SaveSystemManager.instance.LoadGame();
+        PlayerPrefs.SetInt("NewGame", 0);
     }
 
     public void BackToMainMenu()

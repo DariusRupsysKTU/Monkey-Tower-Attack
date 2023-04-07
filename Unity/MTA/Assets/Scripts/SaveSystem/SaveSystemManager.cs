@@ -26,12 +26,23 @@ public class SaveSystemManager : MonoBehaviour
     {
         this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
         this.dataPersistenceObjects = FindAllDataPersistenceObjects();
-        LoadGame();
+        Debug.Log("New game: " + PlayerPrefs.GetInt("NewGame"));
+
+        if(PlayerPrefs.GetInt("NewGame") == 0)
+        {
+            LoadGame();
+        }
+        else
+        {
+            NewGame();
+        }
+        
     }
 
     public void NewGame()
     {
         this.gameData = new GameData();
+        SaveGame();
     }
 
     public void LoadGame()
@@ -52,9 +63,9 @@ public class SaveSystemManager : MonoBehaviour
             dataPersistenceObj.LoadData(gameData);
         }
 
-        Debug.Log("Loaded currency count = " + gameData.currency);
-        Debug.Log("Loaded score count = " + gameData.score);
-        Debug.Log("Loaded health count = " + gameData.playerHealth);
+        //Debug.Log("Loaded currency count = " + gameData.currency);
+        //Debug.Log("Loaded score count = " + gameData.score);
+        //Debug.Log("Loaded health count = " + gameData.playerHealth);
     }
 
     public void SaveGame()
@@ -66,11 +77,12 @@ public class SaveSystemManager : MonoBehaviour
         }
 
         // Save the data to a file.
-        Debug.Log("Saved currency count = " + gameData.currency);
-        Debug.Log("Saved score count = " + gameData.score);
-        Debug.Log("Saved health count = " + gameData.playerHealth);
+        //Debug.Log("Saved currency count = " + gameData.currency);
+        //Debug.Log("Saved score count = " + gameData.score);
+        //Debug.Log("Saved health count = " + gameData.playerHealth);
         
         dataHandler.Save(gameData);
+        PlayerPrefs.SetInt("Score", gameData.score);
     }
 
     private void OnApplicationQuit()
