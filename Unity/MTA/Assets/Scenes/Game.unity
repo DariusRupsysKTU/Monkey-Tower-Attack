@@ -553,7 +553,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &109340822
 GameObject:
@@ -2905,13 +2905,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 166882ccea1e6654c96a3c0357d0543f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySpawner: {fileID: 3498412787205945757, guid: 299f30e167efefa43a35b5a0b4ccb869, type: 3}
+  enemySpawnerPrefab: {fileID: 3498412787205945757, guid: 299f30e167efefa43a35b5a0b4ccb869, type: 3}
   enemies:
   - {fileID: 8300221843905418558, guid: 65b0a82a1bc039944a20dc6d7691a1bc, type: 3}
   - {fileID: 2435229319251805589, guid: c262d9aaff83bbe4b8d5694011f8cd46, type: 3}
+  - {fileID: 2438931867132549812, guid: 7bb66051ce6d6ff4693f7202abeb5ef4, type: 3}
   maxEnemiesPerRoom: 3
   waitTime: 2
-  boss: {fileID: 8300221843905418558, guid: 65b0a82a1bc039944a20dc6d7691a1bc, type: 3}
+  boss: {fileID: 2438931867132549812, guid: 7bb66051ce6d6ff4693f7202abeb5ef4, type: 3}
   topWall: 0.7
   bottomWall: -0.7
   rightWall: 1.5
@@ -3976,7 +3977,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &613865325
 BoxCollider2D:
@@ -7501,7 +7502,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1462488720
 GameObject:
@@ -10424,7 +10425,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8065731131234961527, guid: 68bc8282226eb334cbe02260d0f8c299, type: 3}
       propertyPath: m_RootOrder
-      value: 20
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 8065731131234961527, guid: 68bc8282226eb334cbe02260d0f8c299, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11418,7 +11419,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8065731131234961527, guid: 68bc8282226eb334cbe02260d0f8c299, type: 3}
       propertyPath: m_RootOrder
-      value: 19
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 8065731131234961527, guid: 68bc8282226eb334cbe02260d0f8c299, type: 3}
       propertyPath: m_LocalPosition.x

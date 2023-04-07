@@ -49,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomSpawnDirection: 4
   roomCheckers: {fileID: 4428476059600928981}
+  spawned: 0
   waitTime: 4
 --- !u!50 &5078069978258716998
 Rigidbody2D:

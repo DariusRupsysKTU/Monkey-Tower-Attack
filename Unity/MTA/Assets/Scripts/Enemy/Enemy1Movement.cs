@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMovement : MonoBehaviour
+public class Enemy1Movement : MonoBehaviour
 {
     [SerializeField] float moveVelocity;
     [SerializeField] float moveUntilDistance;

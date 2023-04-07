@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-    public GameObject enemySpawner;
+    public GameObject enemySpawnerPrefab;
     public GameObject[] enemies;
     public int maxEnemiesPerRoom;
 
@@ -13,6 +13,7 @@ public class EnemyManager : MonoBehaviour
     public GameObject boss;
     private string bossName = "BOSS";
 
+    [Header("Wall distances from the room center")]
     public float topWall = 0.7f;
     public float bottomWall = -0.7f;
     public float rightWall = 1.5f;
@@ -58,13 +59,17 @@ public class EnemyManager : MonoBehaviour
         Vector2 roomCenter = room.transform.position;
         float randomX = Random.Range(roomCenter.x + leftWall, roomCenter.x + rightWall);
         float randomY = Random.Range(roomCenter.y + bottomWall, roomCenter.y + topWall);
-        GameObject spawner = Instantiate(enemySpawner, new Vector2(randomX, randomY), Quaternion.identity);
+        GameObject spawner = Instantiate(enemySpawnerPrefab, new Vector2(randomX, randomY), Quaternion.identity);
         spawner.transform.parent = this.transform;
         EnemySpawner enemySpawnerScript = spawner.GetComponent<EnemySpawner>();
         
         //changer EnemySpawner script variables
         int enemyChangeInterval = rooms.Count / enemies.Length;
         int enemyIndex = roomIndex / enemyChangeInterval;
+        if (enemyIndex > enemies.Length - 1)
+        {
+            enemyIndex = enemies.Length - 1;
+        }
         enemySpawnerScript.enemy = enemies[enemyIndex];
         enemySpawnerScript.enemiesLeftToSpawn = Random.Range(0, maxEnemiesPerRoom + 1);
         enemySpawnerScript.timeBetweenSpawns = Random.Range(1, 3);

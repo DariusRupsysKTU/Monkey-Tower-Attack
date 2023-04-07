@@ -53,7 +53,7 @@ public class EnemySpawner : MonoBehaviour
             currentEnemy.transform.parent = this.transform;
             if (currentEnemy.name == "Enemy1(Clone)")
             {
-                currentEnemy.GetComponent<EnemyMovement>().enabled = true;
+                currentEnemy.GetComponent<Enemy1Movement>().enabled = true;
             }
             enemiesLeftToSpawn--;
             
