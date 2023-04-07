@@ -36,6 +36,9 @@ public class SaveSystemManager : MonoBehaviour
 
     public void LoadGame()
     {
+        // Load any saved data
+        this.gameData = dataHandler.Load();
+
         // Load save data
         if (this.gameData == null)
         {
@@ -51,6 +54,7 @@ public class SaveSystemManager : MonoBehaviour
 
         Debug.Log("Loaded currency count = " + gameData.currency);
         Debug.Log("Loaded score count = " + gameData.score);
+        Debug.Log("Loaded health count = " + gameData.playerHealth);
     }
 
     public void SaveGame()
@@ -60,9 +64,12 @@ public class SaveSystemManager : MonoBehaviour
         {
             dataPersistenceObj.SaveData(ref gameData);
         }
+
         // Save the data to a file.
         Debug.Log("Saved currency count = " + gameData.currency);
         Debug.Log("Saved score count = " + gameData.score);
+        Debug.Log("Saved health count = " + gameData.playerHealth);
+        
         dataHandler.Save(gameData);
     }
 

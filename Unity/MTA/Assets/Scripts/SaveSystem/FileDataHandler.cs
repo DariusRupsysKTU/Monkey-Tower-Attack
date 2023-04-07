@@ -24,6 +24,7 @@ public class FileDataHandler
 
         if (File.Exists(fullPath))
         {
+            Debug.Log("Loaded data from file: " + fullPath);
             try
             {
                 string dataToLoad = "";
@@ -52,6 +53,7 @@ public class FileDataHandler
         string fullPath = Path.Combine(dataDirPath, dataFileName);
         try
         {
+            Debug.Log("Saved data to file: " + fullPath);
             // create the directory file will be written to if it doesnt already exist
             Directory.CreateDirectory(Path.GetDirectoryName(fullPath));
 

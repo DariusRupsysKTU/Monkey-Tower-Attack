@@ -21,7 +21,7 @@ public class MainMenuManager : MonoBehaviour
         optionMenuUI.SetActive(false);
         monkeySelectionMenuUI.SetActive(false);
 
-        /*if(SaveSystemManager.instance == null)
+        /*if(SaveSystemManager. == null)
         {
             continueButton.gameObject.SetActive(false);
         }*/

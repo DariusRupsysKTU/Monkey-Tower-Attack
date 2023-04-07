@@ -135,14 +135,14 @@ public class Inventory : MonoBehaviour, DataPersistence
     {
         this.currency = data.currency;
         this.score = data.score;
-        currencyUI.text = "Money: " + currency + "$";
+        currencyUI.text = "Money: " + this.currency + "$";
         PlayerPrefs.SetInt("Score", score);
     }
 
     public void SaveData(ref GameData data)
     {
-        data.currency = currency;
-        data.score = score;
+        data.currency = this.currency;
+        data.score = this.score;
     }
 
     [Header("Score")]

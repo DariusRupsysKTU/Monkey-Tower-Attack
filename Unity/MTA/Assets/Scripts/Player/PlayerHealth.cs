@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 
-public class PlayerHealth : MonoBehaviour
+public class PlayerHealth : MonoBehaviour, DataPersistence
 {
     public int playerHealth;
     public int numOfHearts;
@@ -113,4 +113,14 @@ public class PlayerHealth : MonoBehaviour
     public void HealPlayer(int amount) => playerHealth += amount;
 
     public void PlayerDies() => Destroy(this.gameObject);
+
+    public void LoadData(GameData data)
+    {
+        this.playerHealth = data.playerHealth;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.playerHealth = this.playerHealth;
+    }
 }
