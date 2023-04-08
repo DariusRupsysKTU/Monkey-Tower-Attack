@@ -8,6 +8,7 @@ public class SaveSystemManager : MonoBehaviour
 {
     [Header("File Storage Config")]
     [SerializeField] private string fileName;
+    [SerializeField] private bool useEncryption;
 
     private GameData gameData;
     private List<DataPersistence> dataPersistenceObjects;
@@ -24,7 +25,7 @@ public class SaveSystemManager : MonoBehaviour
 
     private void Start()
     {
-        this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
+        this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName, useEncryption);
         this.dataPersistenceObjects = FindAllDataPersistenceObjects();
         Debug.Log("New game: " + PlayerPrefs.GetInt("NewGame"));
 
@@ -42,6 +43,7 @@ public class SaveSystemManager : MonoBehaviour
     public void NewGame()
     {
         this.gameData = new GameData();
+        PlayerPrefs.SetInt("SaveDataExists", 1);
         SaveGame();
     }
 

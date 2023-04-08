@@ -21,15 +21,26 @@ public class MainMenuManager : MonoBehaviour
         optionMenuUI.SetActive(false);
         monkeySelectionMenuUI.SetActive(false);
 
-        /*if(SaveSystemManager. == null)
+        if(PlayerPrefs.GetInt("SaveDataExists") == 1)
+        {
+            continueButton.gameObject.SetActive(true);
+        }
+        else
         {
             continueButton.gameObject.SetActive(false);
-        }*/
+        }
     }
 
     private void Awake()
     {
-        
+        if (PlayerPrefs.GetInt("SaveDataExists") == 1)
+        {
+            continueButton.gameObject.SetActive(true);
+        }
+        else
+        {
+            continueButton.gameObject.SetActive(false);
+        }
     }
 
     public void ChangeMonkeySelection(int selection)

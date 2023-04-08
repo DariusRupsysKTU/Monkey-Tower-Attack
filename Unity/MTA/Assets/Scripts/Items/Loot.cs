@@ -5,6 +5,8 @@ using UnityEngine;
 [CreateAssetMenu]
 public class Loot : ScriptableObject
 {
+    [SerializeField] private string id;
+    
     public Sprite lootSprite;
     public string lootName;
     public int dropChance;
