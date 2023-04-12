@@ -2910,6 +2910,7 @@ MonoBehaviour:
   - {fileID: 8300221843905418558, guid: 65b0a82a1bc039944a20dc6d7691a1bc, type: 3}
   - {fileID: 2435229319251805589, guid: c262d9aaff83bbe4b8d5694011f8cd46, type: 3}
   - {fileID: 2438931867132549812, guid: 7bb66051ce6d6ff4693f7202abeb5ef4, type: 3}
+  - {fileID: 2118470136714789618, guid: 133929b92cecc9b4e8aebff9cc6710b2, type: 3}
   maxEnemiesPerRoom: 3
   waitTime: 2
   boss: {fileID: 2438931867132549812, guid: 7bb66051ce6d6ff4693f7202abeb5ef4, type: 3}
@@ -9819,7 +9820,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   screenUI: {fileID: 1687247153}
   startActive: 1
-  screenTime: 2
+  screenTime: 1
   transitionScript: {fileID: 1936291249}
 --- !u!114 &1936291244
 MonoBehaviour:
@@ -11025,7 +11026,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   screenUI: {fileID: 1798555410}
   startActive: 0
-  screenTime: 3
+  screenTime: 2
   transitionScript: {fileID: 0}
 --- !u!114 &6235247615456124124
 MonoBehaviour:

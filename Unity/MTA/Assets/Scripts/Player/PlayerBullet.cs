@@ -22,20 +22,27 @@ public class PlayerBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) 
     {
-        EnemyHealth botHealth = other.GetComponent<EnemyHealth>();
-        if (botHealth != null)
+        bool enemyIsDead = false;
+
+        EnemyHealth enemyHealthScript = other.GetComponent<EnemyHealth>();
+        if (enemyHealthScript != null && enemyHealthScript.enemyHealth > 0)
         {
-            botHealth.DamageEnemy(damage);
+            enemyHealthScript.DamageEnemy(damage);
+        }
+        else
+        {
+            enemyIsDead = true;
         }
 
-        ItemHealth itemHealth = other.GetComponent<ItemHealth>();
-        if (itemHealth != null)
+        ItemHealth itemHealthScript = other.GetComponent<ItemHealth>();
+        if (itemHealthScript != null)
         {
-            itemHealth.DamageItem(damage);
+            itemHealthScript.DamageItem(damage);
         }
 
         if (other.transform.tag != "Player" && other.transform.tag != "PlayerBullet" && other.transform.tag != "Currency" && 
-        other.transform.tag != "SpawnPoint" && other.transform.tag != "RoomTracker" && other.transform.tag != "RoomChecker")
+        other.transform.tag != "SpawnPoint" && other.transform.tag != "RoomTracker" && other.transform.tag != "RoomChecker" &&
+        !enemyIsDead)
         {
             DestroyBullet(0f);
         }

@@ -7,6 +7,8 @@ public class EnemyHealth : MonoBehaviour
     private Animator anim;
     public int enemyHealth;
 
+    private bool itemSpawned = false;
+
     private void Start()
     {
         anim = GetComponent<Animator>();
@@ -21,12 +23,23 @@ public class EnemyHealth : MonoBehaviour
 
         enemyHealth -= amount;
 
+        if (enemyHealth < 0)
+        {
+            enemyHealth = 0;
+        }
+
         if (enemyHealth == 0)
         {
+            this.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+
             int score = PlayerPrefs.GetInt("Score") + 100;
             PlayerPrefs.SetInt("Score", score);
 
-            GetComponent<LootBag>().InstantiateLoot(transform.position);
+            if (!itemSpawned)
+            {
+                GetComponent<LootBag>().InstantiateLoot(transform.position);
+                itemSpawned = true;
+            }
 
             float deathTime = 0.05f;
             Invoke(nameof(DeathAnimation), deathTime);
@@ -36,7 +49,6 @@ public class EnemyHealth : MonoBehaviour
 
     private void DeathAnimation()
     {
-        this.gameObject.GetComponent<Collider2D>().enabled = false;
         anim.SetTrigger("bloon1_death");
     }
 }

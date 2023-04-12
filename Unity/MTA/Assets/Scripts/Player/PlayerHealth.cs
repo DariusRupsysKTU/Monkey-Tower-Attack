@@ -19,6 +19,7 @@ public class PlayerHealth : MonoBehaviour, DataPersistence
 
     [SerializeField] private float ImmuneTime;
     private bool IsImmune;
+    private bool damagedByBlast;
 
     private GameObject healthCanvas;
 
@@ -31,6 +32,7 @@ public class PlayerHealth : MonoBehaviour, DataPersistence
         startColor = playerSpriteRenderer.color;
         prevHealth = playerHealth;
         IsImmune = false;
+        damagedByBlast = false;
         FindHealthCanvas();    
     }
 
@@ -67,7 +69,7 @@ public class PlayerHealth : MonoBehaviour, DataPersistence
             OnDie.Invoke();
         }
 
-        if (playerHealth < prevHealth && !IsImmune)
+        if (playerHealth < prevHealth && (!IsImmune || damagedByBlast))
         {
             StartCoroutine(GetImmunity());
         }
@@ -99,14 +101,20 @@ public class PlayerHealth : MonoBehaviour, DataPersistence
         IsImmune = true;
         yield return new WaitForSeconds(ImmuneTime);
         IsImmune = false;
+        damagedByBlast = false;
         prevHealth = playerHealth;
     }
 
-    public void DamagePlayer(int amount) 
+    public void DamagePlayer(int amount, bool isBlastDamage) 
     {
-        if (!IsImmune)
+        if (!IsImmune || isBlastDamage && !damagedByBlast)
         {
             playerHealth -= amount;
+            
+            if (isBlastDamage)
+            {
+                damagedByBlast = true;
+            }
         }
     }
 

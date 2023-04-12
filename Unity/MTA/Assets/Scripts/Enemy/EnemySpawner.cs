@@ -10,6 +10,7 @@ public class EnemySpawner : MonoBehaviour
     public bool randomSpawn;
     public Vector2 roomCenter;
     public EnemyManager enemyManagerScript;
+    public bool testing;
     
     private float spawnRange = 0.1f;
     private Vector2 spawnerPosition;
@@ -21,11 +22,14 @@ public class EnemySpawner : MonoBehaviour
 
     void Start() 
     {
-        enemyManagerScript = this.transform.parent.gameObject.GetComponent<EnemyManager>();
-        topWall = enemyManagerScript.topWall;
-        bottomWall = enemyManagerScript.bottomWall;
-        rightWall = enemyManagerScript.rightWall;
-        leftWall = enemyManagerScript.leftWall;
+        if (!testing)
+        {
+            enemyManagerScript = this.transform.parent.gameObject.GetComponent<EnemyManager>();
+            topWall = enemyManagerScript.topWall;
+            bottomWall = enemyManagerScript.bottomWall;
+            rightWall = enemyManagerScript.rightWall;
+            leftWall = enemyManagerScript.leftWall;
+        }
         spawnerPosition = this.transform.position;
         StartCoroutine(nameof(SpawnEnemies));    
     }

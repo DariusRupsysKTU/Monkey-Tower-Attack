@@ -7,7 +7,10 @@ public class Enemy1Movement : MonoBehaviour
     [SerializeField] float moveVelocity;
     [SerializeField] float moveUntilDistance;
     [SerializeField] float visionRange;
-    [SerializeField] EnemyHealth enemyHealthScript;
+    [SerializeField] int damageOnTouch;
+    [SerializeField] bool explodes;
+
+    private EnemyHealth enemyHealthScript;
 
     private GameObject playerObject;
     private Rigidbody2D playerRB;
@@ -34,6 +37,7 @@ public class Enemy1Movement : MonoBehaviour
     private void Awake() 
     {
         thisEnemyRB = this.GetComponent<Rigidbody2D>();
+        enemyHealthScript = this.GetComponent<EnemyHealth>();
     }
 
     private void Start() 
@@ -59,6 +63,11 @@ public class Enemy1Movement : MonoBehaviour
         if (playerObject != null && enemyHealthScript.enemyHealth > 0)
         {
             MoveEnemy(playerPosition);
+        }
+
+        if (enemyHealthScript.enemyHealth == 0 && explodes)
+        {
+            Explode();
         }
     }
 
@@ -119,24 +128,36 @@ public class Enemy1Movement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other) 
     {
-        if (other.transform.tag == "Player" && enemyHealthScript.enemyHealth > 0)
-        {
-            playerHealth.DamagePlayer(1);
-            thisEnemyRB.constraints = RigidbodyConstraints2D.FreezeAll;
-        }
+        CollisionHandler(other);
     }
 
     private void OnCollisionStay2D(Collision2D other) 
     {
-        if (other.transform.tag == "Player" && enemyHealthScript.enemyHealth > 0)
-        {
-            playerHealth.DamagePlayer(1);
-            thisEnemyRB.constraints = RigidbodyConstraints2D.FreezeAll;
-        }
+        CollisionHandler(other);
     }
 
     private void OnCollisionExit2D(Collision2D other) 
     {
         thisEnemyRB.constraints = RigidbodyConstraints2D.FreezeRotation;
+    }
+
+    private void CollisionHandler(Collision2D other)
+    {
+        if (other.transform.tag == "Player" && enemyHealthScript.enemyHealth > 0)
+        {
+            playerHealth.DamagePlayer(damageOnTouch, false);
+            thisEnemyRB.constraints = RigidbodyConstraints2D.FreezeAll;
+
+            if (explodes)
+            {
+                enemyHealthScript.DamageEnemy(enemyHealthScript.enemyHealth);
+                Explode();
+            }
+        }
+    }
+
+    private void Explode()
+    {
+        StartCoroutine(GetComponentInChildren<BlastWave>().Blast());
     }
 }

@@ -269,7 +269,7 @@ public class Enemy3Movement : MonoBehaviour
     {
         if (other.transform.tag == "Player" && enemyHealthScript.enemyHealth > 0)
         {
-            playerHealth.DamagePlayer(1);
+            playerHealth.DamagePlayer(1, false);
             thisEnemyRB.constraints = RigidbodyConstraints2D.FreezeAll;
         }
     }
@@ -278,7 +278,7 @@ public class Enemy3Movement : MonoBehaviour
     {
         if (other.transform.tag == "Player" && enemyHealthScript.enemyHealth > 0)
         {
-            playerHealth.DamagePlayer(1);
+            playerHealth.DamagePlayer(1, false);
             thisEnemyRB.constraints = RigidbodyConstraints2D.FreezeAll;
         }
     }

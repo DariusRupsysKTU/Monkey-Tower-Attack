@@ -90,7 +90,7 @@ public class Enemy2Movement : MonoBehaviour
 
 
             //Shot();
-            playerHealth.DamagePlayer(1);
+            playerHealth.DamagePlayer(1, false);
             thisEnemyRB.constraints = RigidbodyConstraints2D.FreezeAll;
         }
         else

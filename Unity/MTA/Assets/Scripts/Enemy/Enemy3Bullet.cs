@@ -33,7 +33,7 @@ public class Enemy3Bullet : MonoBehaviour
         PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
         if (playerHealth != null)
         {
-            playerHealth.DamagePlayer(damage);
+            playerHealth.DamagePlayer(damage, false);
         }
 
         ItemHealth itemHealth = other.GetComponent<ItemHealth>();
