@@ -24,10 +24,16 @@ public class Enemy1Movement : MonoBehaviour
     private Vector2 playerPosition;
     private Vector2 roomCenter;
 
+    // wall distances from center
     private float topWall;
     private float bottomWall;
     private float rightWall;
     private float leftWall;
+    // wall positions
+    private float topWallPosition;
+    private float bottomWallPosition;
+    private float rightWallPosition;
+    private float leftWallPosition;
 
     private Vector2 point1;
     private Vector2 point2 = Vector2.zero;
@@ -42,13 +48,16 @@ public class Enemy1Movement : MonoBehaviour
 
     private void Start() 
     {
-        thisEnemySpawnerScript = this.transform.parent.gameObject.GetComponent<EnemySpawner>();
-        enemyManagerScript = thisEnemySpawnerScript.enemyManagerScript;
-        topWall = enemyManagerScript.topWall;
-        bottomWall = enemyManagerScript.bottomWall;
-        rightWall = enemyManagerScript.rightWall;
-        leftWall = enemyManagerScript.leftWall;
-        roomCenter = thisEnemySpawnerScript.roomCenter;
+        if (this.transform.parent.gameObject.TryGetComponent<EnemySpawner>(out thisEnemySpawnerScript))
+        {
+            enemyManagerScript = thisEnemySpawnerScript.enemyManagerScript;
+            topWall = enemyManagerScript.topWall;
+            bottomWall = enemyManagerScript.bottomWall;
+            rightWall = enemyManagerScript.rightWall;
+            leftWall = enemyManagerScript.leftWall;
+            roomCenter = thisEnemySpawnerScript.roomCenter;
+            GetWallPositions();
+        }
 
         point1 = this.transform.position;
     }
@@ -85,7 +94,7 @@ public class Enemy1Movement : MonoBehaviour
     {
         float distance = Vector2.Distance(thisEnemyPosition, targetPosition);
 
-        if (distance <= visionRange && distance > moveUntilDistance)
+        if (distance <= visionRange && distance > moveUntilDistance && IsInTheRoom(targetPosition))
         {
             thisEnemyRB.position = Vector2.MoveTowards(thisEnemyPosition, targetPosition, moveVelocity * Time.deltaTime);
         }
@@ -159,5 +168,31 @@ public class Enemy1Movement : MonoBehaviour
     private void Explode()
     {
         StartCoroutine(GetComponentInChildren<BlastWave>().Blast());
+    }
+
+    private void GetWallPositions()
+    {
+        topWallPosition = roomCenter.y + topWall;
+        bottomWallPosition = roomCenter.y + bottomWall;
+        rightWallPosition = roomCenter.x + rightWall;
+        leftWallPosition = roomCenter.x + leftWall;
+    }
+
+    private bool IsInTheRoom(Vector2 targetPosition)
+    {
+        if (topWallPosition != 0)
+        {
+            if (targetPosition.x >= leftWallPosition && targetPosition.x <= rightWallPosition &&
+                targetPosition.y >= bottomWallPosition && targetPosition.y <= topWallPosition)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private void OnDrawGizmos() 
+    {
+        Gizmos.DrawWireSphere(transform.position, visionRange);    
     }
 }

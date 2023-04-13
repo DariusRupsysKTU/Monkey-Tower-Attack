@@ -26,10 +26,16 @@ public class Enemy3Movement : MonoBehaviour
     private Vector2 playerPosition;
     private Vector2 roomCenter;
 
+    // wall distances from center
     private float topWall;
     private float bottomWall;
     private float rightWall;
     private float leftWall;
+    // wall positions
+    private float topWallPosition;
+    private float bottomWallPosition;
+    private float rightWallPosition;
+    private float leftWallPosition;
 
     private Vector2 point1;
     private Vector2 point2 = Vector2.zero;
@@ -63,13 +69,16 @@ public class Enemy3Movement : MonoBehaviour
 
     private void Start() 
     {
-        thisEnemySpawnerScript = this.transform.parent.gameObject.GetComponent<EnemySpawner>();
-        enemyManagerScript = thisEnemySpawnerScript.enemyManagerScript;
-        topWall = enemyManagerScript.topWall;
-        bottomWall = enemyManagerScript.bottomWall;
-        rightWall = enemyManagerScript.rightWall;
-        leftWall = enemyManagerScript.leftWall;
-        roomCenter = thisEnemySpawnerScript.roomCenter;
+        if (this.transform.parent.gameObject.TryGetComponent<EnemySpawner>(out thisEnemySpawnerScript))
+        {
+            enemyManagerScript = thisEnemySpawnerScript.enemyManagerScript;
+            topWall = enemyManagerScript.topWall;
+            bottomWall = enemyManagerScript.bottomWall;
+            rightWall = enemyManagerScript.rightWall;
+            leftWall = enemyManagerScript.leftWall;
+            roomCenter = thisEnemySpawnerScript.roomCenter;
+            GetWallPositions();
+        }
 
         point1 = this.transform.position;
 
@@ -153,7 +162,7 @@ public class Enemy3Movement : MonoBehaviour
 
         Vector2 targetDirection = (targetPosition - thisEnemyPosition).normalized;
 
-        if (!tooCloseToWall)
+        if (!tooCloseToWall && IsInTheRoom(targetPosition))
         {
             if (distance <= visionRange && distance > stopDistance)
             {
@@ -226,19 +235,30 @@ public class Enemy3Movement : MonoBehaviour
         return new Vector2(Random.Range(roomCenter.x + leftWall, roomCenter.x + rightWall), Random.Range(roomCenter.y + bottomWall, roomCenter.y + topWall));
     }
 
-    private void GetPossibleDirections(Vector2 targetDirection)
+    private void GetWallPositions()
     {
-        for (int i = 0; i < startDirections.Length; i++)
+        topWallPosition = roomCenter.y + topWall;
+        bottomWallPosition = roomCenter.y + bottomWall;
+        rightWallPosition = roomCenter.x + rightWall;
+        leftWallPosition = roomCenter.x + leftWall;
+    }
+
+    private bool IsInTheRoom(Vector2 targetPosition)
+    {
+        if (topWallPosition != 0)
         {
-            if (startDirections[i] != targetDirection)
+            if (targetPosition.x >= leftWallPosition && targetPosition.x <= rightWallPosition &&
+                targetPosition.y >= bottomWallPosition && targetPosition.y <= topWallPosition)
             {
-                currentDirections[i] = startDirections[i];
-            }
-            else
-            {
-                currentDirections[i] = Vector2.zero;
+                return true;
             }
         }
+        return false;
+    }
+
+    private void OnDrawGizmos() 
+    {
+        Gizmos.DrawWireSphere(transform.position, visionRange);    
     }
 
     private void OnTriggerEnter2D(Collider2D other) 
