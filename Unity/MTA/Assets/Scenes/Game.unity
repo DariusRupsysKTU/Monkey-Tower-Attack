@@ -2913,11 +2913,11 @@ MonoBehaviour:
   - {fileID: 2118470136714789618, guid: 133929b92cecc9b4e8aebff9cc6710b2, type: 3}
   maxEnemiesPerRoom: 3
   waitTime: 2
-  boss: {fileID: 2438931867132549812, guid: 7bb66051ce6d6ff4693f7202abeb5ef4, type: 3}
-  topWall: 0.7
-  bottomWall: -0.7
-  rightWall: 1.5
-  leftWall: -1.5
+  boss: {fileID: 5387391461268202699, guid: 66046d6a2f273f4439ad0469c6c6d8fc, type: 3}
+  topWall: 0.8
+  bottomWall: -0.8
+  rightWall: 1.6
+  leftWall: -1.6
 --- !u!1 &546926524
 GameObject:
   m_ObjectHideFlags: 0

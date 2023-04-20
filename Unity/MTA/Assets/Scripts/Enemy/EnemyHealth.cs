@@ -5,20 +5,36 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     private Animator anim;
+    public bool isBoss;
     public int enemyHealth;
 
+    public bool bossEnraged = false;
+
+    private int startHealth;
     private bool itemSpawned = false;
 
     private void Start()
     {
+        startHealth = enemyHealth;
         anim = GetComponent<Animator>();
     }
 
     public void DamageEnemy(int amount)
     {
-        if (enemyHealth > 0)
+        if (enemyHealth > 0 && !bossEnraged)
         {
             anim.Play("bloon_hit");
+        }
+
+        if (enemyHealth > 0 && bossEnraged)
+        {
+            anim.Play("boss_hit");
+        }
+
+        if (enemyHealth <= startHealth / 2)
+        {
+            anim.SetBool("isEnraged", true);
+            bossEnraged = true;
         }
 
         enemyHealth -= amount;

@@ -12,5 +12,6 @@ public class LoadMonkey : MonoBehaviour
         int selectedMonkey = PlayerPrefs.GetInt(nameof(selectedMonkey));
         GameObject prefab = monkeyPrefabs[selectedMonkey];
         GameObject clone = Instantiate(prefab, spawnPoint.position, Quaternion.identity);
+        clone.transform.parent = this.gameObject.transform;
     }
 }

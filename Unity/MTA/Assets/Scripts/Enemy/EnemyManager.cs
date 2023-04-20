@@ -12,6 +12,7 @@ public class EnemyManager : MonoBehaviour
     private bool spawnedBoss = false;
     public GameObject boss;
     private string bossName = "BOSS";
+    private string bossSpawnerName = "BossSpawner";
 
     [Header("Wall distances from the room center")]
     public float topWall = 0.7f;
@@ -34,16 +35,15 @@ public class EnemyManager : MonoBehaviour
         {
             for (int i = 0; i < rooms.Count; i++)
             {
+                // if (i == 1) // testing
                 if (i == rooms.Count-1)
                 {
-                    GameObject currentBoss = Instantiate(boss, rooms[i].transform.position, Quaternion.identity);
-                    currentBoss.transform.parent = this.transform;
-                    currentBoss.name = bossName;
+                    AddEnemySpawner(rooms[i], i, true);
                     spawnedBoss = true;
                 }
                 else if (i != 0)
                 {
-                    AddEnemySpawner(rooms[i], i);
+                    AddEnemySpawner(rooms[i], i, false);
                 }
             }
         }
@@ -53,7 +53,7 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-    void AddEnemySpawner(GameObject room, int roomIndex)
+    void AddEnemySpawner(GameObject room, int roomIndex, bool bossSpawner)
     {
         //spawns EnemySpawner game object
         Vector2 roomCenter = room.transform.position;
@@ -61,20 +61,32 @@ public class EnemyManager : MonoBehaviour
         float randomY = Random.Range(roomCenter.y + bottomWall, roomCenter.y + topWall);
         GameObject spawner = Instantiate(enemySpawnerPrefab, new Vector2(randomX, randomY), Quaternion.identity);
         spawner.transform.parent = this.transform;
+
         EnemySpawner enemySpawnerScript = spawner.GetComponent<EnemySpawner>();
-        
-        //changer EnemySpawner script variables
-        int enemyChangeInterval = rooms.Count / enemies.Length;
-        int enemyIndex = roomIndex / enemyChangeInterval;
-        if (enemyIndex > enemies.Length - 1)
+
+        if (bossSpawner)
         {
-            enemyIndex = enemies.Length - 1;
+            spawner.name = bossSpawnerName;
+            enemySpawnerScript.enemy = boss;
+            enemySpawnerScript.isBossSpawner = true;
+            enemySpawnerScript.bossName = bossName;
         }
-        enemySpawnerScript.enemy = enemies[enemyIndex];
-        enemySpawnerScript.enemiesLeftToSpawn = Random.Range(0, maxEnemiesPerRoom + 1);
-        enemySpawnerScript.timeBetweenSpawns = Random.Range(1, 3);
-        int coinFlip = Random.Range(0, 2);
-        enemySpawnerScript.randomSpawn = coinFlip == 1;
+        else
+        {
+            //change EnemySpawner script variables
+            int enemyChangeInterval = rooms.Count / enemies.Length;
+            int enemyIndex = roomIndex / enemyChangeInterval;
+            if (enemyIndex > enemies.Length - 1)
+            {
+                enemyIndex = enemies.Length - 1;
+            }
+            enemySpawnerScript.enemy = enemies[enemyIndex];
+            enemySpawnerScript.enemiesLeftToSpawn = Random.Range(0, maxEnemiesPerRoom + 1);
+            enemySpawnerScript.timeBetweenSpawns = Random.Range(1, 3);
+            int coinFlip = Random.Range(0, 2);
+            enemySpawnerScript.randomSpawn = coinFlip == 1;
+        }
+        
         enemySpawnerScript.roomCenter = roomCenter;
     }
 

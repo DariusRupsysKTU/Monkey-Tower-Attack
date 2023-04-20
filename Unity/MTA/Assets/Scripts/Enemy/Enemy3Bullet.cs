@@ -7,7 +7,11 @@ public class Enemy3Bullet : MonoBehaviour
 {
     [SerializeField] float bulletSpeed;
     [SerializeField] int damage;
+    [SerializeField] bool destroyAfterTime;
+    [SerializeField] float bulletTime;
     [SerializeField] ParticleSystem rockSplashVFX;
+
+    public Vector2 shootAngle;
 
     private UnityEvent onBulletDestroy;
     private Rigidbody2D bulletRB;
@@ -21,11 +25,22 @@ public class Enemy3Bullet : MonoBehaviour
         playerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
         startPos = this.transform.position;
 
-        // gets direction of the player and multiplies by bullet speed
-        bulletRB.velocity = (playerPos - startPos).normalized * bulletSpeed; 
+        if (shootAngle != Vector2.zero)
+        {
+            bulletRB.velocity = shootAngle * bulletSpeed;
+        }
+        else
+        {
+            // gets direction of the player and multiplies by bullet speed
+            bulletRB.velocity = (playerPos - startPos).normalized * bulletSpeed; 
+        }
 
         bulletRB.transform.eulerAngles = new Vector3(0f, 0f, bulletRB.transform.eulerAngles.z + 90f); 
-        DestroyBullet(0.5f);
+        
+        if (destroyAfterTime)
+        {
+            DestroyBullet(bulletTime);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other) 

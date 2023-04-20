@@ -6,7 +6,7 @@ public class Enemy1Movement : MonoBehaviour
 {
     [SerializeField] float moveVelocity;
     [SerializeField] float moveUntilDistance;
-    [SerializeField] float visionRange;
+    public float visionRange;
     [SerializeField] int damageOnTouch;
     [SerializeField] bool explodes;
 

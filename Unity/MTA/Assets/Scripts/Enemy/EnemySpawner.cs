@@ -10,6 +10,8 @@ public class EnemySpawner : MonoBehaviour
     public bool randomSpawn;
     public Vector2 roomCenter;
     public EnemyManager enemyManagerScript;
+    public bool isBossSpawner;
+    public string bossName;
     public bool testing;
     
     private float spawnRange = 0.1f;
@@ -36,32 +38,41 @@ public class EnemySpawner : MonoBehaviour
 
     IEnumerator SpawnEnemies()
     {
-        while (enemiesLeftToSpawn > 0)
+        if (isBossSpawner)
         {
-            Vector2 spawnPosition;
+            GameObject boss = Instantiate(enemy, roomCenter, Quaternion.identity);
+            boss.transform.parent = this.transform;
+            boss.name = bossName;
+        }
+        else
+        {
+            while (enemiesLeftToSpawn > 0)
+            {
+                Vector2 spawnPosition;
 
-            if (randomSpawn)
-            {
-                float randomWidth = Random.Range(roomCenter.x + leftWall, roomCenter.x + rightWall);
-                float randomHeight = Random.Range(roomCenter.y + bottomWall, roomCenter.y + topWall);
-                spawnPosition = new Vector2(randomWidth, randomHeight);
-            }
-            else
-            {
-                float xPosition = Random.Range(spawnerPosition.x - spawnRange, spawnerPosition.x + spawnRange);
-                float yPosition = Random.Range(spawnerPosition.y - spawnRange, spawnerPosition.y + spawnRange);
-                spawnPosition = new Vector2(xPosition, yPosition);
-            }
+                if (randomSpawn)
+                {
+                    float randomWidth = Random.Range(roomCenter.x + leftWall, roomCenter.x + rightWall);
+                    float randomHeight = Random.Range(roomCenter.y + bottomWall, roomCenter.y + topWall);
+                    spawnPosition = new Vector2(randomWidth, randomHeight);
+                }
+                else
+                {
+                    float xPosition = Random.Range(spawnerPosition.x - spawnRange, spawnerPosition.x + spawnRange);
+                    float yPosition = Random.Range(spawnerPosition.y - spawnRange, spawnerPosition.y + spawnRange);
+                    spawnPosition = new Vector2(xPosition, yPosition);
+                }
 
-            GameObject currentEnemy = Instantiate(enemy, spawnPosition, Quaternion.identity);
-            currentEnemy.transform.parent = this.transform;
-            if (currentEnemy.name == "Enemy1(Clone)")
-            {
-                currentEnemy.GetComponent<Enemy1Movement>().enabled = true;
+                GameObject currentEnemy = Instantiate(enemy, spawnPosition, Quaternion.identity);
+                currentEnemy.transform.parent = this.transform;
+                if (currentEnemy.name == "Enemy1(Clone)")
+                {
+                    currentEnemy.GetComponent<Enemy1Movement>().enabled = true;
+                }
+                enemiesLeftToSpawn--;
+                
+                yield return new WaitForSeconds(timeBetweenSpawns);
             }
-            enemiesLeftToSpawn--;
-            
-            yield return new WaitForSeconds(timeBetweenSpawns);
         }
     }
 }
