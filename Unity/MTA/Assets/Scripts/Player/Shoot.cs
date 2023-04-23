@@ -7,6 +7,8 @@ public class Shoot : MonoBehaviour
     [SerializeField] GameObject firePoint;
     [SerializeField] GameObject bulletPrefab;
 
+    [SerializeField] private AudioSource shootSound;
+
     void Update()
     {
         if (Input.GetKeyDown("g"))
@@ -18,5 +20,6 @@ public class Shoot : MonoBehaviour
     private void FireBullet()
     {
         Instantiate(bulletPrefab, firePoint.transform.position, firePoint.transform.rotation);
+        shootSound.Play();
     }
 }

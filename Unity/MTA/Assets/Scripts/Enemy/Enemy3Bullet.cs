@@ -11,6 +11,8 @@ public class Enemy3Bullet : MonoBehaviour
     [SerializeField] float bulletTime;
     [SerializeField] ParticleSystem rockSplashVFX;
 
+    [SerializeField] private AudioSource bulletSound;
+
     public Vector2 shootAngle;
 
     private UnityEvent onBulletDestroy;
@@ -24,6 +26,8 @@ public class Enemy3Bullet : MonoBehaviour
         bulletRB = this.GetComponent<Rigidbody2D>();
         playerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
         startPos = this.transform.position;
+
+        bulletSound.Play();
 
         if (shootAngle != Vector2.zero)
         {

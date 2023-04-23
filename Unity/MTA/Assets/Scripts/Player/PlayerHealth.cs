@@ -18,6 +18,11 @@ public class PlayerHealth : MonoBehaviour, DataPersistence
     [SerializeField] private UnityEvent OnDie;
 
     [SerializeField] private float ImmuneTime;
+
+    [Header("Sounds")]
+    [SerializeField] private AudioSource deathSound;
+    [SerializeField] private AudioSource hitSound;
+
     private bool IsImmune;
     private bool damagedByBlast;
 
@@ -67,6 +72,7 @@ public class PlayerHealth : MonoBehaviour, DataPersistence
         if (playerHealth <= 0)
         {
             OnDie.Invoke();
+            deathSound.Play();
         }
 
         if (playerHealth < prevHealth && (!IsImmune || damagedByBlast))
@@ -115,6 +121,8 @@ public class PlayerHealth : MonoBehaviour, DataPersistence
             {
                 damagedByBlast = true;
             }
+
+            hitSound.Play();
         }
     }
 

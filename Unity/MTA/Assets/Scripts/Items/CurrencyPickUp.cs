@@ -7,6 +7,8 @@ public class CurrencyPickUp : MonoBehaviour
 {
     public int value = 100;
     private int score = 0;
+
+    [SerializeField] private AudioSource coinPickUp;
     // public Inventory inventory;
 
     /*private void Start()
@@ -18,6 +20,8 @@ public class CurrencyPickUp : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            coinPickUp.Play();
+
             Destroy(gameObject);
             Inventory.instance.IncreaseCurrency(value);
             score = PlayerPrefs.GetInt("Score") + 50;

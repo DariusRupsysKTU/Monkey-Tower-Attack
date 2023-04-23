@@ -10,6 +10,8 @@ public class EnemyHealth : MonoBehaviour
 
     public bool bossEnraged = false;
 
+    [SerializeField] private AudioSource enemyDeathSound;
+
     private int startHealth;
     private bool itemSpawned = false;
 
@@ -59,6 +61,7 @@ public class EnemyHealth : MonoBehaviour
 
             float deathTime = 0.05f;
             Invoke(nameof(DeathAnimation), deathTime);
+            enemyDeathSound.Play();
             Destroy(this.gameObject, deathTime + 0.5f);
         }
     }
