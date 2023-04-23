@@ -23,6 +23,22 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 957759938808458357, guid: 8851ceaff2f8b644b96aaf56541865ff, type: 3}
+      propertyPath: OnDie.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 957759938808458357, guid: 8851ceaff2f8b644b96aaf56541865ff, type: 3}
+      propertyPath: OnDie.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 957759938808458357, guid: 8851ceaff2f8b644b96aaf56541865ff, type: 3}
+      propertyPath: OnDie.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 957759938808458357, guid: 8851ceaff2f8b644b96aaf56541865ff, type: 3}
+      propertyPath: OnDie.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: PlayerHealth, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 2693551433273002202, guid: 8851ceaff2f8b644b96aaf56541865ff, type: 3}
       propertyPath: m_Size.x
       value: 0.16185504
