@@ -22,15 +22,15 @@ public class ItemHealth : MonoBehaviour
 
         if (itemHealth <= 0)
         {
-            // float deathTime = 0.05f;
-            // Invoke(nameof(DeathAnimation), deathTime);
-            // Destroy(this.gameObject, deathTime + 0.5f);
-            Destroy(this.gameObject);
+            float deathTime = 0.05f;
+            Invoke(nameof(DeathAnimation), deathTime);
+            Destroy(this.gameObject, deathTime + 0.5f);
+            //Destroy(this.gameObject);
         }
     }
 
     private void DeathAnimation()
     {
-        anim.SetTrigger("bloon1_death");
+        anim.SetTrigger("Box_Break");
     }
 }
