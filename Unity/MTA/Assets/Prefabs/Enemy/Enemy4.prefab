@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1734213940, guid: d1548388ce03cd34fbf7154ca8697133, type: 3}
+  m_Sprite: {fileID: 963325564, guid: b21e67bdbdaaf9540a863d5c2b16a622, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -157,7 +157,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fea5b5a59a97fb4d8cdd24f35fa6288, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isBoss: 0
   enemyHealth: 2
+  bossEnraged: 0
+  enemyDeathSound: {fileID: 0}
 --- !u!114 &2118470136714789512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,7 +190,7 @@ Animator:
   m_GameObject: {fileID: 2118470136714789618}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 02d700f5b104d1f4bb18b628ce517a84, type: 2}
+  m_Controller: {fileID: 9100000, guid: fcfed31f779e77b42951f011b97b0cc7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

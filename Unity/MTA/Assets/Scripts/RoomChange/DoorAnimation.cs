@@ -23,11 +23,15 @@ public class DoorAnimation : MonoBehaviour
             //Invoke(nameof(OpenAnimation), 0.05f);
             if(anim.GetCurrentAnimatorStateInfo(0).IsName("doors_idle"))
                 anim.SetTrigger("open_door");
+            if (anim.GetCurrentAnimatorStateInfo(0).IsName("side_doors_idle"))
+                anim.SetTrigger("open_door");
         }
         if (distance >= 0.65)
         {
             //Invoke(nameof(CloseAnimation), 0.05f);
             if (anim.GetCurrentAnimatorStateInfo(0).IsName("opened_doors_idle"))
+                anim.SetTrigger("close_door");
+            if (anim.GetCurrentAnimatorStateInfo(0).IsName("opened_side_doors_idle"))
                 anim.SetTrigger("close_door");
         }
     }
