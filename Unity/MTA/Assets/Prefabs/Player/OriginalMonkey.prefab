@@ -78,7 +78,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
   m_Color: {r: 0.7830189, g: 0.47036794, b: 0.062050495, a: 1}
   m_FlipX: 0
@@ -141,6 +141,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePoint: {fileID: 7030905906319069138}
   bulletPrefab: {fileID: 2740807406522992282, guid: b050b0ab14a3d544d9f4401bdf4bd6b0, type: 3}
+  shootSound: {fileID: 0}
 --- !u!114 &957759938808458357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,6 +180,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   ImmuneTime: 1
+  deathSound: {fileID: 0}
+  hitSound: {fileID: 0}
 --- !u!61 &2693551433273002202
 BoxCollider2D:
   m_ObjectHideFlags: 0
