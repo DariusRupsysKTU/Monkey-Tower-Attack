@@ -8797,9 +8797,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 606aa4f4c19dd944d9fb5ee51130ca26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentCameraPosition: {x: 0, y: 0, z: 0}
-  cameraMoveSpeed: 0.3
-  maxTimeForTransition: 0.1
+  calculatedCameraPosition: {x: 0, y: 0, z: 0}
+  cameraMoveSpeed: 0.05
+  startTimeBetweenCamPosCheck: 0
 --- !u!1 &1687247153
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,16 +11,16 @@ public class RoomTrigger : MonoBehaviour
     private CameraPosition cameraPositionScript;
     private Vector3 curCamPos;
     private Vector3 newCamPos;
-    private float cameraMoveSpeed;
-    private float maxTimeForTransition;
+    // private float cameraMoveSpeed;
+    // private float timeBetweenCamPosUpdates;
 
     void Start()
     {
         cam = Camera.main;
         cameraPositionScript = cam.GetComponent<CameraPosition>();
-        newCamPos = cameraPositionScript.currentCameraPosition;
-        cameraMoveSpeed = cameraPositionScript.cameraMoveSpeed;
-        maxTimeForTransition = cameraPositionScript.maxTimeForTransition;
+        newCamPos = cameraPositionScript.calculatedCameraPosition;
+        // cameraMoveSpeed = cameraPositionScript.cameraMoveSpeed;
+        // timeBetweenCamPosUpdates = cameraPositionScript.timeBetweenCamPosUpdates;
     }
 
     void OnTriggerEnter2D(Collider2D other) 
@@ -33,25 +33,25 @@ public class RoomTrigger : MonoBehaviour
 
     void Update() 
     {
-        curCamPos = cameraPositionScript.currentCameraPosition;
+        curCamPos = cameraPositionScript.calculatedCameraPosition;
 
-        if (newCamPos != Vector3.zero)
-        {
-            // Debug.Log(newCamPos);
-            cam.transform.position = Vector3.Lerp(cam.transform.position, newCamPos, cameraMoveSpeed);
-            Invoke(nameof(NewCamPosZero), maxTimeForTransition);
-        }
+        // if (newCamPos != Vector3.zero)
+        // {
+        //     // Debug.Log(newCamPos);
+        //     // cam.transform.position = Vector3.Lerp(cam.transform.position, newCamPos, cameraMoveSpeed);
+        //     Invoke(nameof(NewCamPosZero), timeBetweenCamPosUpdates);
+        // }
     }
 
     private void TransitionRoom(Collider2D other)
     {    
         newCamPos = curCamPos + cameraChange;
-        cameraPositionScript.currentCameraPosition = newCamPos;
+        cameraPositionScript.calculatedCameraPosition = newCamPos;
         other.transform.position += playerChange;
     }
 
-    private void NewCamPosZero()
-    {
-        newCamPos = Vector3.zero;
-    }
+    // private void NewCamPosZero()
+    // {
+    //     newCamPos = Vector3.zero;
+    // }
 }
