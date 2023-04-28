@@ -17,20 +17,22 @@ public class EnemySpawner : MonoBehaviour
     private float spawnRange = 0.1f;
     private Vector2 spawnerPosition;
 
-    private float topWall;
-    private float bottomWall;
-    private float rightWall;
-    private float leftWall;
+    public float topWall;
+    public float bottomWall;
+    public float rightWall;
+    public float leftWall;
+
+    public float spawnCorrection;
 
     void Start() 
     {
         if (!testing)
         {
             enemyManagerScript = this.transform.parent.gameObject.GetComponent<EnemyManager>();
-            topWall = enemyManagerScript.topWall;
-            bottomWall = enemyManagerScript.bottomWall;
-            rightWall = enemyManagerScript.rightWall;
-            leftWall = enemyManagerScript.leftWall;
+            topWall = enemyManagerScript.topWall - spawnCorrection;
+            bottomWall = enemyManagerScript.bottomWall + spawnCorrection;
+            rightWall = enemyManagerScript.rightWall - spawnCorrection;
+            leftWall = enemyManagerScript.leftWall + spawnCorrection;
         }
         spawnerPosition = this.transform.position;
         StartCoroutine(nameof(SpawnEnemies));    

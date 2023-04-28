@@ -22,7 +22,6 @@ public class Interaction : MonoBehaviour
         if (!isPickUp)
         {
             GetComponent<CircleCollider2D>().enabled = false;
-            this.transform.tag = "Untagged";
         }    
         else
         {

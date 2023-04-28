@@ -140,6 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c0e413743d73244a9b146ab9819ebb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageOnTouch: 1
   moveVelocity: 0.5
   visionRange: 1
   shootRangeMultiplier: 1.5

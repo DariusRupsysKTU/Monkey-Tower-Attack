@@ -18,7 +18,6 @@ public class Enemy1Movement : MonoBehaviour
     private Rigidbody2D thisEnemyRB;
 
     private EnemySpawner thisEnemySpawnerScript;
-    private EnemyManager enemyManagerScript;
 
     private Vector2 thisEnemyPosition;
     private Vector2 playerPosition;
@@ -50,11 +49,10 @@ public class Enemy1Movement : MonoBehaviour
     {
         if (this.transform.parent.gameObject.TryGetComponent<EnemySpawner>(out thisEnemySpawnerScript))
         {
-            enemyManagerScript = thisEnemySpawnerScript.enemyManagerScript;
-            topWall = enemyManagerScript.topWall;
-            bottomWall = enemyManagerScript.bottomWall;
-            rightWall = enemyManagerScript.rightWall;
-            leftWall = enemyManagerScript.leftWall;
+            topWall = thisEnemySpawnerScript.topWall;
+            bottomWall = thisEnemySpawnerScript.bottomWall;
+            rightWall = thisEnemySpawnerScript.rightWall;
+            leftWall = thisEnemySpawnerScript.leftWall;
             roomCenter = thisEnemySpawnerScript.roomCenter;
             GetWallPositions();
         }
@@ -162,6 +160,11 @@ public class Enemy1Movement : MonoBehaviour
                 enemyHealthScript.DamageEnemy(enemyHealthScript.enemyHealth);
                 Explode();
             }
+        }
+        else if (other.transform.tag == "Box")
+        {
+            ItemHealth boxHealth = other.gameObject.GetComponent<ItemHealth>();
+            boxHealth.DamageItem(damageOnTouch);
         }
     }
 

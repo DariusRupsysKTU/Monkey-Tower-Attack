@@ -75,13 +75,4 @@ public class PlayerMovement : MonoBehaviour
             anim.SetTrigger("idle_" + lastDir);
         }
     }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.collider.CompareTag("Bullet"))
-        {
-            forceToApply += new Vector2(-20, 0);
-            Destroy(collision.gameObject);
-        }
-    }
 }

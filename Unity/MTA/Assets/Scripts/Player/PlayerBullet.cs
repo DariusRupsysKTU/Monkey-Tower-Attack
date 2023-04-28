@@ -25,13 +25,16 @@ public class PlayerBullet : MonoBehaviour
         bool enemyIsDead = false;
 
         EnemyHealth enemyHealthScript = other.GetComponent<EnemyHealth>();
-        if (enemyHealthScript != null && enemyHealthScript.enemyHealth > 0)
+        if (enemyHealthScript != null)
         {
-            enemyHealthScript.DamageEnemy(damage);
-        }
-        else
-        {
-            enemyIsDead = true;
+            if (enemyHealthScript.enemyHealth > 0)
+            {
+                enemyHealthScript.DamageEnemy(damage);
+            }
+            else
+            {
+                enemyIsDead = true;
+            }
         }
 
         ItemHealth itemHealthScript = other.GetComponent<ItemHealth>();
@@ -41,7 +44,7 @@ public class PlayerBullet : MonoBehaviour
         }
 
         if (other.transform.tag != "Player" && other.transform.tag != "PlayerBullet" && other.transform.tag != "Currency" && 
-        other.transform.tag != "SpawnPoint" && other.transform.tag != "RoomTracker" && other.transform.tag != "RoomChecker" &&
+        other.transform.tag != "SpawnPoint" && other.transform.tag != "RoomTracker" && other.transform.tag != "RoomChecker" && 
         !enemyIsDead)
         {
             DestroyBullet(0f);

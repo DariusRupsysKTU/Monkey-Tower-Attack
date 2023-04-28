@@ -8,6 +8,8 @@ public class ItemHealth : MonoBehaviour
     public Interaction interactionScript;
     public int itemHealth;
 
+    private bool itemSpawned = false;
+
     private void Start()
     {
         anim = GetComponent<Animator>();
@@ -20,8 +22,19 @@ public class ItemHealth : MonoBehaviour
             itemHealth -= amount;
         }
 
-        if (itemHealth <= 0)
+        if (itemHealth < 0)
         {
+            itemHealth = 0;
+        }
+
+        if (itemHealth == 0)
+        {
+            if (!itemSpawned)
+            {
+                GetComponent<LootBag>().InstantiateLoot(transform.position);
+                itemSpawned = true;
+            }
+
             float deathTime = 0.05f;
             Invoke(nameof(DeathAnimation), deathTime);
             Destroy(this.gameObject, deathTime + 0.5f);

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy3Movement : MonoBehaviour
 {
+    [SerializeField] int damageOnTouch;
     [SerializeField] float moveVelocity;
     [SerializeField] float visionRange;
     [SerializeField] float shootRangeMultiplier;
@@ -20,7 +21,6 @@ public class Enemy3Movement : MonoBehaviour
     private Color thisColor;
 
     private EnemySpawner thisEnemySpawnerScript;
-    private EnemyManager enemyManagerScript;
 
     private Vector2 thisEnemyPosition;
     private Vector2 playerPosition;
@@ -71,11 +71,10 @@ public class Enemy3Movement : MonoBehaviour
     {
         if (this.transform.parent.gameObject.TryGetComponent<EnemySpawner>(out thisEnemySpawnerScript))
         {
-            enemyManagerScript = thisEnemySpawnerScript.enemyManagerScript;
-            topWall = enemyManagerScript.topWall;
-            bottomWall = enemyManagerScript.bottomWall;
-            rightWall = enemyManagerScript.rightWall;
-            leftWall = enemyManagerScript.leftWall;
+            topWall = thisEnemySpawnerScript.topWall;
+            bottomWall = thisEnemySpawnerScript.bottomWall;
+            rightWall = thisEnemySpawnerScript.rightWall;
+            leftWall = thisEnemySpawnerScript.leftWall;
             roomCenter = thisEnemySpawnerScript.roomCenter;
             GetWallPositions();
         }
@@ -296,15 +295,25 @@ public class Enemy3Movement : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D other) 
     {
-        if (other.transform.tag == "Player" && enemyHealthScript.enemyHealth > 0)
-        {
-            playerHealth.DamagePlayer(1, false);
-            thisEnemyRB.constraints = RigidbodyConstraints2D.FreezeAll;
-        }
+        CollisionHandler(other);
     }
 
     private void OnCollisionExit2D(Collision2D other) 
     {
         thisEnemyRB.constraints = RigidbodyConstraints2D.FreezeRotation;
+    }
+
+    private void CollisionHandler(Collision2D other)
+    {
+        if (other.transform.tag == "Player" && enemyHealthScript.enemyHealth > 0)
+        {
+            playerHealth.DamagePlayer(damageOnTouch, false);
+            thisEnemyRB.constraints = RigidbodyConstraints2D.FreezeAll;
+        }
+        else if (other.transform.tag == "Box")
+        {
+            ItemHealth boxHealth = other.gameObject.GetComponent<ItemHealth>();
+            boxHealth.DamageItem(damageOnTouch);
+        }
     }
 }
