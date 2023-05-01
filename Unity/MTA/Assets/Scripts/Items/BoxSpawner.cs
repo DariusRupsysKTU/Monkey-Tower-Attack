@@ -26,7 +26,7 @@ public class BoxSpawner : MonoBehaviour
     {
         if (!testing)
         {
-            enemyManagerScript = this.transform.parent.gameObject.GetComponent<EnemyManager>();
+            enemyManagerScript = this.transform.parent.parent.gameObject.GetComponent<EnemyManager>();
             topWall = enemyManagerScript.topWall - spawnCorrection;
             bottomWall = enemyManagerScript.bottomWall + spawnCorrection;
             rightWall = enemyManagerScript.rightWall - spawnCorrection;

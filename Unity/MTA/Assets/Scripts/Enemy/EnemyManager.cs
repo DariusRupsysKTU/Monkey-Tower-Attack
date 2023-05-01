@@ -41,18 +41,20 @@ public class EnemyManager : MonoBehaviour
         {
             for (int i = 0; i < rooms.Count; i++)
             {
+                GameObject parentObject = new GameObject(rooms[i].name);
+                parentObject.transform.parent = this.transform;
                 // if (i == 1) // testing
                 if (i == rooms.Count-1)
                 {
-                    AddEnemySpawner(rooms[i], i, true);
+                    AddBoxSpawner(rooms[i], i, parentObject);
+                    AddEnemySpawner(rooms[i], i, true, parentObject);
                     spawnedBoss = true;
                 }
-                else if (i != 0)
+                else
                 {
-                    AddEnemySpawner(rooms[i], i, false);
+                    AddBoxSpawner(rooms[i], i, parentObject);
+                    AddEnemySpawner(rooms[i], i, false, parentObject);
                 }
-
-                AddBoxSpawner(rooms[i], i);
             }
         }
         else
@@ -61,64 +63,71 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-    void AddEnemySpawner(GameObject room, int roomIndex, bool bossSpawner)
+    void AddEnemySpawner(GameObject room, int roomIndex, bool bossSpawner, GameObject parent)
     {
         //spawns EnemySpawner game object
         Vector2 roomCenter = room.transform.position;
         float randomX = Random.Range(roomCenter.x + leftWall, roomCenter.x + rightWall);
         float randomY = Random.Range(roomCenter.y + bottomWall, roomCenter.y + topWall);
         GameObject spawner = Instantiate(enemySpawnerPrefab, new Vector2(randomX, randomY), Quaternion.identity);
-        spawner.transform.parent = this.transform;
+        spawner.transform.parent = parent.transform;
 
         EnemySpawner enemySpawnerScript = spawner.GetComponent<EnemySpawner>();
 
-        if (bossSpawner)
+        if (roomIndex > 0)
         {
-            spawner.name = bossSpawnerName;
-            enemySpawnerScript.enemy = bossPrefab;
-            enemySpawnerScript.isBossSpawner = true;
-            enemySpawnerScript.bossName = bossName;
-        }
-        else
-        {
-            //change EnemySpawner script variables
-            int enemyChangeInterval = rooms.Count / enemyPrefabs.Length;
-            int enemyIndex = roomIndex / enemyChangeInterval;
-            if (enemyIndex > enemyPrefabs.Length - 1)
+            if (bossSpawner)
             {
-                enemyIndex = enemyPrefabs.Length - 1;
+                spawner.name = bossSpawnerName;
+                enemySpawnerScript.enemy = bossPrefab;
+                enemySpawnerScript.isBossSpawner = true;
+                enemySpawnerScript.bossName = bossName;
             }
-            enemySpawnerScript.enemy = enemyPrefabs[enemyIndex];
-            enemySpawnerScript.enemiesLeftToSpawn = Random.Range(0, maxEnemiesPerRoom + 1);
-            enemySpawnerScript.timeBetweenSpawns = Random.Range(1, 3);
-            int coinFlip = Random.Range(0, 2);
-            enemySpawnerScript.randomSpawn = coinFlip == 1;
+            else
+            {
+                //change EnemySpawner script variables
+                int enemyChangeInterval = rooms.Count / enemyPrefabs.Length;
+                int enemyIndex = roomIndex / enemyChangeInterval;
+                if (enemyIndex > enemyPrefabs.Length - 1)
+                {
+                    enemyIndex = enemyPrefabs.Length - 1;
+                }
+                enemySpawnerScript.enemy = enemyPrefabs[enemyIndex];
+                enemySpawnerScript.enemiesLeftToSpawn = Random.Range(0, maxEnemiesPerRoom + 1);
+                enemySpawnerScript.timeBetweenSpawns = Random.Range(1, 3);
+                int coinFlip = Random.Range(0, 2);
+                enemySpawnerScript.randomSpawn = coinFlip == 1;
+            }
         }
         
         enemySpawnerScript.roomCenter = roomCenter;
         enemySpawnerScript.spawnCorrection = spawnCorrection;
     }
 
-    void AddBoxSpawner(GameObject room, int roomIndex)
+    void AddBoxSpawner(GameObject room, int roomIndex, GameObject parent)
     {
+
         //spawns EnemySpawner game object
         Vector2 roomCenter = room.transform.position;
         float randomX = Random.Range(roomCenter.x + leftWall, roomCenter.x + rightWall);
         float randomY = Random.Range(roomCenter.y + bottomWall, roomCenter.y + topWall);
         GameObject spawner = Instantiate(boxSpawnerPrefab, new Vector2(randomX, randomY), Quaternion.identity);
-        spawner.transform.parent = this.transform;
-
-        BoxSpawner boxSpawnerScript = spawner.GetComponent<BoxSpawner>();
-
-        //change BoxSpawner script variables
-        boxSpawnerScript.boxPrefab = boxPrefab;
-        boxSpawnerScript.boxesLeftToSpawn = Random.Range(0, maxEnemiesPerRoom + 1);
-        boxSpawnerScript.timeBetweenSpawns = Random.Range(1, 3);
-        int coinFlip = Random.Range(0, 2);
-        boxSpawnerScript.randomSpawn = coinFlip == 1;
+        spawner.transform.parent = parent.transform;
         
-        boxSpawnerScript.roomCenter = roomCenter;
-        boxSpawnerScript.spawnCorrection = spawnCorrection;
+        if (roomIndex > 0)
+        {
+            BoxSpawner boxSpawnerScript = spawner.GetComponent<BoxSpawner>();
+
+            //change BoxSpawner script variables
+            boxSpawnerScript.boxPrefab = boxPrefab;
+            boxSpawnerScript.boxesLeftToSpawn = Random.Range(0, maxEnemiesPerRoom + 1);
+            boxSpawnerScript.timeBetweenSpawns = Random.Range(1, 3);
+            int coinFlip = Random.Range(0, 2);
+            boxSpawnerScript.randomSpawn = coinFlip == 1;
+            
+            boxSpawnerScript.roomCenter = roomCenter;
+            boxSpawnerScript.spawnCorrection = spawnCorrection;
+        }
     }
 
     void GetRooms()

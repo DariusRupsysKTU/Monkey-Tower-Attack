@@ -236,10 +236,10 @@ public class Enemy3Movement : MonoBehaviour
 
     private void GetWallPositions()
     {
-        topWallPosition = roomCenter.y + topWall;
-        bottomWallPosition = roomCenter.y + bottomWall;
-        rightWallPosition = roomCenter.x + rightWall;
-        leftWallPosition = roomCenter.x + leftWall;
+        topWallPosition = roomCenter.y + thisEnemySpawnerScript.enemyManagerScript.topWall;
+        bottomWallPosition = roomCenter.y + thisEnemySpawnerScript.enemyManagerScript.bottomWall;
+        rightWallPosition = roomCenter.x + thisEnemySpawnerScript.enemyManagerScript.rightWall;
+        leftWallPosition = roomCenter.x + thisEnemySpawnerScript.enemyManagerScript.leftWall;
     }
 
     private bool IsInTheRoom(Vector2 targetPosition)
