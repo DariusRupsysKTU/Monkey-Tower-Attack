@@ -142,8 +142,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveVelocity: 0.5
   moveUntilDistance: 0.1
-  visionRange: 0.5
+  visionRange: 1
+  shootRangeMultiplier: 1.5
+  stopDistance: 0.7
+  retreatDistance: 0.4
   enemyHealthScript: {fileID: 776477463232932116}
+  startTimeBetweenShots: 2
+  bulletPrefab: {fileID: 8817345501052181823, guid: dd5ec616c66609547a2763257374895c, type: 3}
 --- !u!114 &776477463232932116
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -103,13 +103,13 @@ public class Enemy3Movement : MonoBehaviour
             Divide();
         }
 
-        if (Vector2.Distance(thisEnemyPosition, playerPosition) <= visionRange * shootRangeMultiplier)
-        {
-            Shoot();
-        }
+        //if (Vector2.Distance(thisEnemyPosition, playerPosition) <= visionRange * shootRangeMultiplier)
+        //{
+        //    Shoot();
+        //}
     }
 
-    private void Shoot()
+    /*private void Shoot()
     {
         if (timeBetweenShots <= 0)
         {
@@ -120,7 +120,7 @@ public class Enemy3Movement : MonoBehaviour
         {
             timeBetweenShots -= Time.deltaTime;
         }
-    }
+    }*/
 
     private void Divide()
     {
@@ -160,7 +160,7 @@ public class Enemy3Movement : MonoBehaviour
     {
         float distance = Vector2.Distance(thisEnemyPosition, targetPosition);
 
-        Vector2 targetDirection = (targetPosition - thisEnemyPosition).normalized;
+        /*Vector2 targetDirection = (targetPosition - thisEnemyPosition).normalized;
 
         if (!tooCloseToWall && IsInTheRoom(targetPosition))
         {
@@ -180,6 +180,7 @@ public class Enemy3Movement : MonoBehaviour
             {
                 Patrol();
             }
+
         }
         else if (distance < retreatDistance)
         {
@@ -188,12 +189,20 @@ public class Enemy3Movement : MonoBehaviour
         else if (distance > visionRange)
         {
             Patrol();
+        }*/
+        if (distance <= visionRange && distance > 0.1 && IsInTheRoom(targetPosition))
+        {
+            thisEnemyRB.position = Vector2.MoveTowards(thisEnemyPosition, targetPosition, moveVelocity * Time.deltaTime);
+        }
+        else
+        {
+            Patrol();
         }
 
-        if (distance <= visionRange)
-        {
+        //if (distance <= visionRange)
+        //{
             // Debug.Log(thisEnemyPosition + " " + targetPosition + " " + targetDirection);
-        }
+        //}
     }
 
     private void Patrol()

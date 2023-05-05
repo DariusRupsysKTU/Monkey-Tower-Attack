@@ -3019,6 +3019,7 @@ MonoBehaviour:
   enemySpawnerPrefab: {fileID: 3498412787205945757, guid: 299f30e167efefa43a35b5a0b4ccb869, type: 3}
   enemyPrefabs:
   - {fileID: 8300221843905418558, guid: 65b0a82a1bc039944a20dc6d7691a1bc, type: 3}
+  - {fileID: 2435229319251805589, guid: c262d9aaff83bbe4b8d5694011f8cd46, type: 3}
   - {fileID: 2438931867132549812, guid: 7bb66051ce6d6ff4693f7202abeb5ef4, type: 3}
   - {fileID: 2118470136714789618, guid: 133929b92cecc9b4e8aebff9cc6710b2, type: 3}
   maxEnemiesPerRoom: 3
