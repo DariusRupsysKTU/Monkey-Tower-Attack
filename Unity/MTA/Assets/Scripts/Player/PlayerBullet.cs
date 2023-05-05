@@ -15,6 +15,7 @@ public class PlayerBullet : MonoBehaviour
     void Start() 
     {
         bulletRB = this.GetComponent<Rigidbody2D>();
+        bulletRB.transform.localScale = new Vector3(damage, damage, damage);
         bulletRB.velocity = transform.up * bulletSpeed; 
         bulletRB.transform.eulerAngles = new Vector3(0f, 0f, bulletRB.transform.eulerAngles.z + 90f); 
         DestroyBullet(0.5f);
@@ -51,9 +52,26 @@ public class PlayerBullet : MonoBehaviour
         }
     }
 
+    public void EnableDoubleDamage(float time)
+    {
+        damage = damage * 2;
+        Invoke(nameof(DisableDoubleDamage), time);
+    }
+
+    private void DisableDoubleDamage()
+    {
+        damage = damage / 2;
+    }
+
+    public void DisableExtraDamage()
+    {
+        damage = 1;
+    }
+
     private void PlayRockSplashVFX()
     {
         ParticleSystem vfx = Instantiate(rockSplashVFX, this.transform.position, Quaternion.identity);
+        vfx.transform.localScale = new Vector3(damage, damage, damage);
         vfx.Play();
         Destroy(vfx.gameObject, rockSplashVFX.main.duration);
     }

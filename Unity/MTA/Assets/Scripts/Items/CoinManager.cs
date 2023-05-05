@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class CurrencyPickUp : MonoBehaviour
+public class CoinManager : MonoBehaviour
 {
     public int value = 100;
     private int score = 0;
@@ -16,16 +16,12 @@ public class CurrencyPickUp : MonoBehaviour
         inventory = GameObject.Find("InventoryCanvas").GetComponent<Inventory>();
     }*/
 
-    private void OnTriggerEnter2D(Collider2D collision) 
+    public void UpdateCoins()
     {
-        if (collision.CompareTag("Player"))
-        {
-            coinPickUp.Play();
+        coinPickUp.Play();
 
-            Destroy(gameObject);
-            Inventory.instance.IncreaseCurrency(value);
-            score = PlayerPrefs.GetInt("Score") + 50;
-            PlayerPrefs.SetInt("Score", score);
-        }
+        Inventory.instance.IncreaseCurrency(value);
+        score = PlayerPrefs.GetInt("Score") + 50;
+        PlayerPrefs.SetInt("Score", score);
     }
 }

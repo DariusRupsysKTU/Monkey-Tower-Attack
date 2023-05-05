@@ -104,11 +104,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   droppedItemPrefab: {fileID: 8658960504137280955, guid: caaeab3680953b44d864e95f247f9ddb, type: 3}
   lootList:
-  - {fileID: 11400000, guid: 630e3f4024c5f8945ba8157312971e62, type: 2}
-  - {fileID: 11400000, guid: ea0ee4c820fbbcb40b697410c65abe3b, type: 2}
   - {fileID: 11400000, guid: 9260ec87ca319de498933a7a17fedbaf, type: 2}
+  - {fileID: 11400000, guid: 5dff42684b10a0c439746679a1569fb4, type: 2}
+  - {fileID: 11400000, guid: 364a57bfc7e87b847abe6c2a696e5499, type: 2}
+  - {fileID: 11400000, guid: 60a506fc3991d654cb90331edee1a1ea, type: 2}
+  - {fileID: 11400000, guid: 6ea63d4d135d57544aba52ed37345966, type: 2}
+  - {fileID: 11400000, guid: ea0ee4c820fbbcb40b697410c65abe3b, type: 2}
+  - {fileID: 11400000, guid: 630e3f4024c5f8945ba8157312971e62, type: 2}
   dropRarestPossible: 1
-  dropForce: 1
+  dropForce: 2
 --- !u!114 &2930396757002237224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,21 +128,18 @@ MonoBehaviour:
   isPickUp: 0
   interactKey: 101
   aboveTextPrefab: {fileID: 3372254261170174560, guid: 4dd1f5bd67992f74d8655d85e255530c, type: 3}
-  interactAction:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2930396757002237224}
-        m_TargetAssemblyTypeName: Interaction, Assembly-CSharp
-        m_MethodName: PickUp
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  healVFX: {fileID: 0}
+  fullHealVFX: {fileID: 0}
+  speedBoostVFX: {fileID: 0}
+  doubleDamageVFX: {fileID: 0}
+  coinsVFX: {fileID: 0}
+  heal: 0
+  fullHeal: 0
+  doubleDamage: 0
+  speedBoost: 0
+  immunity: 0
+  granade: 0
+  coin: 0
 --- !u!114 &2930396757002237230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2892252623a861e4ba68088127d38575, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  brokenBoxPrefab: {fileID: 8792358377997967117, guid: abcf8e945c73b7f42a88e36b1d2b9f0c, type: 3}
   interactionScript: {fileID: 2930396757002237224}
   itemHealth: 2
 --- !u!58 &2930396757002237223

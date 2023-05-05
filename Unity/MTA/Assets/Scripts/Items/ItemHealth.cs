@@ -5,9 +5,11 @@ using UnityEngine;
 public class ItemHealth : MonoBehaviour
 {
     private Animator anim;
+    public GameObject brokenBoxPrefab;
     public Interaction interactionScript;
     public int itemHealth;
 
+    private float deathTime = 0.05f;
     private bool itemSpawned = false;
 
     private void Start()
@@ -35,15 +37,20 @@ public class ItemHealth : MonoBehaviour
                 itemSpawned = true;
             }
 
-            float deathTime = 0.05f;
             Invoke(nameof(DeathAnimation), deathTime);
-            Destroy(this.gameObject, deathTime + 0.5f);
-            //Destroy(this.gameObject);
+            Invoke(nameof(DestroyBox), deathTime + 0.6f);
         }
     }
 
     private void DeathAnimation()
     {
         anim.SetTrigger("Box_Break");
+    }
+
+    private void DestroyBox()
+    {
+        GameObject brokenBox = Instantiate(brokenBoxPrefab, this.transform.position, Quaternion.identity);
+        brokenBox.transform.parent = this.transform.parent;
+        Destroy(this.gameObject);
     }
 }

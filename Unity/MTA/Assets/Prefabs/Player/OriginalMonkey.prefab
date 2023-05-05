@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4437472910273664127}
   - component: {fileID: 957759938808458357}
   - component: {fileID: 2693551433273002202}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: OriginalMonkey
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ Rigidbody2D:
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 1
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &5069111372308449983
@@ -124,6 +124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerRB: {fileID: 0}
+  moveSpeed: 1
   PlayerInput: {x: 0, y: 0}
   forceToApply: {x: 0, y: 0}
   firePoint: {fileID: 0}
@@ -156,8 +157,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHealth: 5
   numOfHearts: 5
-  fullHeart: {fileID: 21300000, guid: 227e80f2019ad524f8f10cb35992eda6, type: 3}
-  emptyHeart: {fileID: 21300000, guid: a83427f83e804964a9302659766c41a4, type: 3}
+  fullHeart: {fileID: 770381076, guid: 227e80f2019ad524f8f10cb35992eda6, type: 3}
+  emptyHeart: {fileID: -148309364, guid: a83427f83e804964a9302659766c41a4, type: 3}
   hearts:
   - {fileID: 0}
   - {fileID: 0}
@@ -179,7 +180,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  ImmuneTime: 1
+  immuneTime: 1
   deathSound: {fileID: 0}
   hitSound: {fileID: 0}
 --- !u!61 &2693551433273002202
@@ -217,7 +218,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 275250849418942873}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}

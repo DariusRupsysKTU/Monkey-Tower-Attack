@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f6f0bb49e073b5a44b62af1358b5dc4b, type: 3}
-  m_Name: HealthPotion
+  m_Name: Immunity
   m_EditorClassIdentifier: 
   id: 
-  lootSprite: {fileID: 120474459, guid: 38d8dba2cfa975f418036e1390aa3858, type: 3}
-  lootName: Health Potion
-  dropChance: 80
+  lootSprite: {fileID: -983283490, guid: 38d8dba2cfa975f418036e1390aa3858, type: 3}
+  lootName: Immunity
+  dropChance: 0

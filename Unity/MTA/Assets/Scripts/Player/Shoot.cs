@@ -5,7 +5,7 @@ using UnityEngine;
 public class Shoot : MonoBehaviour
 {
     [SerializeField] GameObject firePoint;
-    [SerializeField] GameObject bulletPrefab;
+    public GameObject bulletPrefab;
 
     [SerializeField] private AudioSource shootSound;
 

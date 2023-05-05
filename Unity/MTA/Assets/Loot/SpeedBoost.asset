@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f6f0bb49e073b5a44b62af1358b5dc4b, type: 3}
-  m_Name: Coin
+  m_Name: SpeedBoost
   m_EditorClassIdentifier: 
   id: 
-  lootSprite: {fileID: 21300000, guid: 9400ba3f8c4308d4dbda9c8dabf6f58e, type: 3}
-  lootName: Coin
-  dropChance: 40
+  lootSprite: {fileID: 537953882, guid: 38d8dba2cfa975f418036e1390aa3858, type: 3}
+  lootName: Speed Boost
+  dropChance: 30

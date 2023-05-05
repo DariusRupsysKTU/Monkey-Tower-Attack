@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody2D playerRB;
-    public const float moveSpeed = 1f;
+    public float moveSpeed = 1f;
     public Vector2 PlayerInput;
     public Vector2 forceToApply;
     public const float forceDamping = 1.2f;
@@ -42,6 +42,17 @@ public class PlayerMovement : MonoBehaviour
             forceToApply = Vector2.zero;
         }
         playerRB.velocity = moveForce;
+    }
+
+    public void EnableSpeedBoost(float time)
+    {
+        moveSpeed = moveSpeed * 2;
+        Invoke(nameof(DisableSpeedBoost), time);
+    }
+
+    private void DisableSpeedBoost()
+    {
+        moveSpeed = moveSpeed / 2;
     }
 
     private void ChangeFirePointRotation()

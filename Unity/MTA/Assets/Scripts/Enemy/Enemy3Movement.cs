@@ -127,6 +127,7 @@ public class Enemy3Movement : MonoBehaviour
         if (startHealth - 1 > 0)
         {        
             GameObject clone = Instantiate(clonePrefab, GetClosePosition(), Quaternion.identity);
+            clone.transform.parent = this.transform.parent;
             clone.GetComponent<Enemy3Movement>().startHealth = this.startHealth - 1;
             clone.GetComponent<Enemy3Movement>().startAlpha = (this.startAlpha / this.startHealth) * (this.startHealth - 1);
             clone.GetComponent<EnemyHealth>().enemyHealth = this.startHealth - 1;

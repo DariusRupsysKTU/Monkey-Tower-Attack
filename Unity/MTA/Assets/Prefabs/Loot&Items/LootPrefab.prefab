@@ -9,10 +9,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4224855905863878985}
+  - component: {fileID: 521729626605130735}
+  - component: {fileID: 2148408997081263485}
   - component: {fileID: 5065245197621633132}
   - component: {fileID: 1714597812009765393}
-  - component: {fileID: 521729626605130735}
   - component: {fileID: 3689460909127694633}
+  - component: {fileID: 5811498796883461841}
+  - component: {fileID: -5114452811042858703}
   m_Layer: 0
   m_Name: LootPrefab
   m_TagString: Untagged
@@ -35,6 +38,47 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &521729626605130735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8658960504137280955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 548c3c98af71b4849a89d3d44b3077cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPickUp: 1
+  interactKey: 101
+  aboveTextPrefab: {fileID: 3372254261170174560, guid: 4dd1f5bd67992f74d8655d85e255530c, type: 3}
+  healVFX: {fileID: 3776978127002872477, guid: 10889e1b5e5c07640a01f7078f2bbe1d, type: 3}
+  fullHealVFX: {fileID: 3776978127002872477, guid: 346e0d772d10b41489ca9606ac5eb75a, type: 3}
+  speedBoostVFX: {fileID: 6874349047090508741, guid: 2be8d09cd1414734ba944ee95da1cefe, type: 3}
+  doubleDamageVFX: {fileID: 6874349047090508741, guid: 1733884cd87d2584298700328b55e2e0, type: 3}
+  coinsVFX: {fileID: 4764992818673111806, guid: 7793fa4e752c3474daa5aeb1be9dc0ad, type: 3}
+  heal: 0
+  fullHeal: 0
+  doubleDamage: 0
+  speedBoost: 0
+  immunity: 0
+  granade: 0
+  coin: 0
+--- !u!114 &2148408997081263485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8658960504137280955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33a3b135a8432f54fafab3771e14eaa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  value: 100
+  coinPickUp: {fileID: -5114452811042858703}
 --- !u!212 &5065245197621633132
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -99,45 +143,15 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 100
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 1
+  m_LinearDrag: 3
+  m_AngularDrag: 3
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!114 &521729626605130735
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8658960504137280955}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 548c3c98af71b4849a89d3d44b3077cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isPickUp: 1
-  interactKey: 101
-  aboveTextPrefab: {fileID: 3372254261170174560, guid: 4dd1f5bd67992f74d8655d85e255530c, type: 3}
-  interactAction:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 521729626605130735}
-        m_TargetAssemblyTypeName: Interaction, Assembly-CSharp
-        m_MethodName: PickUp
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!58 &3689460909127694633
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -153,4 +167,116 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
+  m_Radius: 0.025
+--- !u!58 &5811498796883461841
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8658960504137280955}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
   m_Radius: 0.075
+--- !u!82 &-5114452811042858703
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8658960504137280955}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 24300002, guid: c450bf32e5e16c2409ff5a22fbc663d2, type: 2}
+  m_audioClip: {fileID: 8300000, guid: f15d22f7a019cd942867d77c2250d34d, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

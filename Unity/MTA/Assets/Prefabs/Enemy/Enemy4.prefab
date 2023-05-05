@@ -77,8 +77,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1031629947
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 963325564, guid: b21e67bdbdaaf9540a863d5c2b16a622, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -175,9 +175,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   droppedItemPrefab: {fileID: 8658960504137280955, guid: caaeab3680953b44d864e95f247f9ddb, type: 3}
   lootList:
-  - {fileID: 11400000, guid: 630e3f4024c5f8945ba8157312971e62, type: 2}
-  - {fileID: 11400000, guid: ea0ee4c820fbbcb40b697410c65abe3b, type: 2}
   - {fileID: 11400000, guid: 9260ec87ca319de498933a7a17fedbaf, type: 2}
+  - {fileID: 11400000, guid: 5dff42684b10a0c439746679a1569fb4, type: 2}
+  - {fileID: 11400000, guid: 364a57bfc7e87b847abe6c2a696e5499, type: 2}
+  - {fileID: 11400000, guid: 60a506fc3991d654cb90331edee1a1ea, type: 2}
+  - {fileID: 11400000, guid: 6ea63d4d135d57544aba52ed37345966, type: 2}
+  - {fileID: 11400000, guid: ea0ee4c820fbbcb40b697410c65abe3b, type: 2}
+  - {fileID: 11400000, guid: 630e3f4024c5f8945ba8157312971e62, type: 2}
   dropRarestPossible: 1
   dropForce: 1
 --- !u!95 &2118470136540157843
@@ -210,6 +214,14 @@ PrefabInstance:
     - target: {fileID: 6946285813728771451, guid: 1c00c77f58725a94a9aa14e69b8658b0, type: 3}
       propertyPath: m_Name
       value: BlastWave
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946285813728771453, guid: 1c00c77f58725a94a9aa14e69b8658b0, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946285813728771453, guid: 1c00c77f58725a94a9aa14e69b8658b0, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1031629947
       objectReference: {fileID: 0}
     - target: {fileID: 6946285813728771454, guid: 1c00c77f58725a94a9aa14e69b8658b0, type: 3}
       propertyPath: m_RootOrder

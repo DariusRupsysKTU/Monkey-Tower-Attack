@@ -49,15 +49,48 @@ public class LootBag : MonoBehaviour
     public void InstantiateLoot(Vector3 spawnPosition)
     {
         Loot droppedItem = GetDroppedItem();
+        
         if (droppedItem != null)
         {
+            GameObject lootGameObject;
+
             // spawns item and gives a correct sprite
-            GameObject lootGameObject = Instantiate(droppedItemPrefab, spawnPosition, Quaternion.identity);
+            lootGameObject = Instantiate(droppedItemPrefab, spawnPosition, Quaternion.identity);
             lootGameObject.GetComponent<SpriteRenderer>().sprite = droppedItem.lootSprite;
+            lootGameObject.transform.parent = this.transform.parent.parent;
+            GetPower(droppedItem, lootGameObject);
             
             // adds random force to the spawned item
             Vector2 dropDirection = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
             lootGameObject.GetComponent<Rigidbody2D>().AddForce(dropDirection * dropForce, ForceMode2D.Impulse);
+        }
+    }
+
+    private void GetPower(Loot drop, GameObject obj)
+    {
+        if (drop.lootName == "Heal")
+        {
+            obj.GetComponent<Interaction>().heal = true;
+        }
+        else if (drop.lootName == "Full Heal")
+        {
+            obj.GetComponent<Interaction>().fullHeal = true;
+        }
+        else if (drop.lootName == "Double Damage")
+        {
+            obj.GetComponent<Interaction>().doubleDamage = true;
+        }
+        else if (drop.lootName == "Speed Boost")
+        {
+            obj.GetComponent<Interaction>().speedBoost = true;
+        }
+        else if (drop.lootName == "Immunity")
+        {
+            obj.GetComponent<Interaction>().immunity = true;
+        }
+        else if (drop.lootName == "Coin")
+        {
+            obj.GetComponent<Interaction>().coin = true;
         }
     }
 }
