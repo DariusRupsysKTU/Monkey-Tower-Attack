@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public const float forceDamping = 1.2f;
     public GameObject firePoint;
     private Animator anim;
-    private string lastDir = "down";
+    public static string lastDir = "down";
 
     // Start is called before the first frame update
     void Start()

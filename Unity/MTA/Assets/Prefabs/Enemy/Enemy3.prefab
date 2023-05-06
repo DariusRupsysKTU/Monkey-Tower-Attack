@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 2438931867132549838}
   - component: {fileID: 2438931867308101589}
   - component: {fileID: -2862954004702014166}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enemy3
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -143,16 +143,11 @@ MonoBehaviour:
   damageOnTouch: 1
   moveVelocity: 0.5
   visionRange: 1
-  shootRangeMultiplier: 1.5
-  stopDistance: 0.7
-  retreatDistance: 0.4
   cloneCount: 2
   clonePrefab: {fileID: 2438931867132549812}
   enemyHealthScript: {fileID: 780782543486481973}
   startHealth: 0
   startAlpha: 0
-  startTimeBetweenShots: 2
-  bulletPrefab: {fileID: 8817345501052181823, guid: dd5ec616c66609547a2763257374895c, type: 3}
 --- !u!114 &780782543486481973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,9 +160,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fea5b5a59a97fb4d8cdd24f35fa6288, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isBoss: 0
   enemyHealth: 3
+  isBoss: 0
   bossEnraged: 0
+  lastAttack: 0
   enemyDeathSound: {fileID: -2862954004702014166}
 --- !u!114 &2438931867132549838
 MonoBehaviour:

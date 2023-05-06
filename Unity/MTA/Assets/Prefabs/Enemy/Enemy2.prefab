@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 2435229319251805679}
   - component: {fileID: 2435229319191695604}
   - component: {fileID: 4250152213788554523}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enemy2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -146,6 +146,7 @@ MonoBehaviour:
   shootRangeMultiplier: 1.5
   stopDistance: 0.7
   retreatDistance: 0.4
+  distanceToPlayer: 0
   enemyHealthScript: {fileID: 776477463232932116}
   startTimeBetweenShots: 2
   bulletPrefab: {fileID: 8817345501052181823, guid: dd5ec616c66609547a2763257374895c, type: 3}
@@ -161,9 +162,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fea5b5a59a97fb4d8cdd24f35fa6288, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isBoss: 0
   enemyHealth: 4
+  isBoss: 0
   bossEnraged: 0
+  lastAttack: 0
   enemyDeathSound: {fileID: 4250152213788554523}
 --- !u!114 &2435229319251805679
 MonoBehaviour:

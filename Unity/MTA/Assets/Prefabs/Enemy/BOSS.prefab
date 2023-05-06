@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 5387391461268202677}
   - component: {fileID: 5387391461208256938}
   - component: {fileID: 6419702459874771208}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BOSS
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -78,9 +78,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fea5b5a59a97fb4d8cdd24f35fa6288, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isBoss: 1
   enemyHealth: 10
+  isBoss: 1
   bossEnraged: 0
+  lastAttack: 0
   enemyDeathSound: {fileID: 6419702459874771208}
 --- !u!114 &5387391461268202673
 MonoBehaviour:
