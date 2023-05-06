@@ -7,9 +7,6 @@ public class Enemy3Movement : MonoBehaviour
     [SerializeField] int damageOnTouch;
     [SerializeField] float moveVelocity;
     [SerializeField] float visionRange;
-    [SerializeField] float shootRangeMultiplier;
-    [SerializeField] float stopDistance;
-    [SerializeField] float retreatDistance;
     [SerializeField] int cloneCount;
     [SerializeField] GameObject clonePrefab;
     [SerializeField] EnemyHealth enemyHealthScript;
@@ -49,13 +46,6 @@ public class Enemy3Movement : MonoBehaviour
     private int spawnedCount = 0;
 
     private bool tooCloseToWall = false;
-
-    private float timeBetweenShots;
-    public float startTimeBetweenShots;
-    public GameObject bulletPrefab;
-
-    private Vector2[] startDirections = new Vector2[] {Vector2.up, Vector2.down, Vector2.left, Vector2.right};
-    private Vector2[] currentDirections = new Vector2[] {Vector2.up, Vector2.down, Vector2.left, Vector2.right};
     
     private void Awake() 
     {
@@ -80,8 +70,6 @@ public class Enemy3Movement : MonoBehaviour
         }
 
         point1 = this.transform.position;
-
-        timeBetweenShots = startTimeBetweenShots;
     }
 
     void Update()
@@ -102,25 +90,7 @@ public class Enemy3Movement : MonoBehaviour
         {
             Divide();
         }
-
-        //if (Vector2.Distance(thisEnemyPosition, playerPosition) <= visionRange * shootRangeMultiplier)
-        //{
-        //    Shoot();
-        //}
     }
-
-    /*private void Shoot()
-    {
-        if (timeBetweenShots <= 0)
-        {
-            Instantiate(bulletPrefab, thisEnemyPosition, Quaternion.identity);
-            timeBetweenShots = startTimeBetweenShots;
-        }
-        else
-        {
-            timeBetweenShots -= Time.deltaTime;
-        }
-    }*/
 
     private void Divide()
     {
@@ -128,8 +98,9 @@ public class Enemy3Movement : MonoBehaviour
         {        
             GameObject clone = Instantiate(clonePrefab, GetClosePosition(), Quaternion.identity);
             clone.transform.parent = this.transform.parent;
-            clone.GetComponent<Enemy3Movement>().startHealth = this.startHealth - 1;
-            clone.GetComponent<Enemy3Movement>().startAlpha = (this.startAlpha / this.startHealth) * (this.startHealth - 1);
+            Enemy3Movement cloneMovementScript = clone.GetComponent<Enemy3Movement>();
+            cloneMovementScript.startHealth = this.startHealth - 1;
+            cloneMovementScript.startAlpha = (this.startAlpha / this.startHealth) * (this.startHealth - 1);
             clone.GetComponent<EnemyHealth>().enemyHealth = this.startHealth - 1;
         }
 
@@ -160,36 +131,6 @@ public class Enemy3Movement : MonoBehaviour
     {
         float distance = Vector2.Distance(thisEnemyPosition, targetPosition);
 
-        /*Vector2 targetDirection = (targetPosition - thisEnemyPosition).normalized;
-
-        if (!tooCloseToWall && IsInTheRoom(targetPosition))
-        {
-            if (distance <= visionRange && distance > stopDistance)
-            {
-                thisEnemyRB.position = Vector2.MoveTowards(thisEnemyPosition, targetPosition, moveVelocity * Time.deltaTime);
-            }
-            else if (distance < stopDistance && distance > retreatDistance)
-            {
-                thisEnemyRB.position = this.transform.position;
-            }
-            else if (distance < retreatDistance)
-            {
-                thisEnemyRB.position = Vector2.MoveTowards(thisEnemyPosition, thisEnemyPosition + -targetDirection, moveVelocity * Time.deltaTime);
-            }
-            else
-            {
-                Patrol();
-            }
-
-        }
-        else if (distance < retreatDistance)
-        {
-            thisEnemyRB.position = this.transform.position;
-        }
-        else if (distance > visionRange)
-        {
-            Patrol();
-        }*/
         if (distance <= visionRange && distance > 0.1 && IsInTheRoom(targetPosition))
         {
             thisEnemyRB.position = Vector2.MoveTowards(thisEnemyPosition, targetPosition, moveVelocity * Time.deltaTime);
@@ -277,14 +218,6 @@ public class Enemy3Movement : MonoBehaviour
             tooCloseToWall = true;
         }    
     }
-
-    // private void OnTriggerStay2D(Collider2D other) 
-    // {
-    //     if (other.transform.tag == "WallCollider")
-    //     {
-    //         Debug.Log(other.transform.position + " " + GetTargetDirection(other.transform.position));
-    //     }    
-    // }
 
     private void OnTriggerExit2D(Collider2D other) 
     {

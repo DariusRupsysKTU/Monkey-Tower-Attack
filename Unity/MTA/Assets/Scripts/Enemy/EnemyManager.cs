@@ -67,8 +67,8 @@ public class EnemyManager : MonoBehaviour
     {
         //spawns EnemySpawner game object
         Vector2 roomCenter = room.transform.position;
-        float randomX = Random.Range(roomCenter.x + leftWall, roomCenter.x + rightWall);
-        float randomY = Random.Range(roomCenter.y + bottomWall, roomCenter.y + topWall);
+        float randomX = Random.Range(roomCenter.x + leftWall - spawnCorrection, roomCenter.x + rightWall - spawnCorrection);
+        float randomY = Random.Range(roomCenter.y + bottomWall - spawnCorrection, roomCenter.y + topWall - spawnCorrection);
         GameObject spawner = Instantiate(enemySpawnerPrefab, new Vector2(randomX, randomY), Quaternion.identity);
         spawner.transform.parent = parent.transform;
 
@@ -94,7 +94,7 @@ public class EnemyManager : MonoBehaviour
                 }
                 enemySpawnerScript.enemy = enemyPrefabs[enemyIndex];
                 enemySpawnerScript.enemiesLeftToSpawn = Random.Range(0, maxEnemiesPerRoom + 1);
-                enemySpawnerScript.timeBetweenSpawns = Random.Range(1, 3);
+                enemySpawnerScript.timeBetweenSpawns = 1f;
                 int coinFlip = Random.Range(0, 2);
                 enemySpawnerScript.randomSpawn = coinFlip == 1;
             }
@@ -109,8 +109,8 @@ public class EnemyManager : MonoBehaviour
 
         //spawns EnemySpawner game object
         Vector2 roomCenter = room.transform.position;
-        float randomX = Random.Range(roomCenter.x + leftWall, roomCenter.x + rightWall);
-        float randomY = Random.Range(roomCenter.y + bottomWall, roomCenter.y + topWall);
+        float randomX = Random.Range(roomCenter.x + leftWall - spawnCorrection, roomCenter.x + rightWall - spawnCorrection);
+        float randomY = Random.Range(roomCenter.y + bottomWall - spawnCorrection, roomCenter.y + topWall - spawnCorrection);
         GameObject spawner = Instantiate(boxSpawnerPrefab, new Vector2(randomX, randomY), Quaternion.identity);
         spawner.transform.parent = parent.transform;
         
@@ -121,7 +121,7 @@ public class EnemyManager : MonoBehaviour
             //change BoxSpawner script variables
             boxSpawnerScript.boxPrefab = boxPrefab;
             boxSpawnerScript.boxesLeftToSpawn = Random.Range(0, maxEnemiesPerRoom + 1);
-            boxSpawnerScript.timeBetweenSpawns = Random.Range(1, 3);
+            boxSpawnerScript.timeBetweenSpawns = 1f;
             int coinFlip = Random.Range(0, 2);
             boxSpawnerScript.randomSpawn = coinFlip == 1;
             

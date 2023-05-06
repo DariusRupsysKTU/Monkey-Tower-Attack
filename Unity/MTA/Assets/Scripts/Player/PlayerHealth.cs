@@ -43,6 +43,8 @@ public class PlayerHealth : MonoBehaviour, DataPersistence
 
     private void Update() 
     {
+        // Debug.Log("Current: " + playerHealth + " Prev:" + prevHealth);
+
         if (playerHealth > numOfHearts)
         {
             playerHealth = numOfHearts;
@@ -132,7 +134,12 @@ public class PlayerHealth : MonoBehaviour, DataPersistence
         }
     }
 
-    public void HealPlayer(int amount) => playerHealth += amount;
+    public void HealPlayer(int amount) 
+    {
+        playerHealth += amount;
+        prevHealth = playerHealth;
+    } 
+        
 
     public void PlayerDies() => Destroy(this.gameObject);
 

@@ -4,18 +4,16 @@ using UnityEngine;
 
 public class Enemy2Movement : MonoBehaviour
 {
-    //[SerializeField]
-    //private Enemy2_beam linePrefab;
-    //private List<Enemy2_beam> allLines;
-    //private bool beamIsOn;
-
     [SerializeField] float moveVelocity;
     [SerializeField] float moveUntilDistance;
     [SerializeField] float visionRange;
-    [SerializeField] float shootRangeMultiplier; //
-    [SerializeField] float stopDistance; //
-    [SerializeField] float retreatDistance; //
+    [SerializeField] float shootRangeMultiplier; 
+    [SerializeField] float stopDistance; 
+    [SerializeField] float retreatDistance; 
+    public float distanceToPlayer;
     [SerializeField] EnemyHealth enemyHealthScript;
+
+    private EnemySpawner thisEnemySpawnerScript;
 
     private GameObject playerObject;
     private Rigidbody2D playerRB;
@@ -37,9 +35,9 @@ public class Enemy2Movement : MonoBehaviour
     private float rightWallPosition;
     private float leftWallPosition;
 
-    private float timeBetweenShots; //
-    public float startTimeBetweenShots; //
-    public GameObject bulletPrefab; //
+    private float timeBetweenShots; 
+    public float startTimeBetweenShots; 
+    public GameObject bulletPrefab; 
 
     private bool tooCloseToWall = false;
 
@@ -51,27 +49,25 @@ public class Enemy2Movement : MonoBehaviour
 
     private void Start()
     {
+        if (this.transform.parent.gameObject.TryGetComponent<EnemySpawner>(out thisEnemySpawnerScript))
+        {
+            topWall = thisEnemySpawnerScript.topWall;
+            bottomWall = thisEnemySpawnerScript.bottomWall;
+            rightWall = thisEnemySpawnerScript.rightWall;
+            leftWall = thisEnemySpawnerScript.leftWall;
+            roomCenter = thisEnemySpawnerScript.roomCenter;
+            GetWallPositions();
+        }
+
+        point1 = this.transform.position;
+
         timeBetweenShots = startTimeBetweenShots;
     }
 
     private void Awake()
     {
         thisEnemyRB = this.GetComponent<Rigidbody2D>();
-        //allLines = new List<Enemy2_beam>();
-        //Enemy2_beam newLine = Instantiate(linePrefab);
-        //allLines.Add(newLine);
-        //newLine.AssignTarget(transform.position, playerObject.transform);
-        //newLine.gameObject.SetActive(false);
     }
-    //void Shot()
-    //{
-    //    Draw2DRay(thisEnemyPosition, playerPosition);
-    //}
-    //void Draw2DRay(Vector2 startPos, Vector2 endPos)
-    //{
-    //lineRenderer.SetPosition(0, startPos);
-    //lineRenderer.SetPosition(1, endPos);
-    //}
 
     void Update()
     {
@@ -85,14 +81,10 @@ public class Enemy2Movement : MonoBehaviour
             MoveEnemy(playerPosition);
         }
 
-
-
         if (Vector2.Distance(thisEnemyPosition, playerPosition) <= visionRange * shootRangeMultiplier)
         {
             Shoot();
         }
-
-
     }
     private void Shoot()
     {
@@ -107,23 +99,6 @@ public class Enemy2Movement : MonoBehaviour
         }
     }
 
-    /*private void Shot()
-    {
-        if(beamIsOn)
-        {
-            foreach (var line in allLines)
-            {
-                line.gameObject.SetActive(false);
-            }
-        }
-        else
-        {
-            foreach (var line in allLines)
-            {
-                line.gameObject.SetActive(true);
-            }
-        }
-    }*/
     private void FindPlayer()
     {
         if (playerObject == null)
@@ -137,38 +112,20 @@ public class Enemy2Movement : MonoBehaviour
     private void MoveEnemy(Vector2 targetPosition)
     {
         float distance = Vector2.Distance(thisEnemyPosition, targetPosition);
-
-        /*if (distance <= visionRange && distance > moveUntilDistance)
-        {
-            thisEnemyRB.position = Vector2.MoveTowards(thisEnemyPosition, targetPosition, moveVelocity * Time.deltaTime);
-
-
-            //Shot();
-            playerHealth.DamagePlayer(1, false);
-            thisEnemyRB.constraints = RigidbodyConstraints2D.FreezeAll;
-        }
-        else
-        {
-            thisEnemyRB.velocity = Vector2.zero;
-
-
-
-            thisEnemyRB.constraints = RigidbodyConstraints2D.FreezeRotation;
-        }*/
-
+        distanceToPlayer = distance;
         Vector2 targetDirection = (targetPosition - thisEnemyPosition).normalized;
 
         if (!tooCloseToWall && IsInTheRoom(targetPosition))
         {
-            if (distance <= visionRange && distance > stopDistance)
+            if (distance <= visionRange && distance > stopDistance) //attacks
             {
                 thisEnemyRB.position = Vector2.MoveTowards(thisEnemyPosition, targetPosition, moveVelocity * Time.deltaTime);
             }
-            else if (distance < stopDistance && distance > retreatDistance)
+            else if (distance < stopDistance && distance > retreatDistance) //stays in one position
             {
                 thisEnemyRB.position = this.transform.position;
             }
-            else if (distance < retreatDistance)
+            else if (distance < retreatDistance) //retreats
             {
                 thisEnemyRB.position = Vector2.MoveTowards(thisEnemyPosition, thisEnemyPosition + -targetDirection, moveVelocity * Time.deltaTime);
             }
@@ -176,21 +133,24 @@ public class Enemy2Movement : MonoBehaviour
             {
                 Patrol();
             }
+
         }
-        else if (distance < retreatDistance)
+        else if (distance < retreatDistance) //if pinned against the wall stays in one position
         {
             thisEnemyRB.position = this.transform.position;
         }
-        else if (distance > visionRange)
+
+        else if (distance > visionRange) //if player is not in the room patrols
         {
             Patrol();
         }
 
-        if (distance <= visionRange)
-        {
+        //if (distance <= visionRange)
+        //{
             // Debug.Log(thisEnemyPosition + " " + targetPosition + " " + targetDirection);
-        }
+        //}
     }
+
     private void Patrol()
     {
         if (point2 == Vector2.zero || Vector2.Distance(point1, point2) < rightWall)
@@ -216,6 +176,15 @@ public class Enemy2Movement : MonoBehaviour
             }
         }
     }
+
+    private void GetWallPositions()
+    {
+        topWallPosition = roomCenter.y + thisEnemySpawnerScript.enemyManagerScript.topWall;
+        bottomWallPosition = roomCenter.y + thisEnemySpawnerScript.enemyManagerScript.bottomWall;
+        rightWallPosition = roomCenter.x + thisEnemySpawnerScript.enemyManagerScript.rightWall;
+        leftWallPosition = roomCenter.x + thisEnemySpawnerScript.enemyManagerScript.leftWall;
+    }
+
     private bool IsInTheRoom(Vector2 targetPosition)
     {
         if (topWallPosition != 0)
@@ -232,27 +201,4 @@ public class Enemy2Movement : MonoBehaviour
     {
         return new Vector2(Random.Range(roomCenter.x + leftWall, roomCenter.x + rightWall), Random.Range(roomCenter.y + bottomWall, roomCenter.y + topWall));
     }
-
-    /*private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.transform.tag == "Player")
-        {
-            playerHealth.DamagePlayer(1);
-            thisEnemyRB.constraints = RigidbodyConstraints2D.FreezeAll;
-        }
-    }
-
-    private void OnCollisionStay2D(Collision2D other)
-    {
-        if (other.transform.tag == "Player")
-        {
-            playerHealth.DamagePlayer(1);
-            thisEnemyRB.constraints = RigidbodyConstraints2D.FreezeAll;
-        }
-    }
-
-    private void OnCollisionExit2D(Collision2D other)
-    {
-        thisEnemyRB.constraints = RigidbodyConstraints2D.FreezeRotation;
-    }*/
 }
