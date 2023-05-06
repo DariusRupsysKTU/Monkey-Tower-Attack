@@ -6,6 +6,7 @@ using UnityEngine;
 public class GameData
 {
     public int currency;
+    public int totalCurrency;
     public int score;
 
     public int playerHealth;
@@ -16,6 +17,7 @@ public class GameData
     public GameData()
     {
         this.currency = 0;
+        this.totalCurrency = 0;
         this.score = 0;
         this.playerHealth = 5;
         this.grid = null;

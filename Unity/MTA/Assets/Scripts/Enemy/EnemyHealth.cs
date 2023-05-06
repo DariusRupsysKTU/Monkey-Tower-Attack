@@ -71,6 +71,11 @@ public class EnemyHealth : MonoBehaviour
             Invoke(nameof(DeathAnimation), deathTime);
             Destroy(this.gameObject, deathTime + 0.5f);
             enemyDeathSound.Play();
+
+            /*if(isBoss)
+            {
+                PlayerPrefs.SetInt("Victory", 1);
+            }*/
         }
     }
 

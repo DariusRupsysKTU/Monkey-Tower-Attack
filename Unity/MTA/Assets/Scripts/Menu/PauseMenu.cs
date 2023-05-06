@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
+
     public static bool GameIsPaused = false;
     
     public GameObject pauseMenuUI;
@@ -22,6 +23,10 @@ public class PauseMenu : MonoBehaviour
             if (GameIsPaused)
             {
                 Resume();
+            }
+            else if (PlayerPrefs.GetInt("ShopOpen") == 1)
+            {
+                PlayerPrefs.SetInt("ShopOpen", 0);
             }
             else
             {

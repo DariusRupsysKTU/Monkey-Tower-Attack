@@ -21,6 +21,9 @@ public class MainMenuManager : MonoBehaviour
         optionMenuUI.SetActive(false);
         monkeySelectionMenuUI.SetActive(false);
 
+        Debug.Log(PlayerPrefs.GetInt("SaveDataExists"));
+        Debug.Log(PlayerPrefs.GetInt("Total money"));
+
         if(PlayerPrefs.GetInt("SaveDataExists") == 1)
         {
             continueButton.gameObject.SetActive(true);
