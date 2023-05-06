@@ -67,8 +67,8 @@ public class EnemyManager : MonoBehaviour
     {
         //spawns EnemySpawner game object
         Vector2 roomCenter = room.transform.position;
-        float randomX = Random.Range(roomCenter.x + leftWall - spawnCorrection, roomCenter.x + rightWall - spawnCorrection);
-        float randomY = Random.Range(roomCenter.y + bottomWall - spawnCorrection, roomCenter.y + topWall - spawnCorrection);
+        float randomX = Random.Range(roomCenter.x + leftWall + spawnCorrection, roomCenter.x + rightWall - spawnCorrection);
+        float randomY = Random.Range(roomCenter.y + bottomWall + spawnCorrection, roomCenter.y + topWall - spawnCorrection);
         GameObject spawner = Instantiate(enemySpawnerPrefab, new Vector2(randomX, randomY), Quaternion.identity);
         spawner.transform.parent = parent.transform;
 
@@ -109,8 +109,8 @@ public class EnemyManager : MonoBehaviour
 
         //spawns EnemySpawner game object
         Vector2 roomCenter = room.transform.position;
-        float randomX = Random.Range(roomCenter.x + leftWall - spawnCorrection, roomCenter.x + rightWall - spawnCorrection);
-        float randomY = Random.Range(roomCenter.y + bottomWall - spawnCorrection, roomCenter.y + topWall - spawnCorrection);
+        float randomX = Random.Range(roomCenter.x + leftWall + spawnCorrection, roomCenter.x + rightWall - spawnCorrection);
+        float randomY = Random.Range(roomCenter.y + bottomWall + spawnCorrection, roomCenter.y + topWall - spawnCorrection);
         GameObject spawner = Instantiate(boxSpawnerPrefab, new Vector2(randomX, randomY), Quaternion.identity);
         spawner.transform.parent = parent.transform;
         

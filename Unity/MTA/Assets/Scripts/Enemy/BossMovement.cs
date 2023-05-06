@@ -11,7 +11,7 @@ public class BossMovement : MonoBehaviour
     [SerializeField] float stopDistance;
     [SerializeField] float retreatDistance;
     [SerializeField] EnemyHealth bossHealthScript;
-    [SerializeField] GameObject pawnPrefab;
+    [SerializeField] GameObject[] pawnPrefabs;
     [SerializeField] GameObject bulletPrefab;
 
     private GameObject playerObject;
@@ -46,6 +46,7 @@ public class BossMovement : MonoBehaviour
     private int startHealth;
 
     private bool tooCloseToWall = false;
+    private bool lastAttackDone = false;
 
     // time settings
     private float timeBetweenShots;
@@ -93,31 +94,57 @@ public class BossMovement : MonoBehaviour
         if (Vector2.Distance(thisBossPosition, playerPosition) <= visionRange * shootRangeMultiplier
         && IsInTheRoom(playerPosition))
         {
-            SpawnPawns();
             if (!bossHealthScript.bossEnraged)
             {
                 Shoot1();
+                SpawnPawns(false);
             }
             else
             {
                 Shoot2();
+                SpawnPawns(true);
+
+                if (bossHealthScript.lastAttack && !lastAttackDone)
+                {
+                    LastAttack();
+                }
             }
         }
     }
 
-    private void SpawnPawns()
+    private void SpawnPawns(bool isEnraged)
     {
         if (timeBetweenSpawns <= 0)
         {
+            GameObject pawnPrefab;
+
+            if (!isEnraged)
+            {
+                pawnPrefab = pawnPrefabs[0];
+            }
+            else
+            {
+                pawnPrefab = pawnPrefabs[Random.Range(1,3)];
+            }
+
             GameObject pawn = Instantiate(pawnPrefab, GetClosePosition(), Quaternion.identity);
             pawn.transform.parent = thisEnemySpawnerScript.gameObject.transform;
-            pawn.GetComponent<Enemy1Movement>().visionRange = visionRange;
+        
+            // pawn.GetComponent<Enemy1Movement>().visionRange = visionRange;
+            
             timeBetweenSpawns = startTimeBetweenSpawns;
         }
         else
         {
             timeBetweenSpawns -= Time.deltaTime;
         }
+    }
+
+    private void LastAttack()
+    {
+        GameObject pawn = Instantiate(pawnPrefabs[3], GetClosePosition(), Quaternion.identity);
+        pawn.transform.parent = thisEnemySpawnerScript.gameObject.transform;
+        lastAttackDone = true;
     }
 
     private void Shoot1()

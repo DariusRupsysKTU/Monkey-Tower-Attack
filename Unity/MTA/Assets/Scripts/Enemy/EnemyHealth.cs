@@ -4,16 +4,18 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    private Animator anim;
-    public bool isBoss;
     public int enemyHealth;
 
+    public bool isBoss;
     public bool bossEnraged = false;
+    public bool lastAttack = false;
 
     [SerializeField] private AudioSource enemyDeathSound;
 
     private int startHealth;
     private bool itemSpawned = false;
+
+    private Animator anim;
 
     private void Start()
     {
@@ -23,21 +25,25 @@ public class EnemyHealth : MonoBehaviour
 
     public void DamageEnemy(int amount)
     {
-        if (enemyHealth > 0 && !bossEnraged)
+        if (isBoss)
         {
-            anim.Play("bloon_hit");
-        }
+            if (enemyHealth > 0 && !bossEnraged)
+            {
+                anim.Play("bloon_hit");
+            }
 
-        if (enemyHealth > 0 && bossEnraged)
-        {
-            anim.Play("boss_hit");
-        }
+            if (enemyHealth > 0 && bossEnraged)
+            {
+                anim.Play("boss_hit");
+            }
 
-        if (enemyHealth <= startHealth / 2)
-        {
-            anim.SetBool("isEnraged", true);
-            bossEnraged = true;
+            if (enemyHealth <= startHealth / 2)
+            {
+                anim.SetBool("isEnraged", true);
+                bossEnraged = true;
+            }
         }
+        
 
         enemyHealth -= amount;
 
@@ -48,6 +54,8 @@ public class EnemyHealth : MonoBehaviour
 
         if (enemyHealth == 0)
         {
+            lastAttack = true;
+
             this.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
 
             int score = PlayerPrefs.GetInt("Score") + 100;
