@@ -6,6 +6,8 @@ using UnityEngine.Events;
 
 public class PlayerHealth : MonoBehaviour, DataPersistence
 {
+    public static PlayerHealth instance { get; private set; }
+
     public int playerHealth;
     public int numOfHearts;
     private int prevHealth;
@@ -41,6 +43,18 @@ public class PlayerHealth : MonoBehaviour, DataPersistence
         FindHealthCanvas();    
     }
 
+
+    private void Awake()
+    {
+        if (!instance)
+        {
+            instance = this;
+        }
+        else if (this != instance)
+        {
+            Destroy(gameObject);
+        }
+    }
     private void Update() 
     {
         // Debug.Log("Current: " + playerHealth + " Prev:" + prevHealth);

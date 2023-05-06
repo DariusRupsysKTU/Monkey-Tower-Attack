@@ -130,6 +130,11 @@ public class Inventory : MonoBehaviour, DataPersistence
         currency += amount;
         currencyUI.text = "Money: " + currency + "$";
     }
+    public void DecreaseCurrency(int amount)
+    {
+        currency -= amount;
+        currencyUI.text = "Money: " + currency + "$";
+    }
 
     public void LoadData(GameData data)
     {
