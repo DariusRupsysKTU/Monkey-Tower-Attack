@@ -89,11 +89,6 @@ public class Inventory : MonoBehaviour, DataPersistence
         graphic.CrossFadeColor(color, button.colors.fadeDuration, true, true);
     }
 
-    public void OnItemClicked()
-    {
-        
-    }
-
     private void Awake()
     {
         if (!instance)
@@ -108,13 +103,7 @@ public class Inventory : MonoBehaviour, DataPersistence
 
     private void OnApplicationQuit()
     {
-        if(PlayerPrefs.GetInt("Score") > PlayerPrefs.GetInt("Highscore"))
-        {
-            PlayerPrefs.SetInt("Highscore", PlayerPrefs.GetInt("Score"));
-        }
         
-        PlayerPrefs.SetInt("Score", 0);
-        score = 0;
     }
 
     public static bool inventoryActive = true;
@@ -123,12 +112,16 @@ public class Inventory : MonoBehaviour, DataPersistence
 
     [Header("Currency")]
     public int currency = 0;
+    public int totalCurrency = 0;
     public Text currencyUI = null;
 
     public void IncreaseCurrency(int amount)
     {
         currency += amount;
+        totalCurrency += amount;
         currencyUI.text = "Money: " + currency + "$";
+
+        PlayerPrefs.SetInt("Total money", totalCurrency);
     }
     public void DecreaseCurrency(int amount)
     {
@@ -139,6 +132,7 @@ public class Inventory : MonoBehaviour, DataPersistence
     public void LoadData(GameData data)
     {
         this.currency = data.currency;
+        this.totalCurrency = data.totalCurrency;
         this.score = data.score;
         currencyUI.text = "Money: " + this.currency + "$";
         PlayerPrefs.SetInt("Score", score);
@@ -147,6 +141,7 @@ public class Inventory : MonoBehaviour, DataPersistence
     public void SaveData(ref GameData data)
     {
         data.currency = this.currency;
+        data.totalCurrency = this.totalCurrency;
         data.score = this.score;
     }
 
