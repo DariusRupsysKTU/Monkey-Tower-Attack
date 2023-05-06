@@ -60,4 +60,31 @@ public class ShopMenu : MonoBehaviour
             Inventory.instance.DecreaseCurrency(50);
         }
     }
+    public void DMG()
+    {
+        if (Inventory.instance.currency >= 100)
+        {
+            if (GameObject.FindGameObjectWithTag("Player").GetComponent<Shoot>().enabled)
+            {
+                PlayerBullet bulletScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Shoot>().bulletPrefab.GetComponent<PlayerBullet>();
+                bulletScript.EnableDoubleDamage(10f);
+                StartCoroutine(DisableDamage(bulletScript, 10f));
+                Inventory.instance.DecreaseCurrency(100);
+            }
+        }
+    }
+    public void Speed()
+    {
+        if (Inventory.instance.currency >= 100)
+        {
+            float speedBoostDuration = 5f;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().EnableSpeedBoost(speedBoostDuration);
+            Inventory.instance.DecreaseCurrency(100);
+        }
+    }
+    IEnumerator DisableDamage(PlayerBullet bulletScript, float time)
+    {
+        yield return new WaitForSeconds(time);
+        bulletScript.DisableExtraDamage();
+    }
 }
