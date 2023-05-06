@@ -14,9 +14,8 @@ public class ShopMenu : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         shopMenuUI.SetActive(false);
+        PlayerPrefs.SetInt("ShopOpen", 0);
     }
-
-
     void Update()
     {
 
@@ -31,23 +30,25 @@ public class ShopMenu : MonoBehaviour
         {
             if (ShopOpened)
             {
-                shopMenuUI.SetActive(false);
                 Time.timeScale = 1f;
+                shopMenuUI.SetActive(false);
                 ShopOpened = false;
+                PlayerPrefs.SetInt("ShopOpen", 0);
             }
             else
             {
                 shopMenuUI.SetActive(true);
                 Time.timeScale = 0f;
                 ShopOpened = true;
+                PlayerPrefs.SetInt("ShopOpen", 1);
             }
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (ShopOpened)
             {
-                shopMenuUI.SetActive(false);
                 Time.timeScale = 1f;
+                shopMenuUI.SetActive(false);
                 ShopOpened = false;
             }
         }
@@ -79,6 +80,7 @@ public class ShopMenu : MonoBehaviour
         {
             float speedBoostDuration = 5f;
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().EnableSpeedBoost(speedBoostDuration);
+            PlaySpeedBoostVFX(speedBoostDuration);
             Inventory.instance.DecreaseCurrency(100);
         }
     }
@@ -86,5 +88,16 @@ public class ShopMenu : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         bulletScript.DisableExtraDamage();
+    }
+
+    private void PlaySpeedBoostVFX(float duration)
+    {
+        /*float heightCorrection = 0.05f;
+        ParticleSystem vfx = Instantiate(speedBoostVFX, new Vector2(player.transform.position.x, player.transform.position.y - heightCorrection), Quaternion.identity);
+        vfx.transform.parent = player.transform;
+        var main = vfx.main;
+        main.duration = duration;
+        vfx.Play();
+        Destroy(vfx.gameObject, speedBoostVFX.main.duration + 1);*/
     }
 }
