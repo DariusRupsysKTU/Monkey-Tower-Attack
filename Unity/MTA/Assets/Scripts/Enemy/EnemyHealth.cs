@@ -42,8 +42,13 @@ public class EnemyHealth : MonoBehaviour
                 anim.SetBool("isEnraged", true);
                 bossEnraged = true;
             }
+
+            if(enemyHealth == 0)
+            {
+                PlayerPrefs.SetInt("Victory", 1);
+            }
         }
-        
+
 
         enemyHealth -= amount;
 
