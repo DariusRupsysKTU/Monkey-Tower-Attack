@@ -43,10 +43,10 @@ public class EnemyHealth : MonoBehaviour
                 bossEnraged = true;
             }
 
-            if(enemyHealth == 0)
+            /*if(enemyHealth == 0)
             {
                 PlayerPrefs.SetInt("Victory", 1);
-            }
+            }*/
         }
 
 
@@ -72,15 +72,15 @@ public class EnemyHealth : MonoBehaviour
                 itemSpawned = true;
             }
 
-            float deathTime = 0.05f;
-            Invoke(nameof(DeathAnimation), deathTime);
-            Destroy(this.gameObject, deathTime + 0.5f);
-            enemyDeathSound.Play();
-
             /*if(isBoss)
             {
                 PlayerPrefs.SetInt("Victory", 1);
             }*/
+
+            float deathTime = 0.05f;
+            Invoke(nameof(DeathAnimation), deathTime);
+            Destroy(this.gameObject, deathTime + 0.5f);
+            enemyDeathSound.Play();  
         }
     }
 

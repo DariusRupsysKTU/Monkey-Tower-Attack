@@ -9,6 +9,8 @@ public class MainMenuManager : MonoBehaviour
 {
     public GameObject mainMenuUI;
     public GameObject optionMenuUI;
+    public GameObject graphicsUI;
+    public GameObject audioUI;
     public GameObject monkeySelectionMenuUI;
 
     public Button continueButton;
@@ -19,6 +21,8 @@ public class MainMenuManager : MonoBehaviour
     {
         mainMenuUI.SetActive(true);
         optionMenuUI.SetActive(false);
+        graphicsUI.SetActive(false);
+        audioUI.SetActive(false);
         monkeySelectionMenuUI.SetActive(false);
 
         Debug.Log(PlayerPrefs.GetInt("SaveDataExists"));

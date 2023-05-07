@@ -23,7 +23,7 @@ public class Victory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (PlayerPrefs.GetInt("Dead") == 1)
+        if (PlayerPrefs.GetInt("Victory") == 1)
         {
             VictoryEnable();
             inventory.SetActive(false);
