@@ -15,6 +15,9 @@ public class Options : MonoBehaviour
     [SerializeField] TMP_Dropdown resolutionDropdown;
     [SerializeField] Toggle fullscreenToggle;
 
+    [SerializeField] Canvas graphicsCanvas;
+    [SerializeField] Canvas soundCanvas;
+
     public AudioMixer music;
     public AudioMixer sfx;
     Resolution[] resolutions;

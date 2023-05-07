@@ -148,7 +148,7 @@ public class Interaction : MonoBehaviour
         }
         else if (trophy)
         {
-            // code for Marius victory screen
+            PlayerPrefs.SetInt("Victory", 1);
             PlayTrophyVFX();
         }
     }
