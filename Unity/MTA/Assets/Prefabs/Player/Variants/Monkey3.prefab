@@ -19,6 +19,10 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 275250849418942873, guid: 8851ceaff2f8b644b96aaf56541865ff, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 957759938808458357, guid: 8851ceaff2f8b644b96aaf56541865ff, type: 3}
       propertyPath: hitSound
       value: 
@@ -39,6 +43,14 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 0.16
       objectReference: {fileID: 0}
+    - target: {fileID: 4437472910273664127, guid: 8851ceaff2f8b644b96aaf56541865ff, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4437472910273664127, guid: 8851ceaff2f8b644b96aaf56541865ff, type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 2740807406522992282, guid: 94216a1e53ac6944182ddc7426ee9758, type: 3}
     - target: {fileID: 5069111372308449976, guid: 8851ceaff2f8b644b96aaf56541865ff, type: 3}
       propertyPath: m_RootOrder
       value: 0
