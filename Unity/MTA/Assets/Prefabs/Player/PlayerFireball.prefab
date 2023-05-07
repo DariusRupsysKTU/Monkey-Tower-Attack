@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 8757556262490237560}
   - component: {fileID: 7888503501481201007}
   - component: {fileID: 682083972962619511}
-  - component: {fileID: 2946096487476311195}
   - component: {fileID: -5081452235099811290}
+  - component: {fileID: -8484062557190313707}
   m_Layer: 0
   m_Name: PlayerFireball
   m_TagString: PlayerBullet
@@ -77,12 +77,12 @@ SpriteRenderer:
   m_SortingLayerID: -173261769
   m_SortingLayer: 2
   m_SortingOrder: -1
-  m_Sprite: {fileID: 1535064650, guid: c774f40c224b1f14fb4dd6274be8067f, type: 3}
+  m_Sprite: {fileID: -1913358615, guid: 59e51dd7e3ad50e46816ea23cda21baf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.16, y: 0.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -127,7 +127,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 0.16, y: 0.16}
-    newSize: {x: 1, y: 1}
+    newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -135,21 +135,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.04049176, y: 0.040845886}
   m_EdgeRadius: 0
---- !u!114 &2946096487476311195
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2740807406522992282}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e80d44460a762c842aaf9254d201041b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletSpeed: 3
-  damage: 1
-  rockSplashVFX: {fileID: 6174840242094541412, guid: 5131da294bb7cdf46acf5381977b31a3, type: 3}
 --- !u!114 &-5081452235099811290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,3 +150,23 @@ MonoBehaviour:
   bulletSpeed: 2
   damage: 1
   rockSplashVFX: {fileID: 0}
+--- !u!95 &-8484062557190313707
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2740807406522992282}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
