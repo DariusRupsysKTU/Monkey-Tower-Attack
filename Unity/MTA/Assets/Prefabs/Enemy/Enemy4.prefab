@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3921341524632022643}
   - component: {fileID: 2118470136714789512}
   - component: {fileID: 2118470136540157843}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Enemy4
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -216,7 +216,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6946285813728771451, guid: 1c00c77f58725a94a9aa14e69b8658b0, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6946285813728771453, guid: 1c00c77f58725a94a9aa14e69b8658b0, type: 3}
       propertyPath: m_SortingLayer

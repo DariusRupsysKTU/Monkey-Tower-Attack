@@ -75,7 +75,7 @@ public class Enemy3Bullet : MonoBehaviour
         Destroy(vfx.gameObject, rockSplashVFX.main.duration);
     }
 
-    private void DestroyBullet(float waitTime)
+    public void DestroyBullet(float waitTime)
     {
         Invoke(nameof(PlayRockSplashVFX), waitTime);
         Destroy(gameObject, waitTime);

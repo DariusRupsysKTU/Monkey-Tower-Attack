@@ -5,15 +5,18 @@ using UnityEngine;
 public class Punch : MonoBehaviour
 {
     public Animator animator;
+    [SerializeField] private AudioSource whiffSound;
     [SerializeField] private AudioSource punchSound;
-    public float attackRange = 0.1f;
-    public LayerMask enemyLayers;
+    [SerializeField] private AudioSource parrySound;
+    public float attackRange = 0.11f;
     public int damage = 2;
 
     public Transform LeftPuchPoint;
     public Transform RightPuchPoint;
     public Transform UpPuchPoint;
     public Transform DownPuchPoint;
+    private Transform LastPP;
+    public GameObject bulletPrefab;
     // Update is called once per frame
     void Update()
     {
@@ -27,11 +30,11 @@ public class Punch : MonoBehaviour
     {
         animator.SetTrigger("sp_" + PlayerMovement.lastDir);
         animator.SetTrigger("attack");
-        punchSound.Play();
     }
     void PunchDown()
     {
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(DownPuchPoint.position, attackRange, enemyLayers);
+        LastPP = DownPuchPoint;
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(DownPuchPoint.position, attackRange);
         foreach(Collider2D enemy in hitEnemies)
         {
             DealDamage(enemy);
@@ -39,7 +42,8 @@ public class Punch : MonoBehaviour
     }
     void PunchUp()
     {
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(UpPuchPoint.position, attackRange, enemyLayers);
+        LastPP = UpPuchPoint;
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(UpPuchPoint.position, attackRange);
         foreach (Collider2D enemy in hitEnemies)
         {
             DealDamage(enemy);
@@ -47,7 +51,8 @@ public class Punch : MonoBehaviour
     }
     void PunchLeft()
     {
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(LeftPuchPoint.position, attackRange, enemyLayers);
+        LastPP = LeftPuchPoint;
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(LeftPuchPoint.position, attackRange);
         foreach (Collider2D enemy in hitEnemies)
         {
             DealDamage(enemy);
@@ -55,7 +60,8 @@ public class Punch : MonoBehaviour
     }
     void PunchRight()
     {
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(RightPuchPoint.position, attackRange, enemyLayers);
+        LastPP = RightPuchPoint;
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(RightPuchPoint.position, attackRange);
         foreach (Collider2D enemy in hitEnemies)
         {
             DealDamage(enemy);
@@ -63,17 +69,38 @@ public class Punch : MonoBehaviour
     }
     void DealDamage(Collider2D other)
     {
-        EnemyHealth enemyHealthScript = other.GetComponent<EnemyHealth>();
-        if (enemyHealthScript != null)
+        if (other.transform.tag == "EnemyBullet")
         {
-            enemyHealthScript.DamageEnemy(damage);
+            Parry(other);
+            return;
         }
+        else
+        {
 
-        ItemHealth itemHealthScript = other.GetComponent<ItemHealth>();
-        if (itemHealthScript != null)
-        {
-            itemHealthScript.DamageItem(damage);
+            EnemyHealth enemyHealthScript = other.GetComponent<EnemyHealth>();
+            if (enemyHealthScript != null)
+            {
+                enemyHealthScript.DamageEnemy(damage);
+                punchSound.Play();
+                return;
+            }
+
+            ItemHealth itemHealthScript = other.GetComponent<ItemHealth>();
+            if (itemHealthScript != null)
+            {
+                itemHealthScript.DamageItem(damage);
+                punchSound.Play();
+                return;
+            }
+            whiffSound.Play();
         }
+    }
+    void Parry(Collider2D other)
+    {
+        parrySound.Play();
+        Enemy3Bullet Enemy3BulletScript = other.GetComponent<Enemy3Bullet>();
+        Instantiate(bulletPrefab, LastPP.transform.position, LastPP.transform.rotation);
+        Enemy3BulletScript.DestroyBullet(0f);
     }
     void OnDrawGizmosSelected()
     {
