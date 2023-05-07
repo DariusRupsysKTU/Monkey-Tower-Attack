@@ -108,8 +108,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5dff42684b10a0c439746679a1569fb4, type: 2}
   - {fileID: 11400000, guid: 364a57bfc7e87b847abe6c2a696e5499, type: 2}
   - {fileID: 11400000, guid: 60a506fc3991d654cb90331edee1a1ea, type: 2}
-  - {fileID: 11400000, guid: 6ea63d4d135d57544aba52ed37345966, type: 2}
-  - {fileID: 11400000, guid: ea0ee4c820fbbcb40b697410c65abe3b, type: 2}
   - {fileID: 11400000, guid: 630e3f4024c5f8945ba8157312971e62, type: 2}
   dropRarestPossible: 1
   dropForce: 2
@@ -133,13 +131,13 @@ MonoBehaviour:
   speedBoostVFX: {fileID: 0}
   doubleDamageVFX: {fileID: 0}
   coinsVFX: {fileID: 0}
+  trophyVFX: {fileID: 0}
   heal: 0
   fullHeal: 0
   doubleDamage: 0
   speedBoost: 0
-  immunity: 0
-  granade: 0
   coin: 0
+  trophy: 0
 --- !u!114 &2930396757002237230
 MonoBehaviour:
   m_ObjectHideFlags: 0

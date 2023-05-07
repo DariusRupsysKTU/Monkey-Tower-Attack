@@ -13,6 +13,7 @@ public class Interaction : MonoBehaviour
     [SerializeField] ParticleSystem speedBoostVFX;
     [SerializeField] ParticleSystem doubleDamageVFX;
     [SerializeField] ParticleSystem coinsVFX;
+    [SerializeField] ParticleSystem trophyVFX;
 
     private GameObject player;
     private GameObject aboveText;
@@ -23,9 +24,8 @@ public class Interaction : MonoBehaviour
     public bool fullHeal;
     public bool doubleDamage;
     public bool speedBoost;
-    public bool immunity;
-    public bool granade;
     public bool coin;
+    public bool trophy;
 
     private bool inRange;
 
@@ -141,14 +141,15 @@ public class Interaction : MonoBehaviour
             player.GetComponent<PlayerMovement>().EnableSpeedBoost(speedBoostDuration);
             PlaySpeedBoostVFX(speedBoostDuration);
         }
-        else if (immunity)
-        {
-            player.GetComponent<PlayerHealth>().GetImmunityPower(3f);
-        }
         else if (coin)
         {
             GetComponent<CoinManager>().UpdateCoins();
             PlayCoinVFX();
+        }
+        else if (trophy)
+        {
+            // code for Marius victory screen
+            PlayTrophyVFX();
         }
     }
 
@@ -194,6 +195,14 @@ public class Interaction : MonoBehaviour
     }
 
     private void PlayCoinVFX()
+    {
+        ParticleSystem vfx = Instantiate(coinsVFX, player.transform.position, Quaternion.Euler(-90f,0f,0f));
+        vfx.transform.parent = player.transform;
+        vfx.Play();
+        Destroy(vfx.gameObject, coinsVFX.main.duration);
+    }
+
+    private void PlayTrophyVFX()
     {
         ParticleSystem vfx = Instantiate(coinsVFX, player.transform.position, Quaternion.Euler(-90f,0f,0f));
         vfx.transform.parent = player.transform;

@@ -96,7 +96,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   droppedItemPrefab: {fileID: 8658960504137280955, guid: caaeab3680953b44d864e95f247f9ddb, type: 3}
-  lootList: []
+  lootList:
+  - {fileID: 11400000, guid: 14d29ea929a0e62429027e52def60af4, type: 2}
   dropRarestPossible: 1
   dropForce: 1
 --- !u!212 &5387391461268202679

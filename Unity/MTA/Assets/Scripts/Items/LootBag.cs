@@ -84,13 +84,13 @@ public class LootBag : MonoBehaviour
         {
             obj.GetComponent<Interaction>().speedBoost = true;
         }
-        else if (drop.lootName == "Immunity")
-        {
-            obj.GetComponent<Interaction>().immunity = true;
-        }
         else if (drop.lootName == "Coin")
         {
             obj.GetComponent<Interaction>().coin = true;
+        }
+        else if (drop.lootName == "Trophy")
+        {
+            obj.GetComponent<Interaction>().trophy = true;
         }
     }
 }

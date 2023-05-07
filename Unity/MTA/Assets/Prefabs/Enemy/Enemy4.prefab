@@ -180,11 +180,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5dff42684b10a0c439746679a1569fb4, type: 2}
   - {fileID: 11400000, guid: 364a57bfc7e87b847abe6c2a696e5499, type: 2}
   - {fileID: 11400000, guid: 60a506fc3991d654cb90331edee1a1ea, type: 2}
-  - {fileID: 11400000, guid: 6ea63d4d135d57544aba52ed37345966, type: 2}
-  - {fileID: 11400000, guid: ea0ee4c820fbbcb40b697410c65abe3b, type: 2}
   - {fileID: 11400000, guid: 630e3f4024c5f8945ba8157312971e62, type: 2}
   dropRarestPossible: 1
-  dropForce: 1
+  dropForce: 2
 --- !u!95 &2118470136540157843
 Animator:
   serializedVersion: 5

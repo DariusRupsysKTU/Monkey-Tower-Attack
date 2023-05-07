@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f6f0bb49e073b5a44b62af1358b5dc4b, type: 3}
-  m_Name: Granade
+  m_Name: Trophy
   m_EditorClassIdentifier: 
   id: 
-  lootSprite: {fileID: 765929604, guid: 38d8dba2cfa975f418036e1390aa3858, type: 3}
-  lootName: Granade
+  lootSprite: {fileID: 0}
+  lootName: 
   dropChance: 0
