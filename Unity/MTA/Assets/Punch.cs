@@ -63,19 +63,10 @@ public class Punch : MonoBehaviour
     }
     void DealDamage(Collider2D other)
     {
-        bool enemyIsDead = false;
-
         EnemyHealth enemyHealthScript = other.GetComponent<EnemyHealth>();
         if (enemyHealthScript != null)
         {
-            if (enemyHealthScript.enemyHealth > 0)
-            {
-                enemyHealthScript.DamageEnemy(damage);
-            }
-            else
-            {
-                enemyIsDead = true;
-            }
+            enemyHealthScript.DamageEnemy(damage);
         }
 
         ItemHealth itemHealthScript = other.GetComponent<ItemHealth>();

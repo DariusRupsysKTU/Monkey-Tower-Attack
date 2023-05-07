@@ -5927,6 +5927,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5808722086895077651, guid: 597e36411260f2f4187ad5a3fe88d23d, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5808722086895077651, guid: 597e36411260f2f4187ad5a3fe88d23d, type: 3}
       propertyPath: m_ColliderPaths.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -7399,15 +7403,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1734579055161432897, guid: e8af098be00a2ad48a8f2b907ffecbd7, type: 3}
       propertyPath: m_TileColorArray.Array.data[0].m_Data.b
-      value: 0.69066316
+      value: 0.5329178
       objectReference: {fileID: 0}
     - target: {fileID: 1734579055161432897, guid: e8af098be00a2ad48a8f2b907ffecbd7, type: 3}
       propertyPath: m_TileColorArray.Array.data[0].m_Data.g
-      value: 0.61256063
+      value: 0.48105568
       objectReference: {fileID: 0}
     - target: {fileID: 1734579055161432897, guid: e8af098be00a2ad48a8f2b907ffecbd7, type: 3}
       propertyPath: m_TileColorArray.Array.data[0].m_Data.r
-      value: 0.916226
+      value: 0.73460776
       objectReference: {fileID: 0}
     - target: {fileID: 1734579055161432897, guid: e8af098be00a2ad48a8f2b907ffecbd7, type: 3}
       propertyPath: m_TileColorArray.Array.data[1].m_Data.a

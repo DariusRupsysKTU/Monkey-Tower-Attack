@@ -27,6 +27,10 @@ public class PlayerMovement : MonoBehaviour
         PlayerInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
     }
 
+    // private void OnCollisionEnter2D(Collision2D other) {
+    //     Debug.Log(other.transform.name + "Parent: " + other.transform.parent.name);
+    // }
+
     void FixedUpdate()
     {
         if (firePoint != null)

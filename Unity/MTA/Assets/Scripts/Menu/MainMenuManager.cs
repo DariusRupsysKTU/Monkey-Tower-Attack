@@ -56,6 +56,7 @@ public class MainMenuManager : MonoBehaviour
         PlayerPrefs.SetInt(nameof(selectedMonkey), selectedMonkey);
         PlayerPrefs.SetInt("NewGame", 1);
         SceneManager.LoadScene(1);
+        Time.timeScale = 1f;
         SaveSystemManager.instance.NewGame();
     }
 
@@ -63,6 +64,7 @@ public class MainMenuManager : MonoBehaviour
     {
         SceneManager.LoadScene(1);
         SaveSystemManager.instance.LoadGame();
+        Time.timeScale = 1f;
         PlayerPrefs.SetInt("NewGame", 0);
     }
 

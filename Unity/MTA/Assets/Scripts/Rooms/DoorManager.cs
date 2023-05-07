@@ -23,6 +23,10 @@ public class DoorManager : MonoBehaviour
     private float rightWallPosition;
     private float leftWallPosition;
 
+    // time until EntryRoom doors open is setCalculateAfterTime * 2, because:
+    // 1) GetInfo() is invoked after setCalculateAfterTime
+    // 2) ManageDoors() starts after another setCalculateAfterTime
+
     void Start()
     {
         index = this.transform.GetSiblingIndex();
@@ -37,15 +41,18 @@ public class DoorManager : MonoBehaviour
 
     void Update()
     {
-        if (calculateAfterTime <= 0)
+        if (player != null && enemySpawnerScript != null)
         {
-            ManageDoors(doorsWithoutPlayerClose);
-            calculateAfterTime = setCalculateAfterTime;
-            calculateAfterTime = 0;
-        }
-        else
-        {
-            calculateAfterTime -= Time.deltaTime;
+            if (calculateAfterTime <= 0)
+            {
+                ManageDoors(doorsWithoutPlayerClose);
+                calculateAfterTime = setCalculateAfterTime;
+                calculateAfterTime = 0;
+            }
+            else
+            {
+                calculateAfterTime -= Time.deltaTime;
+            }
         }
         
     }
