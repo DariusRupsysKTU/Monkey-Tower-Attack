@@ -48,6 +48,7 @@ public class PlayerFireball : MonoBehaviour
         other.transform.tag != "SpawnPoint" && other.transform.tag != "RoomTracker" && other.transform.tag != "RoomChecker" &&
         !enemyIsDead)
         {
+            //Explode();
             DestroyBullet(0f);
         }
     }
@@ -79,6 +80,12 @@ public class PlayerFireball : MonoBehaviour
     private void DestroyBullet(float waitTime)
     {
         Invoke(nameof(PlayRockSplashVFX), waitTime);
+        //Explode();
         Destroy(gameObject, waitTime);
+    }
+
+    private void Explode()
+    {
+        StartCoroutine(GetComponentInChildren<BlastWave>().Blast());
     }
 }

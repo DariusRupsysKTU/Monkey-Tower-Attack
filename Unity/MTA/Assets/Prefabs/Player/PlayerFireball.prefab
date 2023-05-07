@@ -149,7 +149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpeed: 2
   damage: 1
-  rockSplashVFX: {fileID: 0}
+  rockSplashVFX: {fileID: 6174840242094541412, guid: c9f721e77ec3c0f469aa07176e630d2e, type: 3}
 --- !u!95 &-8484062557190313707
 Animator:
   serializedVersion: 5
@@ -160,7 +160,7 @@ Animator:
   m_GameObject: {fileID: 2740807406522992282}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ab96b06dee08da741978d04381ce946d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
