@@ -12,6 +12,7 @@ public class GameOver : MonoBehaviour
 
     public Text currencyFinal = null;
     public Text scoreFinal = null;
+    public Text levelReached = null;
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +37,9 @@ public class GameOver : MonoBehaviour
         gameOverMenu.SetActive(true);
         Time.timeScale = 0f;
 
+        EnemyManager enemyManagerScript = GameObject.Find("Enemy Manager").GetComponent<EnemyManager>();
+        levelReached.text = "LEVEL: " + enemyManagerScript.levelNr.ToString();
+
         currencyFinal.text = "Money earned: " + PlayerPrefs.GetInt("Total money").ToString() + "$";
         scoreFinal.text = "Score: " + PlayerPrefs.GetInt("Score").ToString();
 
@@ -49,6 +53,7 @@ public class GameOver : MonoBehaviour
 
         PlayerPrefs.SetInt("Score", 0);
         PlayerPrefs.SetInt("Total money", 0);
+        PlayerPrefs.SetInt("Level", 1);
     }
 
     public void PressedBackToMainMenu()

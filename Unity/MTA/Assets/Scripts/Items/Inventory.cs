@@ -103,7 +103,7 @@ public class Inventory : MonoBehaviour, DataPersistence
 
     private void OnApplicationQuit()
     {
-        
+        Time.timeScale = 1f;
     }
 
     public static bool inventoryActive = true;

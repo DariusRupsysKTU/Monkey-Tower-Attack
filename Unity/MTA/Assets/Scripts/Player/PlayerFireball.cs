@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PlayerFireball : MonoBehaviour
+public class PlayerFireball : MonoBehaviour, DataPersistence
 {
     [SerializeField] float bulletSpeed;
     [SerializeField] int damage;
@@ -95,5 +95,15 @@ public class PlayerFireball : MonoBehaviour
         Invoke(nameof(AddBlast), waitTime);
         Invoke(nameof(PlayFireVFX), waitTime);
         Destroy(this.gameObject, waitTime);
+    }
+
+    public void LoadData(GameData data)
+    {
+        this.damage = data.fireballDamage;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.fireballDamage = this.damage;
     }
 }

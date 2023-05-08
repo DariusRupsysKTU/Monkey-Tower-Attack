@@ -11,9 +11,9 @@ public class GameData
 
     public int level;
 
-    public int damageBullet;
-    public int damagePunch;
-    public int damageFireball;
+    public int bulletDamage;
+    public int punchDamage;
+    public int fireballDamage;
 
     public float movementSpeed;
 
@@ -25,6 +25,10 @@ public class GameData
         this.totalCurrency = 0;
         this.score = 0;
         this.level = 1;
+        
+        this.bulletDamage = 1;
+        this.punchDamage = 2;
+        this.fireballDamage = 1;
 
         this.movementSpeed = 1f;
 

@@ -36,6 +36,7 @@ public class EnemyManager : MonoBehaviour, DataPersistence
         if(PlayerPrefs.GetInt("NextLevel") == 1)
         {
             levelNr = PlayerPrefs.GetInt("Level");
+            PlayerPrefs.SetInt("LoadedLevel", 1);
         }
 
         roomTemplates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTemplates>();

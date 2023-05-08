@@ -4,19 +4,24 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class Victory : MonoBehaviour, DataPersistence
+public class Victory : MonoBehaviour
 {
     public GameObject victoryMenu;
     public GameObject inventory;
 
     public Text currencyFinal = null;
     public Text scoreFinal = null;
+    public Text levelReached = null;
 
     // Start is called before the first frame update
     void Start()
     {
         PlayerPrefs.SetInt("Victory", 0);
-        PlayerPrefs.SetInt("NextLevel", 0);
+
+        if(PlayerPrefs.GetInt("LoadedLevel") == 1)
+        {
+            PlayerPrefs.SetInt("NextLevel", 0);
+        }
 
         victoryMenu.SetActive(false);
         inventory.SetActive(true);
@@ -34,12 +39,15 @@ public class Victory : MonoBehaviour, DataPersistence
 
     void VictoryEnable()
     {
+        Time.timeScale = 0f;
         victoryMenu.SetActive(true);
 
         currencyFinal.text = "Money earned: " + PlayerPrefs.GetInt("Total money").ToString() + "$";
         scoreFinal.text = "Score: " + PlayerPrefs.GetInt("Score").ToString();
 
-        PlayerPrefs.SetInt("SaveDataExists", 0);
+        EnemyManager enemyManagerScript = GameObject.Find("Enemy Manager").GetComponent<EnemyManager>();
+        levelReached.text = "LEVEL: " + enemyManagerScript.levelNr.ToString();
+
         PlayerPrefs.SetInt("Victory", 0);
 
         if (PlayerPrefs.GetInt("Score") > PlayerPrefs.GetInt("Highscore"))
@@ -57,22 +65,15 @@ public class Victory : MonoBehaviour, DataPersistence
 
         PlayerPrefs.SetInt("NextLevel", 1);
         PlayerPrefs.SetInt("Level", enemyManagerScript.levelNr);
-
+        Time.timeScale = 1f;
         SceneManager.LoadScene(1);
     }
 
     public void PressedBackToMainMenu()
     {
+        Time.timeScale = 1f;
+        PlayerPrefs.SetInt("NextLevel", 0);
+        PlayerPrefs.SetInt("LoadedLevel", 0);
         SceneManager.LoadScene(0);
-    }
-
-    public void LoadData(GameData data)
-    {
-        
-    }
-
-    public void SaveData(ref GameData data)
-    {
-        
     }
 }

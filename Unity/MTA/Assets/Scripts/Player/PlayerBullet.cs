@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PlayerBullet : MonoBehaviour
+public class PlayerBullet : MonoBehaviour, DataPersistence
 {
     [SerializeField] float bulletSpeed;
     [SerializeField] int damage;
@@ -84,5 +84,15 @@ public class PlayerBullet : MonoBehaviour
     {
         Invoke(nameof(PlayRockSplashVFX), waitTime);
         Destroy(gameObject, waitTime);
+    }
+
+    public void LoadData(GameData data)
+    {
+        this.damage = data.bulletDamage;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.bulletDamage = this.damage;
     }
 }

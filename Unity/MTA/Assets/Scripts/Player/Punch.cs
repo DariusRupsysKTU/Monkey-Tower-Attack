@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Punch : MonoBehaviour
+public class Punch : MonoBehaviour, DataPersistence
 {
     public Animator animator;
     [SerializeField] private AudioSource whiffSound;
@@ -133,5 +133,15 @@ public class Punch : MonoBehaviour
         Gizmos.DrawWireSphere(RightPuchPoint.position, attackRange);
         Gizmos.DrawWireSphere(UpPuchPoint.position, attackRange);
         Gizmos.DrawWireSphere(DownPuchPoint.position, attackRange);
+    }
+
+    public void LoadData(GameData data)
+    {
+        this.damage = data.punchDamage;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.punchDamage = this.damage;
     }
 }

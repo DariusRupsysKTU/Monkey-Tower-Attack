@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour, DataPersistence
 {
     public Rigidbody2D playerRB;
     public float moveSpeed = 1f;
@@ -94,5 +94,15 @@ public class PlayerMovement : MonoBehaviour
         {
             anim.SetTrigger("idle_" + lastDir);
         }
+    }
+
+    public void LoadData(GameData data)
+    {
+        this.moveSpeed = data.movementSpeed;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.movementSpeed = this.moveSpeed;
     }
 }
