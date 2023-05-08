@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class PauseMenu : MonoBehaviour
     public static bool GameIsPaused = false;
     
     public GameObject pauseMenuUI;
+    public Text levelText;
 
     private void Start()
     {
@@ -45,6 +47,8 @@ public class PauseMenu : MonoBehaviour
     void Pause()
     {
         pauseMenuUI.SetActive(true);
+        EnemyManager enemyManagerScript = GameObject.Find("Enemy Manager").GetComponent<EnemyManager>();
+        levelText.text = "LEVEL: " + enemyManagerScript.levelNr.ToString();
         Time.timeScale = 0f;
         GameIsPaused = true;
     }

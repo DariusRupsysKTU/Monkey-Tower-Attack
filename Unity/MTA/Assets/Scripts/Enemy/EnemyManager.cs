@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyManager : MonoBehaviour
+public class EnemyManager : MonoBehaviour, DataPersistence
 {
     public int levelNr;
 
@@ -33,6 +33,11 @@ public class EnemyManager : MonoBehaviour
 
     void Start()
     {
+        if(PlayerPrefs.GetInt("NextLevel") == 1)
+        {
+            levelNr = PlayerPrefs.GetInt("Level");
+        }
+
         roomTemplates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTemplates>();
         Invoke(nameof(GetRooms), waitTime);
     }
@@ -148,5 +153,15 @@ public class EnemyManager : MonoBehaviour
     void GetRooms()
     {
         rooms = roomTemplates.rooms;
+    }
+
+    public void LoadData(GameData data)
+    {
+        this.levelNr = data.level;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.level = this.levelNr;
     }
 }

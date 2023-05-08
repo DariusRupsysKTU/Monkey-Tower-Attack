@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class Victory : MonoBehaviour
+public class Victory : MonoBehaviour, DataPersistence
 {
     public GameObject victoryMenu;
     public GameObject inventory;
@@ -16,6 +16,8 @@ public class Victory : MonoBehaviour
     void Start()
     {
         PlayerPrefs.SetInt("Victory", 0);
+        PlayerPrefs.SetInt("NextLevel", 0);
+
         victoryMenu.SetActive(false);
         inventory.SetActive(true);
     }
@@ -33,7 +35,6 @@ public class Victory : MonoBehaviour
     void VictoryEnable()
     {
         victoryMenu.SetActive(true);
-        Time.timeScale = 0f;
 
         currencyFinal.text = "Money earned: " + PlayerPrefs.GetInt("Total money").ToString() + "$";
         scoreFinal.text = "Score: " + PlayerPrefs.GetInt("Score").ToString();
@@ -50,8 +51,28 @@ public class Victory : MonoBehaviour
         PlayerPrefs.SetInt("Total money", 0);
     }
 
+    public void PressedNextLevel()
+    {
+        EnemyManager enemyManagerScript = GameObject.Find("Enemy Manager").GetComponent<EnemyManager>();
+
+        PlayerPrefs.SetInt("NextLevel", 1);
+        PlayerPrefs.SetInt("Level", enemyManagerScript.levelNr);
+
+        SceneManager.LoadScene(1);
+    }
+
     public void PressedBackToMainMenu()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public void LoadData(GameData data)
+    {
+        
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        
     }
 }
