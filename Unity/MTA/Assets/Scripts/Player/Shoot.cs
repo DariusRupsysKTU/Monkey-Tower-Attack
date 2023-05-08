@@ -6,14 +6,22 @@ public class Shoot : MonoBehaviour
 {
     [SerializeField] GameObject firePoint;
     public GameObject bulletPrefab;
+    [SerializeField] public float cooldownTime;
+
+    private float nextFireTime = 0;
 
     [SerializeField] private AudioSource shootSound;
 
+
     void Update()
     {
-        if (Input.GetKeyDown("g"))
+        if (Time.time > nextFireTime)
         {
-            FireBullet();
+            if (Input.GetKeyDown("g"))
+            {
+                this.nextFireTime = Time.time + cooldownTime;
+                FireBullet();
+            }
         }
     }
 
