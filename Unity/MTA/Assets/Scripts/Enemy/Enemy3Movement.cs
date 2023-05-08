@@ -229,7 +229,7 @@ public class Enemy3Movement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other) 
     {
-        if (other.transform.tag == "Player" && enemyHealthScript.enemyHealth > 0)
+        if (other.transform.tag == "Player" && enemyHealthScript.enemyHealth > 0 && playerHealth != null)
         {
             playerHealth.DamagePlayer(1, false);
             thisEnemyRB.constraints = RigidbodyConstraints2D.FreezeAll;

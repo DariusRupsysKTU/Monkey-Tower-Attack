@@ -32,16 +32,21 @@ public class DoorManager : MonoBehaviour
         index = this.transform.GetSiblingIndex();
         enemyManager = GameObject.Find("Enemy Manager");
         enemyManagerScript = enemyManager.GetComponent<EnemyManager>();
-        Invoke(nameof(GetInfo), setCalculateAfterTime);
+        // Invoke(nameof(GetInfo), setCalculateAfterTime);
 
         GetRoomDoors();
 
+        setCalculateAfterTime = this.transform.parent.GetComponent<Timer>().timeBeforeDoorsOpen;
         calculateAfterTime = setCalculateAfterTime;
     }
 
     void Update()
     {
-        if (player != null && enemySpawnerScript != null)
+        if (player == null || enemySpawnerScript == null)
+        {
+            GetInfo();
+        }
+        else
         {
             if (calculateAfterTime <= 0)
             {
@@ -85,8 +90,12 @@ public class DoorManager : MonoBehaviour
     private void GetInfo()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        enemySpawnerScript = enemyManager.transform.GetChild(index).GetChild(1).gameObject.GetComponent<EnemySpawner>();
-        GetWallPositions();
+        try
+        {
+            enemySpawnerScript = enemyManager.transform.GetChild(index).GetChild(1).gameObject.GetComponent<EnemySpawner>();
+            GetWallPositions();
+        }
+        catch {}
     }
 
     private void EnemyInRoomCount()

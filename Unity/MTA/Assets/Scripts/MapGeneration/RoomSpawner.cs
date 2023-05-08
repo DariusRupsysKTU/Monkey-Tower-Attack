@@ -78,13 +78,17 @@ public class RoomSpawner : MonoBehaviour    //this script is on every SpawnPoint
         if (other.CompareTag("SpawnPoint"))     
         {
             //in collision place puts closedRoom/blackRoom 
-            if (other.GetComponent<RoomSpawner>().spawned == false && spawned == false && !transform.position.Equals(Vector2.zero))
+            try
             {
-                // Debug.Log("collision " + this.gameObject.transform.parent.name + " " + templates.closedRoom.name);
-                GameObject room = Instantiate(templates.closedRoom, transform.position, Quaternion.identity);
-                room.transform.parent = parentGameObject.transform;
-                Destroy(gameObject);
+                if (other.GetComponent<RoomSpawner>().spawned == false && spawned == false && !transform.position.Equals(Vector2.zero))
+                {
+                    // Debug.Log("collision " + this.gameObject.transform.parent.name + " " + templates.closedRoom.name);
+                    GameObject room = Instantiate(templates.closedRoom, transform.position, Quaternion.identity);
+                    room.transform.parent = parentGameObject.transform;
+                    Destroy(gameObject);
+                }
             }
+            catch {}
 
             spawned = true;
         }

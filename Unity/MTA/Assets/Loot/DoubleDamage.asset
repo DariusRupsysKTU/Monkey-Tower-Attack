@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: DoubleDamage
   m_EditorClassIdentifier: 
   id: 
-  lootSprite: {fileID: -441843176, guid: 38d8dba2cfa975f418036e1390aa3858, type: 3}
+  lootSprite: {fileID: -983283490, guid: 38d8dba2cfa975f418036e1390aa3858, type: 3}
   lootName: Double Damage
   dropChance: 20

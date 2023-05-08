@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
+    public int levelNr;
+
     public GameObject enemySpawnerPrefab;
     public GameObject[] enemyPrefabs;
     public int maxEnemiesPerRoom;
@@ -37,29 +39,32 @@ public class EnemyManager : MonoBehaviour
 
     void Update()
     {
-        if (waitTime <= 0 && spawnedBoss == false)
+        if (rooms != null)
         {
-            for (int i = 0; i < rooms.Count; i++)
+            if (waitTime <= 0 && spawnedBoss == false)
             {
-                GameObject parentObject = new GameObject(rooms[i].name);
-                parentObject.transform.parent = this.transform;
-                //if (i == 1) // testing spawns boss left
-                if (i == rooms.Count-1)
+                for (int i = 0; i < rooms.Count; i++)
                 {
-                    AddBoxSpawner(rooms[i], i, parentObject);
-                    AddEnemySpawner(rooms[i], i, true, parentObject);
-                    spawnedBoss = true;
-                }
-                else
-                {
-                    AddBoxSpawner(rooms[i], i, parentObject);
-                    AddEnemySpawner(rooms[i], i, false, parentObject);
+                    GameObject parentObject = new GameObject(rooms[i].name);
+                    parentObject.transform.parent = this.transform;
+                    //if (i == 1) // testing spawns boss left
+                    if (i == rooms.Count-1)
+                    {
+                        AddBoxSpawner(rooms[i], i, parentObject);
+                        AddEnemySpawner(rooms[i], i, true, parentObject);
+                        spawnedBoss = true;
+                    }
+                    else
+                    {
+                        AddBoxSpawner(rooms[i], i, parentObject);
+                        AddEnemySpawner(rooms[i], i, false, parentObject);
+                    }
                 }
             }
-        }
-        else
-        {
-            waitTime -= Time.deltaTime;
+            else
+            {
+                waitTime -= Time.deltaTime;
+            }
         }
     }
 
@@ -93,8 +98,18 @@ public class EnemyManager : MonoBehaviour
                     enemyIndex = enemyPrefabs.Length - 1;
                 }
                 enemySpawnerScript.enemy = enemyPrefabs[enemyIndex];
-                enemySpawnerScript.enemiesLeftToSpawn = Random.Range(0, maxEnemiesPerRoom + 1);
-                enemySpawnerScript.timeBetweenSpawns = 1f;
+
+                int enemiesWillNotSpawn = Random.Range(1, 11);
+                if (enemiesWillNotSpawn == 1)
+                {
+                    enemySpawnerScript.enemiesLeftToSpawn = 0;
+                }
+                else
+                {
+                    enemySpawnerScript.enemiesLeftToSpawn = Random.Range(levelNr, levelNr + 2);
+                }
+                
+                enemySpawnerScript.timeBetweenSpawns = 0.5f;
                 int coinFlip = Random.Range(0, 2);
                 enemySpawnerScript.randomSpawn = coinFlip == 1;
             }
@@ -120,8 +135,8 @@ public class EnemyManager : MonoBehaviour
 
             //change BoxSpawner script variables
             boxSpawnerScript.boxPrefab = boxPrefab;
-            boxSpawnerScript.boxesLeftToSpawn = Random.Range(0, maxEnemiesPerRoom + 1);
-            boxSpawnerScript.timeBetweenSpawns = 1f;
+            boxSpawnerScript.boxesLeftToSpawn = Random.Range(0, levelNr + 1);
+            boxSpawnerScript.timeBetweenSpawns = 0.5f;
             int coinFlip = Random.Range(0, 2);
             boxSpawnerScript.randomSpawn = coinFlip == 1;
             

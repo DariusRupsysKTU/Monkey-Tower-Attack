@@ -51,7 +51,7 @@ public class BlastWave : MonoBehaviour
                     float explosionForce = blastForceMultiplier / distanceVector.magnitude;
                     collRB.AddForce(distanceVector.normalized * explosionForce);
 
-                    if (collRB.transform.tag == "Player")
+                    if (collRB.transform.tag == "Player" && !collRB.transform.name.Contains("Monkey2"))
                     {
                         collRB.GetComponent<PlayerHealth>().DamagePlayer(blastDamage, true);
                     }

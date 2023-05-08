@@ -16,15 +16,18 @@ public class DoorSynchronizer : MonoBehaviour
 
     void Update()
     {     
-        if (openBothDoors)
+        if (theseDoors != null && connectedDoors != null)
         {
-            theseDoors.doorsOpen = true;
-            connectedDoors.doorsOpen = true;
-        }
-        else
-        {
-            theseDoors.doorsOpen = false;
-            connectedDoors.doorsOpen = false;
+            if (openBothDoors)
+            {
+                theseDoors.doorsOpen = true;
+                connectedDoors.doorsOpen = true;
+            }
+            else
+            {
+                theseDoors.doorsOpen = false;
+                connectedDoors.doorsOpen = false;
+            }
         }
     }
 
