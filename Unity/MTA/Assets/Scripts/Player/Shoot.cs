@@ -11,6 +11,7 @@ public class Shoot : MonoBehaviour
 
     [SerializeField] private AudioSource shootSound;
 
+
     void Update()
     {
         // Debug.Log(nextShot + " " + Time.time);
