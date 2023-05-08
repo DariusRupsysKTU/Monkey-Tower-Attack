@@ -7,9 +7,9 @@ public class PlayerFireball : MonoBehaviour
 {
     [SerializeField] float bulletSpeed;
     [SerializeField] int damage;
-    [SerializeField] ParticleSystem rockSplashVFX;
+    [SerializeField] ParticleSystem fireVFX;
+    [SerializeField] GameObject blastPrefab;
 
-    private UnityEvent onBulletDestroy;
     private Rigidbody2D bulletRB;
 
     void Start()
@@ -18,7 +18,7 @@ public class PlayerFireball : MonoBehaviour
         bulletRB.transform.localScale = new Vector3(damage, damage, damage);
         bulletRB.velocity = transform.up * bulletSpeed;
         bulletRB.transform.eulerAngles = new Vector3(0f, 0f, bulletRB.transform.eulerAngles.z + 90f);
-        DestroyBullet(1.5f);
+        DestroyBullet(5.0f);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -48,9 +48,14 @@ public class PlayerFireball : MonoBehaviour
         other.transform.tag != "SpawnPoint" && other.transform.tag != "RoomTracker" && other.transform.tag != "RoomChecker" &&
         !enemyIsDead)
         {
-            //Explode();
+            // Explode();
             DestroyBullet(0f);
         }
+    }
+
+    public void IncreaseDamage()
+    {
+        damage++;
     }
 
     public void EnableDoubleDamage(float time)
@@ -69,23 +74,26 @@ public class PlayerFireball : MonoBehaviour
         damage = 1;
     }
 
-    private void PlayRockSplashVFX()
+    private void PlayFireVFX()
     {
-        ParticleSystem vfx = Instantiate(rockSplashVFX, this.transform.position, Quaternion.identity);
+        ParticleSystem vfx = Instantiate(fireVFX, this.transform.position, Quaternion.identity);
         vfx.transform.localScale = new Vector3(damage, damage, damage);
         vfx.Play();
-        Destroy(vfx.gameObject, rockSplashVFX.main.duration);
+        Destroy(vfx.gameObject, fireVFX.main.duration);
+    }
+
+    private void AddBlast()
+    {
+        GameObject blast = Instantiate(blastPrefab, this.transform.position, Quaternion.identity);
+        blast.GetComponent<BlastWave>().goOnStart = true;
+        blast.GetComponent<BlastWave>().damageEnemy = true;
+        Destroy(blast.gameObject, 2f);
     }
 
     private void DestroyBullet(float waitTime)
     {
-        Invoke(nameof(PlayRockSplashVFX), waitTime);
-        //Explode();
-        Destroy(gameObject, waitTime);
-    }
-
-    private void Explode()
-    {
-        StartCoroutine(GetComponentInChildren<BlastWave>().Blast());
+        Invoke(nameof(AddBlast), waitTime);
+        Invoke(nameof(PlayFireVFX), waitTime);
+        Destroy(this.gameObject, waitTime);
     }
 }

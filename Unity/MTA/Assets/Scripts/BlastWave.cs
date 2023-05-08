@@ -10,8 +10,20 @@ public class BlastWave : MonoBehaviour
     [SerializeField] private float startWidth;
     [SerializeField] private float blastForceMultiplier;
     [SerializeField] private int blastDamage;
+    public bool damageEnemy = false;
+    public bool damagePlayer = false;
+    public bool goOnStart = false;
+    private bool enemyDamaged = false;
 
     private LineRenderer lineRenderer;
+
+    private void Update() 
+    {
+        // if (Input.GetKeyDown(KeyCode.Space))
+        // {
+        //     StartCoroutine(Blast());
+        // }    
+    }
 
     private void Awake()
     {
@@ -19,6 +31,14 @@ public class BlastWave : MonoBehaviour
 
         lineRenderer.positionCount = pointsCount + 1;
         lineRenderer.enabled = false;
+    }
+
+    private void Start() 
+    {
+        if (goOnStart)
+        {
+            StartCoroutine(Blast());
+        }    
     }
 
     public IEnumerator Blast()
@@ -51,13 +71,14 @@ public class BlastWave : MonoBehaviour
                     float explosionForce = blastForceMultiplier / distanceVector.magnitude;
                     collRB.AddForce(distanceVector.normalized * explosionForce);
 
-                    if (collRB.transform.tag == "Player" && !collRB.transform.name.Contains("Monkey2"))
+                    if (collRB.transform.tag == "Player" && !collRB.transform.name.Contains("Monkey2") && damagePlayer)
                     {
                         collRB.GetComponent<PlayerHealth>().DamagePlayer(blastDamage, true);
                     }
-                    if (collRB.transform.tag == "Enemy")
+                    if (collRB.transform.tag == "Enemy" && damageEnemy && !enemyDamaged)
                     {
-                        collRB.GetComponent<EnemyHealth>().DamageEnemy(0);
+                        collRB.GetComponent<EnemyHealth>().DamageEnemy(blastDamage);
+                        enemyDamaged = true;
                     }
                 }
             }

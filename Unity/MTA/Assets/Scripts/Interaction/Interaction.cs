@@ -154,9 +154,18 @@ public class Interaction : MonoBehaviour
         {
             if (player.GetComponent<Shoot>().enabled)
             {
-                PlayerBullet bulletScript = player.GetComponent<Shoot>().bulletPrefab.GetComponent<PlayerBullet>();
-                bulletScript.EnableDoubleDamage(5f);
-                StartCoroutine(DisableDamage(bulletScript, 5f));
+                if (player.GetComponent<Shoot>().bulletPrefab.GetComponent<PlayerBullet>() != null)
+                {
+                    PlayerBullet bulletScript = player.GetComponent<Shoot>().bulletPrefab.GetComponent<PlayerBullet>();
+                    bulletScript.EnableDoubleDamage(5f);
+                    StartCoroutine(DisableDamage(bulletScript, 5f));
+                }
+                else
+                {
+                    PlayerFireball bulletScript = player.GetComponent<Shoot>().bulletPrefab.GetComponent<PlayerFireball>();
+                    bulletScript.EnableDoubleDamage(5f);
+                    StartCoroutine(DisableDamage(bulletScript, 5f));
+                }
                 PlayDoubleDamageVFX();
             }
             else if (player.GetComponent<Punch>().enabled)
@@ -194,6 +203,12 @@ public class Interaction : MonoBehaviour
     }
 
     IEnumerator DisableDamage(Punch punchScript, float time)
+    {
+        yield return new WaitForSeconds(time);
+        punchScript.DisableExtraDamage();
+    }
+
+    IEnumerator DisableDamage(PlayerFireball punchScript, float time)
     {
         yield return new WaitForSeconds(time);
         punchScript.DisableExtraDamage();

@@ -89,4 +89,15 @@ public class ShopMenu : MonoBehaviour
             Inventory.instance.DecreaseCurrency(100);
         }
     }
+    public void BuyCooldown()
+    {
+        if (Inventory.instance.currency >= 75)
+        {
+            if (player.GetComponent<Shoot>().enabled)
+            {
+                player.GetComponent<Shoot>().DecreaseCooldown();
+                Inventory.instance.DecreaseCurrency(75);
+            }
+        }
+    }
 }

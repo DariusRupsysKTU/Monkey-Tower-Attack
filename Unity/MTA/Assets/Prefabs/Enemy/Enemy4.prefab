@@ -218,6 +218,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6946285813728771452, guid: 1c00c77f58725a94a9aa14e69b8658b0, type: 3}
+      propertyPath: damagePlayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6946285813728771453, guid: 1c00c77f58725a94a9aa14e69b8658b0, type: 3}
       propertyPath: m_SortingLayer
       value: 3

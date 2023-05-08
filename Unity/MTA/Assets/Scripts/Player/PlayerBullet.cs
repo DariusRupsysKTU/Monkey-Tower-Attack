@@ -9,7 +9,6 @@ public class PlayerBullet : MonoBehaviour
     [SerializeField] int damage;
     [SerializeField] ParticleSystem rockSplashVFX;
 
-    private UnityEvent onBulletDestroy;
     private Rigidbody2D bulletRB;
 
     void Start() 

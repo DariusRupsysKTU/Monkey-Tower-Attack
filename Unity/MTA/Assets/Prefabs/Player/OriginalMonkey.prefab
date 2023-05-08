@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 5069111372308449983}
   - component: {fileID: 957759938808458357}
   - component: {fileID: 4437472910273664127}
-  - component: {fileID: 1101933939623428796}
   - component: {fileID: 5069111372308449977}
   - component: {fileID: 5069111372308449978}
   - component: {fileID: 2693551433273002202}
@@ -111,29 +110,6 @@ MonoBehaviour:
   firePoint: {fileID: 7030905906319069138}
   bulletPrefab: {fileID: 2740807406522992282, guid: b050b0ab14a3d544d9f4401bdf4bd6b0, type: 3}
   shootSound: {fileID: 0}
---- !u!114 &1101933939623428796
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5069111372308449979}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 643dac771ba990148ace7aaacf68e36b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  whiffSound: {fileID: 0}
-  punchSound: {fileID: 0}
-  parrySound: {fileID: 0}
-  attackRange: 0.11
-  damage: 2
-  LeftPuchPoint: {fileID: 0}
-  RightPuchPoint: {fileID: 0}
-  UpPuchPoint: {fileID: 0}
-  DownPuchPoint: {fileID: 0}
-  bulletPrefab: {fileID: 2740807406522992282, guid: b050b0ab14a3d544d9f4401bdf4bd6b0, type: 3}
 --- !u!212 &5069111372308449977
 SpriteRenderer:
   m_ObjectHideFlags: 0
