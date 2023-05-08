@@ -52,8 +52,8 @@ public class EnemyManager : MonoBehaviour, DataPersistence
                 {
                     GameObject parentObject = new GameObject(rooms[i].name);
                     parentObject.transform.parent = this.transform;
-                    if (i == 1) // testing spawns boss left
-                    // if (i == rooms.Count-1)
+                    // if (i == 1) // testing spawns boss left
+                    if (i == rooms.Count-1)
                     {
                         AddBoxSpawner(rooms[i], i, parentObject);
                         AddEnemySpawner(rooms[i], i, true, parentObject);
@@ -90,6 +90,8 @@ public class EnemyManager : MonoBehaviour, DataPersistence
             {
                 spawner.name = bossSpawnerName;
                 enemySpawnerScript.enemy = bossPrefab;
+                EnemyHealth bossHealthScript = enemySpawnerScript.enemy.GetComponent<EnemyHealth>();
+                bossHealthScript.enemyHealth = bossHealthScript.enemyHealth * levelNr;
                 enemySpawnerScript.isBossSpawner = true;
                 enemySpawnerScript.bossName = bossName;
             }
