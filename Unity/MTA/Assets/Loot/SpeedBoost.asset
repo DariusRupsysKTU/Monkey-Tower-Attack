@@ -15,4 +15,4 @@ MonoBehaviour:
   id: 
   lootSprite: {fileID: 537953882, guid: 38d8dba2cfa975f418036e1390aa3858, type: 3}
   lootName: Speed Boost
-  dropChance: 30
+  dropChance: 15

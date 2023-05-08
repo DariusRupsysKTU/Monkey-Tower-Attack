@@ -9,11 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5069111372308449976}
+  - component: {fileID: 5069111372308449983}
+  - component: {fileID: 957759938808458357}
+  - component: {fileID: 4437472910273664127}
+  - component: {fileID: 1101933939623428796}
   - component: {fileID: 5069111372308449977}
   - component: {fileID: 5069111372308449978}
-  - component: {fileID: 5069111372308449983}
-  - component: {fileID: 4437472910273664127}
-  - component: {fileID: 957759938808458357}
   - component: {fileID: 2693551433273002202}
   m_Layer: 7
   m_Name: OriginalMonkey
@@ -38,6 +39,101 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!114 &5069111372308449983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5069111372308449979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18ad3d0dbc4830d43b4aa6990baab04e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerRB: {fileID: 0}
+  moveSpeed: 1
+  PlayerInput: {x: 0, y: 0}
+  forceToApply: {x: 0, y: 0}
+  firePoint: {fileID: 0}
+--- !u!114 &957759938808458357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5069111372308449979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e393a5e219878ef40985e6c3364ec7a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealth: 5
+  numOfHearts: 5
+  fullHeart: {fileID: 770381076, guid: 227e80f2019ad524f8f10cb35992eda6, type: 3}
+  emptyHeart: {fileID: -148309364, guid: a83427f83e804964a9302659766c41a4, type: 3}
+  hearts:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  OnDie:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 957759938808458357}
+        m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
+        m_MethodName: PlayerDies
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  immuneTime: 1
+  deathSound: {fileID: 0}
+  hitSound: {fileID: 0}
+--- !u!114 &4437472910273664127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5069111372308449979}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aca8132a8a679d34ab3d056aa3f0a8b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firePoint: {fileID: 7030905906319069138}
+  bulletPrefab: {fileID: 2740807406522992282, guid: b050b0ab14a3d544d9f4401bdf4bd6b0, type: 3}
+  shootSound: {fileID: 0}
+--- !u!114 &1101933939623428796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5069111372308449979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 643dac771ba990148ace7aaacf68e36b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  whiffSound: {fileID: 0}
+  punchSound: {fileID: 0}
+  parrySound: {fileID: 0}
+  attackRange: 0.11
+  damage: 2
+  LeftPuchPoint: {fileID: 0}
+  RightPuchPoint: {fileID: 0}
+  UpPuchPoint: {fileID: 0}
+  DownPuchPoint: {fileID: 0}
+  bulletPrefab: {fileID: 2740807406522992282, guid: b050b0ab14a3d544d9f4401bdf4bd6b0, type: 3}
 --- !u!212 &5069111372308449977
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -111,78 +207,6 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &5069111372308449983
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5069111372308449979}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18ad3d0dbc4830d43b4aa6990baab04e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerRB: {fileID: 0}
-  moveSpeed: 1
-  PlayerInput: {x: 0, y: 0}
-  forceToApply: {x: 0, y: 0}
-  firePoint: {fileID: 0}
---- !u!114 &4437472910273664127
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5069111372308449979}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aca8132a8a679d34ab3d056aa3f0a8b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  firePoint: {fileID: 7030905906319069138}
-  bulletPrefab: {fileID: 2740807406522992282, guid: b050b0ab14a3d544d9f4401bdf4bd6b0, type: 3}
-  shootSound: {fileID: 0}
---- !u!114 &957759938808458357
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5069111372308449979}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e393a5e219878ef40985e6c3364ec7a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerHealth: 5
-  numOfHearts: 5
-  fullHeart: {fileID: 770381076, guid: 227e80f2019ad524f8f10cb35992eda6, type: 3}
-  emptyHeart: {fileID: -148309364, guid: a83427f83e804964a9302659766c41a4, type: 3}
-  hearts:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  OnDie:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 957759938808458357}
-        m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
-        m_MethodName: PlayerDies
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  immuneTime: 1
-  deathSound: {fileID: 0}
-  hitSound: {fileID: 0}
 --- !u!61 &2693551433273002202
 BoxCollider2D:
   m_ObjectHideFlags: 0

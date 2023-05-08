@@ -26,6 +26,27 @@ public class Punch : MonoBehaviour
         }
     }
 
+    public void IncreaseDamage()
+    {
+        damage++;
+    }
+
+    public void EnableDoubleDamage(float time)
+    {
+        damage = damage * 2;
+        Invoke(nameof(DisableDoubleDamage), time);
+    }
+
+    private void DisableDoubleDamage()
+    {
+        damage = damage / 2;
+    }
+
+    public void DisableExtraDamage()
+    {
+        damage = 1;
+    }
+
     void Punching()
     {
         animator.SetTrigger("sp_" + PlayerMovement.lastDir);

@@ -52,6 +52,11 @@ public class PlayerBullet : MonoBehaviour
         }
     }
 
+    public void IncreaseDamage()
+    {
+        damage++;
+    }
+
     public void EnableDoubleDamage(float time)
     {
         damage = damage * 2;

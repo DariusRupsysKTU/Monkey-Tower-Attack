@@ -467,7 +467,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.45
+  m_Radius: 0.09
 --- !u!61 &82615822
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -507,7 +507,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPickUp: 0
-  interactKey: 101
+  shop: 1
+  interactKey: 118
   aboveTextPrefab: {fileID: 3372254261170174560, guid: 4dd1f5bd67992f74d8655d85e255530c, type: 3}
   healVFX: {fileID: 0}
   fullHealVFX: {fileID: 0}
@@ -521,6 +522,7 @@ MonoBehaviour:
   speedBoost: 0
   coin: 0
   trophy: 0
+  inRange: 0
 --- !u!114 &82615824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2358,7 +2360,6 @@ GameObject:
   - component: {fileID: 264453201}
   - component: {fileID: 264453200}
   - component: {fileID: 264453199}
-  - component: {fileID: 264453197}
   m_Layer: 5
   m_Name: ShopCanvas
   m_TagString: Untagged
@@ -2366,20 +2367,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &264453197
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 264453196}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3a2da698a0eae647b495d23545adf92, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  shopMenuUI: {fileID: 681537783}
 --- !u!114 &264453199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4054,12 +4041,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'SpeedBoost
+  m_text: 'Speed (+0.2)
 
     100$'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
+  m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5765,7 +5752,7 @@ GameObject:
   - component: {fileID: 729269517}
   - component: {fileID: 729269516}
   m_Layer: 5
-  m_Name: SpeedBoost
+  m_Name: Speed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5836,9 +5823,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 264453197}
+      - m_Target: {fileID: 82615824}
         m_TargetAssemblyTypeName: ShopMenu, Assembly-CSharp
-        m_MethodName: Speed
+        m_MethodName: BuySpeed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6999,12 +6986,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Heal
+  m_text: 'Heal (+1)
 
     50$'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
+  m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -8053,7 +8040,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 264453197}
+      - m_Target: {fileID: 82615824}
         m_TargetAssemblyTypeName: ShopMenu, Assembly-CSharp
         m_MethodName: BuyHeal
         m_Mode: 1
@@ -10581,9 +10568,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 264453197}
+      - m_Target: {fileID: 82615824}
         m_TargetAssemblyTypeName: ShopMenu, Assembly-CSharp
-        m_MethodName: DMG
+        m_MethodName: BuyDMG
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13696,7 +13683,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   calculatedCameraPosition: {x: 0, y: 0, z: 0}
-  cameraMoveSpeed: 0.05
+  cameraMoveSpeed: 0.03
   startTimeBetweenCamPosCheck: 0
 --- !u!1 &1687247153
 GameObject:
@@ -15137,12 +15124,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Double Damage
+  m_text: 'Damage (+1)
 
     100$'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
+  m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

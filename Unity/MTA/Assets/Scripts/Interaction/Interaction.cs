@@ -6,7 +6,8 @@ using UnityEngine.Events;
 public class Interaction : MonoBehaviour
 {
     public bool isPickUp;
-    [SerializeField] private KeyCode interactKey;
+    public bool shop;
+    public KeyCode interactKey;
     [SerializeField] private GameObject aboveTextPrefab;
     [SerializeField] ParticleSystem healVFX;
     [SerializeField] ParticleSystem fullHealVFX;
@@ -27,11 +28,11 @@ public class Interaction : MonoBehaviour
     public bool coin;
     public bool trophy;
 
-    private bool inRange;
+    public bool inRange;
 
     void Start() 
     {
-        if (!isPickUp)
+        if (!isPickUp && !shop)
         {
             GetComponent<CircleCollider2D>().enabled = false;
         }    
@@ -72,7 +73,7 @@ public class Interaction : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player") && isPickUp)
+        if (collision.gameObject.CompareTag("Player") && (isPickUp || shop))
         {
             player = collision.gameObject;
             AddAboveText();
@@ -82,7 +83,7 @@ public class Interaction : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player") && isPickUp)
+        if (collision.gameObject.CompareTag("Player") && (isPickUp || shop))
         {
             player = null;
             RemoveAboveText();
@@ -95,8 +96,7 @@ public class Interaction : MonoBehaviour
         aboveText = Instantiate(aboveTextPrefab, this.transform.position, this.transform.rotation);
         aboveText.transform.localScale = new Vector3(0f, 0f, 0f);
         aboveTextScript = aboveText.GetComponent<AboveText>();
-        Debug.Log(interactKey);
-        aboveTextScript.text = "pick up (" + interactKey + ")";
+        GetText();
         aboveTextScript.PlayFadeInAnimation();
     }
 
@@ -104,6 +104,29 @@ public class Interaction : MonoBehaviour
     {
         aboveTextScript.PlayFadeOutAnimation();
         Destroy(aboveText.gameObject, 1f);
+    }
+
+    private void GetText()
+    {
+        if (!shop)
+        {
+            if (heal)
+                aboveTextScript.text = "heal (" + interactKey + ")";
+            else if (fullHeal)
+                aboveTextScript.text = "full heal (" + interactKey + ")";
+            else if (doubleDamage)
+                aboveTextScript.text = "double damage (" + interactKey + ")";
+            else if (speedBoost)
+                aboveTextScript.text = "speed boost (" + interactKey + ")";
+            else if (coin)
+                aboveTextScript.text = "coin (" + interactKey + ")";
+            else if (trophy)
+                aboveTextScript.text = "trophy (" + interactKey + ")";
+        }
+        else
+        {
+            aboveTextScript.text = "shop (" + interactKey + ")";
+        }
     }
 
     public void PickUp()
@@ -136,6 +159,13 @@ public class Interaction : MonoBehaviour
                 StartCoroutine(DisableDamage(bulletScript, 5f));
                 PlayDoubleDamageVFX();
             }
+            else if (player.GetComponent<Punch>().enabled)
+            {
+                Punch punchScript = player.GetComponent<Punch>();
+                punchScript.EnableDoubleDamage(5f);
+                StartCoroutine(DisableDamage(punchScript, 5f));
+                PlayDoubleDamageVFX();
+            }
         }
         else if (speedBoost)
         {
@@ -161,6 +191,12 @@ public class Interaction : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         bulletScript.DisableExtraDamage();
+    }
+
+    IEnumerator DisableDamage(Punch punchScript, float time)
+    {
+        yield return new WaitForSeconds(time);
+        punchScript.DisableExtraDamage();
     }
 
     private void PlayHealVFX()
@@ -208,9 +244,9 @@ public class Interaction : MonoBehaviour
 
     private void PlayTrophyVFX()
     {
-        ParticleSystem vfx = Instantiate(coinsVFX, player.transform.position, Quaternion.Euler(-90f,0f,0f));
+        ParticleSystem vfx = Instantiate(trophyVFX, player.transform.position, Quaternion.Euler(-90f,0f,0f));
         vfx.transform.parent = player.transform;
         vfx.Play();
-        Destroy(vfx.gameObject, coinsVFX.main.duration);
+        Destroy(vfx.gameObject, trophyVFX.main.duration);
     }
 }

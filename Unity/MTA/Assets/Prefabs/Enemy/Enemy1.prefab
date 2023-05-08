@@ -9,12 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8300221843905418563}
-  - component: {fileID: 8300221843905418562}
-  - component: {fileID: 8300221843905418561}
-  - component: {fileID: 8300221843905418560}
   - component: {fileID: 2480235040677683139}
   - component: {fileID: 6358372115370817983}
   - component: {fileID: 8300221843905418564}
+  - component: {fileID: 8300221843905418562}
+  - component: {fileID: 8300221843905418561}
+  - component: {fileID: 8300221843905418560}
   - component: {fileID: 8300221844116258911}
   - component: {fileID: -3953744884788328111}
   m_Layer: 0
@@ -39,6 +39,61 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2480235040677683139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8300221843905418558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1038cf64b9b58b24eb85f6b33ce63522, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveVelocity: 0.5
+  moveUntilDistance: 0.1
+  visionRange: 1
+  damageOnTouch: 1
+  explodes: 0
+--- !u!114 &6358372115370817983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8300221843905418558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea5b5a59a97fb4d8cdd24f35fa6288, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyHealth: 2
+  isBoss: 0
+  bossEnraged: 0
+  lastAttack: 0
+  enemyDeathSound: {fileID: -3953744884788328111}
+--- !u!114 &8300221843905418564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8300221843905418558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2d89ddb089d6cd4f96edadb983a5157, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  droppedItemPrefab: {fileID: 8658960504137280955, guid: caaeab3680953b44d864e95f247f9ddb, type: 3}
+  lootList:
+  - {fileID: 11400000, guid: 9260ec87ca319de498933a7a17fedbaf, type: 2}
+  - {fileID: 11400000, guid: 5dff42684b10a0c439746679a1569fb4, type: 2}
+  - {fileID: 11400000, guid: 364a57bfc7e87b847abe6c2a696e5499, type: 2}
+  - {fileID: 11400000, guid: 60a506fc3991d654cb90331edee1a1ea, type: 2}
+  - {fileID: 11400000, guid: 630e3f4024c5f8945ba8157312971e62, type: 2}
+  dropRarestPossible: 1
+  dropForce: 2
 --- !u!212 &8300221843905418562
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -128,61 +183,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.00037809048}
   serializedVersion: 2
   m_Radius: 0.054712772
---- !u!114 &2480235040677683139
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8300221843905418558}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1038cf64b9b58b24eb85f6b33ce63522, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveVelocity: 0.5
-  moveUntilDistance: 0.1
-  visionRange: 1
-  damageOnTouch: 1
-  explodes: 0
---- !u!114 &6358372115370817983
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8300221843905418558}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea5b5a59a97fb4d8cdd24f35fa6288, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyHealth: 2
-  isBoss: 0
-  bossEnraged: 0
-  lastAttack: 0
-  enemyDeathSound: {fileID: -3953744884788328111}
---- !u!114 &8300221843905418564
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8300221843905418558}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2d89ddb089d6cd4f96edadb983a5157, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  droppedItemPrefab: {fileID: 8658960504137280955, guid: caaeab3680953b44d864e95f247f9ddb, type: 3}
-  lootList:
-  - {fileID: 11400000, guid: 9260ec87ca319de498933a7a17fedbaf, type: 2}
-  - {fileID: 11400000, guid: 5dff42684b10a0c439746679a1569fb4, type: 2}
-  - {fileID: 11400000, guid: 364a57bfc7e87b847abe6c2a696e5499, type: 2}
-  - {fileID: 11400000, guid: 60a506fc3991d654cb90331edee1a1ea, type: 2}
-  - {fileID: 11400000, guid: 630e3f4024c5f8945ba8157312971e62, type: 2}
-  dropRarestPossible: 1
-  dropForce: 2
 --- !u!95 &8300221844116258911
 Animator:
   serializedVersion: 5

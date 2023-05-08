@@ -48,6 +48,11 @@ public class PlayerMovement : MonoBehaviour
         playerRB.velocity = moveForce;
     }
 
+    public void IncreaseSpeed()
+    {
+        moveSpeed = moveSpeed + 0.2f;
+    }
+
     public void EnableSpeedBoost(float time)
     {
         moveSpeed = moveSpeed * 2;
