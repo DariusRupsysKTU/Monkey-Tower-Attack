@@ -70,8 +70,16 @@ public class ShopMenu : MonoBehaviour
         {
             if (player.GetComponent<Shoot>().enabled)
             {
-                PlayerBullet bulletScript = player.GetComponent<Shoot>().bulletPrefab.GetComponent<PlayerBullet>();
-                bulletScript.IncreaseDamage();
+                if (player.GetComponent<Shoot>().bulletPrefab.GetComponent<PlayerBullet>() != null)
+                {
+                    PlayerBullet bulletScript = player.GetComponent<Shoot>().bulletPrefab.GetComponent<PlayerBullet>();
+                    bulletScript.IncreaseDamage();
+                }
+                else
+                {
+                    PlayerFireball bulletScript = player.GetComponent<Shoot>().bulletPrefab.GetComponent<PlayerFireball>();
+                    bulletScript.IncreaseDamage();
+                }
                 Inventory.instance.DecreaseCurrency(100);
             }
             else if (player.GetComponent<Punch>().enabled)
