@@ -25,13 +25,13 @@ public class EnemyHealth : MonoBehaviour
 
     public void DamageEnemy(int amount)
     {
+        if (enemyHealth > 0 && !bossEnraged)
+        {
+            anim.Play("bloon_hit");
+        }
+
         if (isBoss)
         {
-            if (enemyHealth > 0 && !bossEnraged)
-            {
-                anim.Play("bloon_hit");
-            }
-
             if (enemyHealth > 0 && bossEnraged)
             {
                 anim.Play("boss_hit");
