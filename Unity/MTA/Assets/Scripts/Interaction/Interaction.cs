@@ -17,7 +17,7 @@ public class Interaction : MonoBehaviour
 
     private GameObject player;
     private GameObject aboveText;
-    private AboveTextAnimations aboveTextAnimations;
+    private AboveText aboveTextScript;
 
     [Header("Ability")]
     public bool heal;
@@ -94,13 +94,15 @@ public class Interaction : MonoBehaviour
     {
         aboveText = Instantiate(aboveTextPrefab, this.transform.position, this.transform.rotation);
         aboveText.transform.localScale = new Vector3(0f, 0f, 0f);
-        aboveTextAnimations = aboveText.GetComponent<AboveTextAnimations>();
-        aboveTextAnimations.PlayFadeInAnimation();
+        aboveTextScript = aboveText.GetComponent<AboveText>();
+        Debug.Log(interactKey);
+        aboveTextScript.text = "pick up (" + interactKey + ")";
+        aboveTextScript.PlayFadeInAnimation();
     }
 
     private void RemoveAboveText()
     {
-        aboveTextAnimations.PlayFadeOutAnimation();
+        aboveTextScript.PlayFadeOutAnimation();
         Destroy(aboveText.gameObject, 1f);
     }
 
@@ -148,6 +150,8 @@ public class Interaction : MonoBehaviour
         }
         else if (trophy)
         {
+            EnemyManager enemyManagerScript = GameObject.Find("Enemy Manager").GetComponent<EnemyManager>();
+            enemyManagerScript.levelNr++;
             PlayerPrefs.SetInt("Victory", 1);
             PlayTrophyVFX();
         }

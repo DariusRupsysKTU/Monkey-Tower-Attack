@@ -47,8 +47,8 @@ public class EnemyManager : MonoBehaviour
                 {
                     GameObject parentObject = new GameObject(rooms[i].name);
                     parentObject.transform.parent = this.transform;
-                    //if (i == 1) // testing spawns boss left
-                    if (i == rooms.Count-1)
+                    if (i == 1) // testing spawns boss left
+                    // if (i == rooms.Count-1)
                     {
                         AddBoxSpawner(rooms[i], i, parentObject);
                         AddEnemySpawner(rooms[i], i, true, parentObject);

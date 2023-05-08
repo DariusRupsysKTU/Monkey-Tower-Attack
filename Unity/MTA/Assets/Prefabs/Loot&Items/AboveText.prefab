@@ -56,7 +56,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 2100000, guid: 8a2b9e2a607dd2143b58c44bc32410b4, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -86,7 +86,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3372254261170174560}
-  m_Text: Pick up (E)
+  m_Text: 
   m_OffsetZ: 0
   m_CharacterSize: 0.01
   m_LineSpacing: 1
@@ -96,7 +96,7 @@ TextMesh:
   m_FontSize: 100
   m_FontStyle: 0
   m_RichText: 1
-  m_Font: {fileID: 0}
+  m_Font: {fileID: 12800000, guid: 8a2b9e2a607dd2143b58c44bc32410b4, type: 3}
   m_Color:
     serializedVersion: 2
     rgba: 4294967295
@@ -149,6 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75f5df8afb8f0c84fba1b63f9edd4bb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  text: 
   animator: {fileID: 1142453054758021354}
   fadeInAnimation: {fileID: 7400000, guid: e32d374db7ffaea4ca27e227f24fdc00, type: 2}
   fadeOutAnimation: {fileID: 7400000, guid: 06e3e4dfd9fe439429caa6ce43e981e0, type: 2}
