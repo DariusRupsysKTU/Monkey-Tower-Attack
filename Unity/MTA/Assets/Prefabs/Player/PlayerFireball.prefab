@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 2
-  damage: 1
+  damage: 2
   fireVFX: {fileID: 6174840242094541412, guid: c9f721e77ec3c0f469aa07176e630d2e, type: 3}
   blastPrefab: {fileID: 6946285813728771451, guid: 1c00c77f58725a94a9aa14e69b8658b0, type: 3}
 --- !u!95 &-8484062557190313707

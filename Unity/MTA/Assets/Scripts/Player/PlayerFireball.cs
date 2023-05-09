@@ -8,7 +8,6 @@ public class PlayerFireball : MonoBehaviour, DataPersistence
     [SerializeField] float bulletSpeed;
     [SerializeField] int damage;
     [SerializeField] ParticleSystem fireVFX;
-    [SerializeField] GameObject blastPrefab;
 
     private Rigidbody2D bulletRB;
 
@@ -82,17 +81,17 @@ public class PlayerFireball : MonoBehaviour, DataPersistence
         Destroy(vfx.gameObject, fireVFX.main.duration);
     }
 
-    private void AddBlast()
-    {
-        GameObject blast = Instantiate(blastPrefab, this.transform.position, Quaternion.identity);
-        blast.GetComponent<BlastWave>().goOnStart = true;
-        blast.GetComponent<BlastWave>().damageEnemy = true;
-        Destroy(blast.gameObject, 2f);
-    }
+    // private void AddBlast()
+    // {
+    //     GameObject blast = Instantiate(blastPrefab, this.transform.position, Quaternion.identity);
+    //     blast.GetComponent<BlastWave>().goOnStart = true;
+    //     blast.GetComponent<BlastWave>().damageEnemy = true;
+    //     Destroy(blast.gameObject, 2f);
+    // }
 
     private void DestroyBullet(float waitTime)
     {
-        Invoke(nameof(AddBlast), waitTime);
+        // Invoke(nameof(AddBlast), waitTime);
         Invoke(nameof(PlayFireVFX), waitTime);
         Destroy(this.gameObject, waitTime);
     }
