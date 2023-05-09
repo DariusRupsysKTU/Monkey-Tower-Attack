@@ -110,7 +110,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 60a506fc3991d654cb90331edee1a1ea, type: 2}
   - {fileID: 11400000, guid: 630e3f4024c5f8945ba8157312971e62, type: 2}
   dropRarestPossible: 1
-  dropForce: 2
+  dropForce: 1
 --- !u!114 &2930396757002237224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,6 +124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPickUp: 0
+  shop: 0
   interactKey: 114
   aboveTextPrefab: {fileID: 3372254261170174560, guid: 4dd1f5bd67992f74d8655d85e255530c, type: 3}
   healVFX: {fileID: 0}
@@ -138,6 +139,7 @@ MonoBehaviour:
   speedBoost: 0
   coin: 0
   trophy: 0
+  inRange: 0
 --- !u!114 &2930396757002237230
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class GameOver : MonoBehaviour
 {
+    public static bool GameOverScreenOn;
+
     public GameObject gameOverMenu;
     public GameObject inventory;
 
@@ -17,6 +19,7 @@ public class GameOver : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameOverScreenOn = false;
         PlayerPrefs.SetInt("Dead", 0);
         gameOverMenu.SetActive(false);
         inventory.SetActive(true);
@@ -36,6 +39,7 @@ public class GameOver : MonoBehaviour
     {
         gameOverMenu.SetActive(true);
         Time.timeScale = 0f;
+        GameOverScreenOn = true;
 
         EnemyManager enemyManagerScript = GameObject.Find("Enemy Manager").GetComponent<EnemyManager>();
         levelReached.text = "LEVEL: " + enemyManagerScript.levelNr.ToString();

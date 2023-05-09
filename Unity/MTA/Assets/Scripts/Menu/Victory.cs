@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class Victory : MonoBehaviour
 {
+    public static bool VictoryScreenOn;
+
     public GameObject victoryMenu;
     public GameObject inventory;
 
@@ -23,6 +25,7 @@ public class Victory : MonoBehaviour
             PlayerPrefs.SetInt("NextLevel", 0);
         }
 
+        VictoryScreenOn = false;
         victoryMenu.SetActive(false);
         inventory.SetActive(true);
     }
@@ -41,6 +44,7 @@ public class Victory : MonoBehaviour
     {
         Time.timeScale = 0f;
         victoryMenu.SetActive(true);
+        VictoryScreenOn = true;
 
         currencyFinal.text = "Money earned: " + PlayerPrefs.GetInt("Total money").ToString() + "$";
         scoreFinal.text = "Score: " + PlayerPrefs.GetInt("Score").ToString();

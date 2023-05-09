@@ -32,6 +32,13 @@ public class Interaction : MonoBehaviour
 
     void Start() 
     {
+        // if (isPickUp)
+        // {
+        //     Collider2D thisCollider = this.gameObject.GetComponentInChildren<Collider2D>();
+        //     Collider2D playerCollider = GameObject.FindGameObjectWithTag("Player").GetComponent<Collider2D>();
+        //     Physics2D.IgnoreCollision(thisCollider, playerCollider);
+        // }
+        
         if (!isPickUp && !shop)
         {
             GetComponent<CircleCollider2D>().enabled = false;
@@ -51,7 +58,8 @@ public class Interaction : MonoBehaviour
 
         if(inRange)
         {
-            if (Input.GetKeyDown(interactKey))
+            if (!ShopMenu.ShopOpened && !Victory.VictoryScreenOn && !GameOver.GameOverScreenOn && 
+            !PauseMenu.GameIsPaused && Input.GetKeyDown(interactKey))
             {
                 PickUp();
             }
@@ -62,12 +70,21 @@ public class Interaction : MonoBehaviour
     {
         if (other.gameObject.tag == "Player" && isPickUp)
         {
+            this.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
             Physics2D.IgnoreCollision(other.collider, other.otherCollider, true);
         }
-        if (((other.gameObject.tag == "Player" || other.gameObject.tag == "Enemy" || other.gameObject.tag == "Box") && !isPickUp)
-        || ((other.gameObject.tag == "Currency" || other.gameObject.tag == "WallCollider" || other.gameObject.name.Contains("Doors")) && isPickUp))
+        // if (((other.gameObject.tag == "Player" || other.gameObject.tag == "Enemy" || other.gameObject.tag == "Box") && !isPickUp)
+        // || ((other.gameObject.tag == "Currency" || other.gameObject.tag == "WallCollider" || other.gameObject.name.Contains("Doors")) && isPickUp))
+        // {
+        //     Physics2D.IgnoreCollision(other.collider, other.otherCollider, false);
+        // }
+    }
+
+    private void OnCollisionExit2D(Collision2D other) 
+    {
+        if (other.gameObject.tag == "Player" && isPickUp)
         {
-            Physics2D.IgnoreCollision(other.collider, other.otherCollider, false);
+            this.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
         }
     }
 

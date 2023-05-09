@@ -430,7 +430,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.09
+  m_Radius: 0.15
 --- !u!61 &82615822
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9228,7 +9228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04ab3d4066d72f143aa23e1fe1663065, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBeforeDoorsOpen: 2
+  timeBeforeDoorsOpen: 1
 --- !u!1 &1345687841
 GameObject:
   m_ObjectHideFlags: 0

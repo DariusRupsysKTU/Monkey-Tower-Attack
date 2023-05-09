@@ -5,13 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class ShopMenu : MonoBehaviour
 {
-    public static bool ShopOpened = false;
+    public static bool ShopOpened;
     public GameObject player;
-    public GameObject shopMenuUI;
-    //private GameObject aboveText;
+    [SerializeField] GameObject shopMenuUI;
 
     void Start()
     {
+        ShopOpened = false;
         shopMenuUI.SetActive(false);
         PlayerPrefs.SetInt("ShopOpen", 0);
     }
@@ -25,20 +25,16 @@ public class ShopMenu : MonoBehaviour
         {
             Interaction interactionScript = GetComponent<Interaction>();
 
-            if (Input.GetKeyDown(interactionScript.interactKey) && interactionScript.inRange)
+            if (!PauseMenu.GameIsPaused && Input.GetKeyDown(interactionScript.interactKey) && interactionScript.inRange)
             {
                 if (ShopOpened)
                 {
-                    Time.timeScale = 1f;
-                    shopMenuUI.SetActive(false);
-                    ShopOpened = false;
+                    CloseShopWindow();
                     PlayerPrefs.SetInt("ShopOpen", 0);
                 }
                 else
                 {
-                    shopMenuUI.SetActive(true);
-                    Time.timeScale = 0f;
-                    ShopOpened = true;
+                    OpenShopWindow();
                     PlayerPrefs.SetInt("ShopOpen", 1);
                 }
             }
@@ -46,13 +42,25 @@ public class ShopMenu : MonoBehaviour
             {
                 if (ShopOpened)
                 {
-                    Time.timeScale = 1f;
-                    shopMenuUI.SetActive(false);
-                    ShopOpened = false;
+                    CloseShopWindow();
                 }
             }
         }
         
+    }
+
+    private void OpenShopWindow()
+    {
+        Time.timeScale = 0f;
+        shopMenuUI.SetActive(true);
+        ShopOpened = true;
+    }
+
+    private void CloseShopWindow()
+    {
+        Time.timeScale = 1f;
+        shopMenuUI.SetActive(false);
+        ShopOpened = false;
     }
 
     public void BuyHeal()
