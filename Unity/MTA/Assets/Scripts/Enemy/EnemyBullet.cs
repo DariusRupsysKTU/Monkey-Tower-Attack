@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Enemy3Bullet : MonoBehaviour
+public class EnemyBullet : MonoBehaviour
 {
     [SerializeField] float bulletSpeed;
     [SerializeField] int damage;
@@ -31,15 +31,21 @@ public class Enemy3Bullet : MonoBehaviour
 
         if (shootAngle != Vector2.zero)
         {
+            float bulletRotation = Mathf.Atan2(shootAngle.y, shootAngle.x) * 180 / Mathf.PI;
+            bulletRB.transform.eulerAngles = new Vector3(0f, 0f, bulletRB.transform.eulerAngles.z + bulletRotation); 
+        
             bulletRB.velocity = shootAngle * bulletSpeed;
         }
         else
         {
+            float bulletRotation = Mathf.Atan2((playerPos - startPos).normalized.y, (playerPos - startPos).normalized.x) * 180 / Mathf.PI;
+            bulletRB.transform.eulerAngles = new Vector3(0f, 0f, bulletRB.transform.eulerAngles.z + bulletRotation); 
+
             // gets direction of the player and multiplies by bullet speed
             bulletRB.velocity = (playerPos - startPos).normalized * bulletSpeed; 
         }
 
-        bulletRB.transform.eulerAngles = new Vector3(0f, 0f, bulletRB.transform.eulerAngles.z + 90f); 
+        // bulletRB.transform.eulerAngles = new Vector3(0f, 0f, bulletRB.transform.eulerAngles.z + 90f); 
         
         if (destroyAfterTime)
         {

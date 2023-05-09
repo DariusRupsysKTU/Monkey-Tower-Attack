@@ -169,7 +169,7 @@ public class BossMovement : MonoBehaviour
             {
                 int angleOffset = 360 / stage2BulletCount;
                 GameObject currentBullet = Instantiate(bulletPrefab, thisBossPosition, Quaternion.identity);
-                currentBullet.GetComponent<Enemy3Bullet>().shootAngle = DegreeToVector2(bulletAngle + (angleOffset * i)).normalized;
+                currentBullet.GetComponent<EnemyBullet>().shootAngle = DegreeToVector2(bulletAngle + (angleOffset * i)).normalized;
             }
 
             timeBetweenShots = startTimeBetweenShots;

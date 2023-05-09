@@ -119,7 +119,7 @@ public class Punch : MonoBehaviour, DataPersistence
     void Parry(Collider2D other)
     {
         parrySound.Play();
-        Enemy3Bullet Enemy3BulletScript = other.GetComponent<Enemy3Bullet>();
+        EnemyBullet Enemy3BulletScript = other.GetComponent<EnemyBullet>();
         Instantiate(bulletPrefab, LastPP.transform.position, LastPP.transform.rotation);
         Enemy3BulletScript.DestroyBullet(0f);
     }

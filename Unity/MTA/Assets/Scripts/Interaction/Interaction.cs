@@ -32,13 +32,6 @@ public class Interaction : MonoBehaviour
 
     void Start() 
     {
-        // if (isPickUp)
-        // {
-        //     Collider2D thisCollider = this.gameObject.GetComponentInChildren<Collider2D>();
-        //     Collider2D playerCollider = GameObject.FindGameObjectWithTag("Player").GetComponent<Collider2D>();
-        //     Physics2D.IgnoreCollision(thisCollider, playerCollider);
-        // }
-        
         if (!isPickUp && !shop)
         {
             GetComponent<CircleCollider2D>().enabled = false;
