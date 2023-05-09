@@ -11527,7 +11527,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   calculatedCameraPosition: {x: 0, y: 0, z: 0}
-  cameraMoveSpeed: 0.03
+  cameraMoveSpeed: 0.3
   startTimeBetweenCamPosCheck: 0
 --- !u!1 &1687247153
 GameObject:

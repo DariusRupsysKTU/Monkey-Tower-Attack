@@ -99,7 +99,7 @@ MonoBehaviour:
   lootList:
   - {fileID: 11400000, guid: 14d29ea929a0e62429027e52def60af4, type: 2}
   dropRarestPossible: 1
-  dropForce: 1
+  dropForce: 0
 --- !u!212 &5387391461268202679
 SpriteRenderer:
   m_ObjectHideFlags: 0
