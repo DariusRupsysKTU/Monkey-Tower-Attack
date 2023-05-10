@@ -20,8 +20,12 @@ PrefabInstance:
       value: 0.16
       objectReference: {fileID: 0}
     - target: {fileID: 275250849418942873, guid: 8851ceaff2f8b644b96aaf56541865ff, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 275250849418942873, guid: 8851ceaff2f8b644b96aaf56541865ff, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.03
       objectReference: {fileID: 0}
     - target: {fileID: 957759938808458357, guid: 8851ceaff2f8b644b96aaf56541865ff, type: 3}
       propertyPath: hitSound

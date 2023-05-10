@@ -69,24 +69,28 @@ public class PlayerMovement : MonoBehaviour, DataPersistence
         if (PlayerInput.x > 0)
         {
             anim.SetTrigger("right");
+            firePoint.transform.localPosition = new Vector3(0.05f, -0.03f, 0f);
             firePoint.transform.eulerAngles = new Vector3(0f, 0f, 270f);
             lastDir = "right";
         }
         else if (PlayerInput.x < 0)
         {
             anim.SetTrigger("left");
+            firePoint.transform.localPosition = new Vector3(-0.05f, -0.03f, 0f);
             firePoint.transform.eulerAngles = new Vector3(0f, 0f, 90f);
             lastDir = "left";
         }
         else if (PlayerInput.y == 1 )
         {
             anim.SetTrigger("up");
+            firePoint.transform.localPosition = new Vector3(0f, 0.08f, 0f);
             firePoint.transform.eulerAngles = new Vector3(0f, 0f, 0f);
             lastDir = "up";
         }
         else if (PlayerInput.y == -1)
         {
             anim.SetTrigger("down");
+            firePoint.transform.localPosition = new Vector3(0f, -0.06f, 0f);
             firePoint.transform.eulerAngles = new Vector3(0f, 0f, 180f);
             lastDir = "down";
         }

@@ -47,6 +47,7 @@ public class PlayerBullet : MonoBehaviour, DataPersistence
         other.transform.tag != "SpawnPoint" && other.transform.tag != "RoomTracker" && other.transform.tag != "RoomChecker" && 
         !enemyIsDead)
         {
+            // Debug.Log(other.name + " " + other.transform.parent.name);
             DestroyBullet(0f);
         }
     }
