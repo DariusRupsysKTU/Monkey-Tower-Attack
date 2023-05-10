@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6135014396191443922}
   - component: {fileID: 5023661872679795967}
   - component: {fileID: -3767902226813283099}
+  - component: {fileID: -3787497984367490188}
   m_Layer: 0
   m_Name: EnemyBullet
   m_TagString: EnemyBullet
@@ -77,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: -173261769
   m_SortingLayer: 2
   m_SortingOrder: -1
-  m_Sprite: {fileID: 1535064650, guid: c774f40c224b1f14fb4dd6274be8067f, type: 3}
+  m_Sprite: {fileID: -1874804226, guid: ced0f1879d2e9b448ad4ed5a68eb5961, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -151,7 +152,7 @@ MonoBehaviour:
   damage: 1
   destroyAfterTime: 1
   bulletTime: 0.5
-  rockSplashVFX: {fileID: 6174840242094541412, guid: 5131da294bb7cdf46acf5381977b31a3, type: 3}
+  rockSplashVFX: {fileID: 6174840242094541412, guid: daf16b78fd2790c4f8eab38119106d0c, type: 3}
   bulletSound: {fileID: -3767902226813283099}
   shootAngle: {x: 0, y: 0}
 --- !u!82 &-3767902226813283099
@@ -250,3 +251,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &-3787497984367490188
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8817345501052181823}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8c4d83cdf90dd4c4f937f2799a2418c9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
