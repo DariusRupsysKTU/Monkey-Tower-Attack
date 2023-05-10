@@ -33,14 +33,14 @@ public class EnemyBullet : MonoBehaviour
         if (shootAngle != Vector2.zero)
         {
             float bulletRotation = Mathf.Atan2(shootAngle.y, shootAngle.x) * 180 / Mathf.PI;
-            bulletRB.transform.eulerAngles = new Vector3(0f, 0f, bulletRB.transform.eulerAngles.z + bulletRotation); 
+            bulletRB.transform.eulerAngles = new Vector3(0f, 0f, bulletRB.transform.eulerAngles.z + bulletRotation + 90f); 
         
             bulletRB.velocity = shootAngle * bulletSpeed;
         }
         else
         {
             float bulletRotation = Mathf.Atan2((playerPos - startPos).normalized.y, (playerPos - startPos).normalized.x) * 180 / Mathf.PI;
-            bulletRB.transform.eulerAngles = new Vector3(0f, 0f, bulletRB.transform.eulerAngles.z + bulletRotation); 
+            bulletRB.transform.eulerAngles = new Vector3(0f, 0f, bulletRB.transform.eulerAngles.z + bulletRotation + 90f); 
 
             // gets direction of the player and multiplies by bullet speed
             bulletRB.velocity = (playerPos - startPos).normalized * bulletSpeed; 
