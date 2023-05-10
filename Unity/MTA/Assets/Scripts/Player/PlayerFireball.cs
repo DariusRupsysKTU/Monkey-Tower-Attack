@@ -47,7 +47,6 @@ public class PlayerFireball : MonoBehaviour, DataPersistence
         other.transform.tag != "SpawnPoint" && other.transform.tag != "RoomTracker" && other.transform.tag != "RoomChecker" &&
         !enemyIsDead)
         {
-            // Explode();
             DestroyBullet(0f);
         }
     }

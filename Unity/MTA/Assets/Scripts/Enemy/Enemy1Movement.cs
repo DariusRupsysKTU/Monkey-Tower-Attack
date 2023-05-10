@@ -76,6 +76,8 @@ public class Enemy1Movement : MonoBehaviour
         {
             Explode();
         }
+
+        KillEveryEnemy1InRoomCheat();
     }
 
     private void FindPlayer()
@@ -197,5 +199,13 @@ public class Enemy1Movement : MonoBehaviour
     private void OnDrawGizmos() 
     {
         Gizmos.DrawWireSphere(transform.position, visionRange);    
+    }
+
+    private void KillEveryEnemy1InRoomCheat()
+    {
+        if (IsInTheRoom(playerPosition) && Input.GetKeyDown("k"))
+        {
+            enemyHealthScript.DamageEnemy(enemyHealthScript.enemyHealth);
+        }
     }
 }

@@ -90,6 +90,8 @@ public class Enemy3Movement : MonoBehaviour
         {
             Divide();
         }
+
+        KillEveryEnemy3InRoomCheat();
     }
 
     private void Divide()
@@ -257,6 +259,14 @@ public class Enemy3Movement : MonoBehaviour
         {
             ItemHealth boxHealth = other.gameObject.GetComponent<ItemHealth>();
             boxHealth.DamageItem(damageOnTouch);
+        }
+    }
+
+    private void KillEveryEnemy3InRoomCheat()
+    {
+        if (IsInTheRoom(playerPosition) && Input.GetKeyDown("k"))
+        {
+            enemyHealthScript.DamageEnemy(enemyHealthScript.enemyHealth);
         }
     }
 }

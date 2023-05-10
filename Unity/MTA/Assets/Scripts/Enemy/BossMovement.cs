@@ -110,6 +110,8 @@ public class BossMovement : MonoBehaviour
                 }
             }
         }
+
+        KillEveryBossInRoomCheat();
     }
 
     private void SpawnPawns(bool isEnraged)
@@ -350,5 +352,13 @@ public class BossMovement : MonoBehaviour
     private void OnCollisionExit2D(Collision2D other) 
     {
         thisBossRB.constraints = RigidbodyConstraints2D.FreezeRotation;
+    }
+
+    private void KillEveryBossInRoomCheat()
+    {
+        if (IsInTheRoom(playerPosition) && Input.GetKeyDown("k"))
+        {
+            bossHealthScript.DamageEnemy(bossHealthScript.enemyHealth);
+        }
     }
 }

@@ -85,6 +85,8 @@ public class Enemy2Movement : MonoBehaviour
         {
             Shoot();
         }
+
+        KillEveryEnemy2InRoomCheat();
     }
     private void Shoot()
     {
@@ -133,7 +135,6 @@ public class Enemy2Movement : MonoBehaviour
             {
                 Patrol();
             }
-
         }
         else if (distance < retreatDistance) //if pinned against the wall stays in one position
         {
@@ -200,5 +201,36 @@ public class Enemy2Movement : MonoBehaviour
     private Vector2 RandomPointInRoom2D()
     {
         return new Vector2(Random.Range(roomCenter.x + leftWall, roomCenter.x + rightWall), Random.Range(roomCenter.y + bottomWall, roomCenter.y + topWall));
+    }
+
+    private void OnCollisionEnter2D(Collision2D other) 
+    {
+        CollisionHandler(other);
+    }
+
+    private void OnCollisionStay2D(Collision2D other) 
+    {
+        CollisionHandler(other);
+    }
+
+    private void OnCollisionExit2D(Collision2D other) 
+    {
+        thisEnemyRB.constraints = RigidbodyConstraints2D.FreezeRotation;
+    }
+
+    private void CollisionHandler(Collision2D other)
+    {
+        if (other.transform.tag == "Player" && enemyHealthScript.enemyHealth > 0)
+        {
+            thisEnemyRB.constraints = RigidbodyConstraints2D.FreezeAll;
+        }
+    }
+
+    private void KillEveryEnemy2InRoomCheat()
+    {
+        if (IsInTheRoom(playerPosition) && Input.GetKeyDown("k"))
+        {
+            enemyHealthScript.DamageEnemy(enemyHealthScript.enemyHealth);
+        }
     }
 }

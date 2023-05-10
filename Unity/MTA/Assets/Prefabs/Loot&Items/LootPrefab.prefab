@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7851848475605958457}
   m_Layer: 0
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: Currency
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: -5114452811042858703}
   m_Layer: 0
   m_Name: LootPrefab
-  m_TagString: Untagged
+  m_TagString: Currency
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
