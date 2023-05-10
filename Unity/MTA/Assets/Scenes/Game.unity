@@ -11614,6 +11614,7 @@ GameObject:
   - component: {fileID: 1687247155}
   - component: {fileID: 1687247154}
   - component: {fileID: 1687247157}
+  - component: {fileID: 1687247158}
   m_Layer: 5
   m_Name: Loading Screen
   m_TagString: Untagged
@@ -11691,6 +11692,18 @@ CanvasGroup:
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
+--- !u!114 &1687247158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1687247153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c628e58af45a2b84a926a077d9955735, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1689058579
 GameObject:
   m_ObjectHideFlags: 0

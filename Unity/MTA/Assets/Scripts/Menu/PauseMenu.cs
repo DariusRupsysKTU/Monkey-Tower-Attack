@@ -20,7 +20,8 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!Victory.VictoryScreenOn && !GameOver.GameOverScreenOn && Input.GetKeyDown(KeyCode.Escape))
+        if (!LoadingScreen.LoadingScreenOn && !Victory.VictoryScreenOn && 
+        !GameOver.GameOverScreenOn && Input.GetKeyDown(KeyCode.Escape))
         {
             if (GameIsPaused)
             {

@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class EnemyBullet : MonoBehaviour
 {
     [SerializeField] float bulletSpeed;
-    [SerializeField] int damage;
+    public int damage;
     [SerializeField] bool destroyAfterTime;
     [SerializeField] float bulletTime;
     [SerializeField] ParticleSystem rockSplashVFX;
@@ -24,6 +24,7 @@ public class EnemyBullet : MonoBehaviour
     void Start() 
     {
         bulletRB = this.GetComponent<Rigidbody2D>();
+        bulletRB.transform.localScale = new Vector3(1f + (damage * 0.1f), 1f + (damage * 0.1f), 1f + (damage * 0.1f));
         playerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
         startPos = this.transform.position;
 
@@ -77,6 +78,7 @@ public class EnemyBullet : MonoBehaviour
     private void PlayRockSplashVFX()
     {
         ParticleSystem vfx = Instantiate(rockSplashVFX, this.transform.position, Quaternion.identity);
+        vfx.transform.localScale = new Vector3(1f + (damage * 0.1f), 1f + (damage * 0.1f), 1f + (damage * 0.1f));
         vfx.Play();
         Destroy(vfx.gameObject, rockSplashVFX.main.duration);
     }

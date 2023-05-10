@@ -25,7 +25,8 @@ public class ShopMenu : MonoBehaviour
         {
             Interaction interactionScript = GetComponent<Interaction>();
 
-            if (!PauseMenu.GameIsPaused && Input.GetKeyDown(interactionScript.interactKey) && interactionScript.inRange)
+            if (!LoadingScreen.LoadingScreenOn && !PauseMenu.GameIsPaused && 
+            Input.GetKeyDown(interactionScript.interactKey) && interactionScript.inRange)
             {
                 if (ShopOpened)
                 {

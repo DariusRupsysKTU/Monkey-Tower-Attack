@@ -14,7 +14,7 @@ public class PlayerBullet : MonoBehaviour, DataPersistence
     void Start() 
     {
         bulletRB = this.GetComponent<Rigidbody2D>();
-        bulletRB.transform.localScale = new Vector3(damage, damage, damage);
+        bulletRB.transform.localScale = new Vector3(1f + (damage * 0.1f), 1f + (damage * 0.1f), 1f + (damage * 0.1f));
         bulletRB.velocity = transform.up * bulletSpeed; 
         bulletRB.transform.eulerAngles = new Vector3(0f, 0f, bulletRB.transform.eulerAngles.z + 90f); 
         DestroyBullet(0.5f);
@@ -75,7 +75,7 @@ public class PlayerBullet : MonoBehaviour, DataPersistence
     private void PlayRockSplashVFX()
     {
         ParticleSystem vfx = Instantiate(rockSplashVFX, this.transform.position, Quaternion.identity);
-        vfx.transform.localScale = new Vector3(damage, damage, damage);
+        vfx.transform.localScale = new Vector3(1f + (damage * 0.1f), 1f + (damage * 0.1f), 1f + (damage * 0.1f));
         vfx.Play();
         Destroy(vfx.gameObject, rockSplashVFX.main.duration);
     }
