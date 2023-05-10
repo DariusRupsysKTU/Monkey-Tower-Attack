@@ -39,7 +39,7 @@ public class Enemy2Movement : MonoBehaviour
     public float startTimeBetweenShots; 
     public GameObject bulletPrefab; 
 
-    private bool tooCloseToWall = false;
+    private bool touchingWall = false;
 
     private Vector2 point1;
     private Vector2 point2 = Vector2.zero;
@@ -117,7 +117,7 @@ public class Enemy2Movement : MonoBehaviour
         distanceToPlayer = distance;
         Vector2 targetDirection = (targetPosition - thisEnemyPosition).normalized;
 
-        if (!tooCloseToWall && IsInTheRoom(targetPosition))
+        if (IsInTheRoom(targetPosition))
         {
             if (distance <= visionRange && distance > stopDistance) //attacks
             {
@@ -127,7 +127,7 @@ public class Enemy2Movement : MonoBehaviour
             {
                 thisEnemyRB.position = this.transform.position;
             }
-            else if (distance < retreatDistance) //retreats
+            else if (distance < retreatDistance && !touchingWall) //retreats
             {
                 thisEnemyRB.position = Vector2.MoveTowards(thisEnemyPosition, thisEnemyPosition + -targetDirection, moveVelocity * Time.deltaTime);
             }
@@ -216,6 +216,10 @@ public class Enemy2Movement : MonoBehaviour
     private void OnCollisionExit2D(Collision2D other) 
     {
         thisEnemyRB.constraints = RigidbodyConstraints2D.FreezeRotation;
+        if (other.transform.tag == "WallCollider")
+        {
+            touchingWall = false;
+        }
     }
 
     private void CollisionHandler(Collision2D other)
@@ -223,6 +227,10 @@ public class Enemy2Movement : MonoBehaviour
         if (other.transform.tag == "Player" && enemyHealthScript.enemyHealth > 0)
         {
             thisEnemyRB.constraints = RigidbodyConstraints2D.FreezeAll;
+        }
+        else if (other.transform.tag == "WallCollider")
+        {
+            touchingWall = true;
         }
     }
 

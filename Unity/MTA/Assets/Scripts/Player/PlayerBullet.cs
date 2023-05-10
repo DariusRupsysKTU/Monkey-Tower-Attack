@@ -10,13 +10,16 @@ public class PlayerBullet : MonoBehaviour, DataPersistence
     [SerializeField] ParticleSystem rockSplashVFX;
 
     private Rigidbody2D bulletRB;
+    private GameObject player;
 
     void Start() 
     {
         bulletRB = this.GetComponent<Rigidbody2D>();
+        player = GameObject.FindGameObjectWithTag("Player");
         bulletRB.transform.localScale = new Vector3(1f + (damage * 0.1f), 1f + (damage * 0.1f), 1f + (damage * 0.1f));
         bulletRB.velocity = transform.up * bulletSpeed; 
-        bulletRB.transform.eulerAngles = new Vector3(0f, 0f, bulletRB.transform.eulerAngles.z + 90f); 
+        Debug.Log(transform.up);
+        bulletRB.transform.eulerAngles = new Vector3(0f, 0f, bulletRB.transform.eulerAngles.z + 180f); 
         DestroyBullet(0.5f);
     }
 

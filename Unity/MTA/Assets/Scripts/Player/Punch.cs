@@ -120,7 +120,8 @@ public class Punch : MonoBehaviour, DataPersistence
     {
         parrySound.Play();
         EnemyBullet Enemy3BulletScript = other.GetComponent<EnemyBullet>();
-        Instantiate(bulletPrefab, LastPP.transform.position, LastPP.transform.rotation);
+        GameObject parriedBullet = Instantiate(bulletPrefab, LastPP.transform.position, LastPP.transform.rotation);
+        parriedBullet.GetComponent<SpriteRenderer>().sprite = other.gameObject.GetComponent<SpriteRenderer>().sprite;
         Enemy3BulletScript.DestroyBullet(0f);
     }
     void OnDrawGizmosSelected()
