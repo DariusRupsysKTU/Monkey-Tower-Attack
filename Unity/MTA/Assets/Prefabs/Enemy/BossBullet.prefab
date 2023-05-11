@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: -173261769
   m_SortingLayer: 2
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: b39a17c4d2e16d041a9d3d174c707a85, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1a60a09b11b6eae4ca97afa7b943a993, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -151,7 +151,7 @@ MonoBehaviour:
   damage: 1
   destroyAfterTime: 0
   bulletTime: 0.5
-  rockSplashVFX: {fileID: 6174840242094541412, guid: 5131da294bb7cdf46acf5381977b31a3, type: 3}
+  rockSplashVFX: {fileID: 6174840242094541412, guid: b7ca89be8f1817a43881a44780efeb51, type: 3}
   bulletSound: {fileID: 7595129556280123417}
   shootAngle: {x: 0, y: 0}
 --- !u!82 &7595129556280123417
