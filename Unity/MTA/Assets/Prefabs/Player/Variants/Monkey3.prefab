@@ -403,3 +403,24 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &2413004184220858438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5009499456608819798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43c550bcb9310cf4da544176963d6d0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firePoint: {fileID: 7083743793570176831}
+  bulletPrefab: {fileID: 2740807406522992282, guid: 5c7964b3d0c16b54d8a79925c7e77b49, type: 3}
+  shootCooldown: 0
+  shootSound: {fileID: 0}
+--- !u!1 &7083743793570176831 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7030905906319069138, guid: 8851ceaff2f8b644b96aaf56541865ff, type: 3}
+  m_PrefabInstance: {fileID: 278177375126606061}
+  m_PrefabAsset: {fileID: 0}
