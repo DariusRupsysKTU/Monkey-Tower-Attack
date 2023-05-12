@@ -24,13 +24,13 @@ public class Cast : MonoBehaviour
     private void FireBullet()
     {
         //Quaternion angle = new Quaternion();
-        //angle.Euler(1f, 2f, 2f);
-        //for (int j = 0; j < 20; j++)
-        //{
-        //Quaternion angle = firePoint.transform.rotation * (new Quaternion().SetEulerRotation(1f, 2f, 0f));
+        //angle.Euler = Quaternion.Euler(1, 2, 2);
+        for (int j = 0; j < 20; j++)
+        {
+            Quaternion angle = firePoint.transform.rotation * Quaternion.Euler(0f, 0f, 18 * j);
+            Instantiate(bulletPrefab, firePoint.transform.position, angle);
+        }
         //Instantiate(bulletPrefab, firePoint.transform.position, firePoint.transform.rotation);
-        //}
-        Instantiate(bulletPrefab, firePoint.transform.position, firePoint.transform.rotation);
         shootSound.Play();
     }
 

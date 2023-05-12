@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 8757556262490237560}
   - component: {fileID: 7888503501481201007}
   - component: {fileID: 682083972962619511}
-  - component: {fileID: -5081452235099811290}
   - component: {fileID: -6440334485207477486}
   m_Layer: 0
   m_Name: PlayerIceSpike
@@ -135,21 +134,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.04049176, y: 0.040845886}
   m_EdgeRadius: 0
---- !u!114 &-5081452235099811290
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2740807406522992282}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab3ad1e6b4eb1084fa39044bfcdaaa40, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletSpeed: 2
-  damage: 2
-  fireVFX: {fileID: 6174840242094541412, guid: c9f721e77ec3c0f469aa07176e630d2e, type: 3}
 --- !u!114 &-6440334485207477486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,4 +148,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpeed: 3
   damage: 1
-  fireVFX: {fileID: 0}
+  fireVFX: {fileID: 6174840242094541412, guid: 65982443d1bd9254a9a7e13ccbb6eb2c, type: 3}

@@ -417,7 +417,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePoint: {fileID: 7083743793570176831}
   bulletPrefab: {fileID: 2740807406522992282, guid: 5c7964b3d0c16b54d8a79925c7e77b49, type: 3}
-  shootCooldown: 0
+  shootCooldown: 1
   shootSound: {fileID: 0}
 --- !u!1 &7083743793570176831 stripped
 GameObject:
