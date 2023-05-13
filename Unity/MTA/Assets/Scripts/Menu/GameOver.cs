@@ -12,6 +12,8 @@ public class GameOver : MonoBehaviour
     public GameObject gameOverMenu;
     public GameObject inventory;
 
+    private PlayerHealth playerHealthScript;
+
     public Text currencyFinal = null;
     public Text scoreFinal = null;
     public Text levelReached = null;
@@ -28,7 +30,12 @@ public class GameOver : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(PlayerPrefs.GetInt("Dead") == 1)
+        if(playerHealthScript == null)
+        {
+            playerHealthScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
+        }
+
+        if(playerHealthScript.playerHealth <= 0)
         {
             GameOverEnable();
             inventory.SetActive(false);
@@ -45,17 +52,15 @@ public class GameOver : MonoBehaviour
         levelReached.text = "LEVEL: " + enemyManagerScript.levelNr.ToString();
 
         currencyFinal.text = "Money earned: " + PlayerPrefs.GetInt("Total money").ToString() + "$";
-        scoreFinal.text = "Score: " + PlayerPrefs.GetInt("Score").ToString();
+        scoreFinal.text = "Score: " + Inventory.instance.score.ToString(); 
 
         PlayerPrefs.SetInt("SaveDataExists", 0);
-        PlayerPrefs.SetInt("Dead", 0);
 
-        if (PlayerPrefs.GetInt("Score") > PlayerPrefs.GetInt("Highscore"))
+        if (Inventory.instance.score > PlayerPrefs.GetInt("Highscore"))
         {
-            PlayerPrefs.SetInt("Highscore", PlayerPrefs.GetInt("Score"));
+            PlayerPrefs.SetInt("Highscore", Inventory.instance.score);
         }
 
-        PlayerPrefs.SetInt("Score", 0);
         PlayerPrefs.SetInt("Total money", 0);
         PlayerPrefs.SetInt("Level", 1);
     }

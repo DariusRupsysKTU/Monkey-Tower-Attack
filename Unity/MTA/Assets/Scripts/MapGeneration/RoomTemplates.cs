@@ -45,6 +45,7 @@ public class RoomTemplates : MonoBehaviour
 
     public void RestartScene() 
     {
+        PlayerPrefs.SetInt("Level", GameObject.Find("Enemy Manager").GetComponent<EnemyManager>().levelNr);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 

@@ -27,15 +27,6 @@ public class MainMenuManager : MonoBehaviour
 
         Debug.Log(PlayerPrefs.GetInt("SaveDataExists"));
         Debug.Log(PlayerPrefs.GetInt("Total money"));
-
-        if(PlayerPrefs.GetInt("SaveDataExists") == 1)
-        {
-            continueButton.gameObject.SetActive(true);
-        }
-        else
-        {
-            continueButton.gameObject.SetActive(false);
-        }
     }
 
     private void Awake()

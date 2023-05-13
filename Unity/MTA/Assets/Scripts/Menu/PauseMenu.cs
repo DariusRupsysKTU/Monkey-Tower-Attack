@@ -23,15 +23,11 @@ public class PauseMenu : MonoBehaviour
     void Update()
     {
         if (!LoadingScreen.LoadingScreenOn && !Victory.VictoryScreenOn && 
-        !GameOver.GameOverScreenOn && Input.GetKeyDown(KeyCode.Escape))
+        !GameOver.GameOverScreenOn && Input.GetKeyDown(KeyCode.Escape) && !ShopMenu.ShopOpened)
         {
             if (GameIsPaused)
             {
                 Resume();
-            }
-            else if (PlayerPrefs.GetInt("ShopOpen") == 1)
-            {
-                PlayerPrefs.SetInt("ShopOpen", 0);
             }
             else
             {
@@ -52,6 +48,9 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(true);
         EnemyManager enemyManagerScript = GameObject.Find("Enemy Manager").GetComponent<EnemyManager>();
         levelText.text = "LEVEL: " + enemyManagerScript.levelNr.ToString();
+
+        // player damage ir movement speed rodyti
+
         Time.timeScale = 0f;
         GameIsPaused = true;
     }

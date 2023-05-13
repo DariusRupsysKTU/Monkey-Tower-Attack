@@ -48,7 +48,7 @@ public class Options : MonoBehaviour
 
         if (!PlayerPrefs.HasKey("musicVolume"))
         {
-            PlayerPrefs.SetFloat("musicVolume", 1);     
+            PlayerPrefs.SetFloat("musicVolume", 1);
             Load();
         }
         if(!PlayerPrefs.HasKey("sfxVolume"))
@@ -72,7 +72,7 @@ public class Options : MonoBehaviour
 
     public void SetMusicVolume(float volume)
     {
-        music.SetFloat("volume", Mathf.Log10(volume)*20);
+        music.SetFloat("volume", Mathf.Log10(volume) * 20);
         Save();
     }
 

@@ -31,15 +31,16 @@ public class SaveSystemManager : MonoBehaviour
 
         if(PlayerPrefs.GetInt("NewGame") == 0)
         {
-            PlayerPrefs.SetInt("LoadedLevel", 1);
+            //PlayerPrefs.SetInt("LoadedLevel", 1);
             LoadGame();
         }
         else
         {
-            PlayerPrefs.SetInt("LoadedLevel", 0);
+            PlayerPrefs.SetInt("NextLevel", 0);
+            //PlayerPrefs.SetInt("LoadedLevel", 0);
+            PlayerPrefs.SetInt("Total money", 0);
             NewGame();
         }
-        
     }
 
     public void NewGame()
@@ -86,7 +87,6 @@ public class SaveSystemManager : MonoBehaviour
         //Debug.Log("Saved health count = " + gameData.playerHealth);
         
         dataHandler.Save(gameData);
-        PlayerPrefs.SetInt("Score", gameData.score);
     }
 
     private void OnApplicationQuit()

@@ -13,7 +13,6 @@ public class ShopMenu : MonoBehaviour
     {
         ShopOpened = false;
         shopMenuUI.SetActive(false);
-        PlayerPrefs.SetInt("ShopOpen", 0);
     }
     void Update()
     {
@@ -31,12 +30,10 @@ public class ShopMenu : MonoBehaviour
                 if (ShopOpened)
                 {
                     CloseShopWindow();
-                    PlayerPrefs.SetInt("ShopOpen", 0);
                 }
                 else
                 {
                     OpenShopWindow();
-                    PlayerPrefs.SetInt("ShopOpen", 1);
                 }
             }
             if (Input.GetKeyDown(KeyCode.Escape))
@@ -44,6 +41,7 @@ public class ShopMenu : MonoBehaviour
                 if (ShopOpened)
                 {
                     CloseShopWindow();
+                    
                 }
             }
         }
@@ -61,6 +59,11 @@ public class ShopMenu : MonoBehaviour
     {
         Time.timeScale = 1f;
         shopMenuUI.SetActive(false);
+        Invoke(nameof(CloseShop), 0.2f);
+    }
+
+    private void CloseShop()
+    {
         ShopOpened = false;
     }
 

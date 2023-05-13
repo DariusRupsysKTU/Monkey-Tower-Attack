@@ -46,7 +46,6 @@ public class PlayerHealth : MonoBehaviour, DataPersistence
         FindHealthCanvas();    
     }
 
-
     private void Awake()
     {
         if (!instance)
@@ -92,8 +91,6 @@ public class PlayerHealth : MonoBehaviour, DataPersistence
         {
             OnDie.Invoke();
             deathSound.Play();
-
-            PlayerPrefs.SetInt("Dead", 1);
         }
 
         if (playerHealth < prevHealth && (!IsImmune || damagedByBlast))

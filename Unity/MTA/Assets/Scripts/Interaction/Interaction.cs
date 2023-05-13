@@ -28,7 +28,9 @@ public class Interaction : MonoBehaviour
     public bool coin;
     public bool trophy;
 
+    [Header("Others")]
     public bool inRange;
+    public bool victory = false;
 
     void Start() 
     {
@@ -195,7 +197,9 @@ public class Interaction : MonoBehaviour
         {
             EnemyManager enemyManagerScript = GameObject.Find("Enemy Manager").GetComponent<EnemyManager>();
             enemyManagerScript.levelNr++;
-            PlayerPrefs.SetInt("Victory", 1);
+            
+            GameObject.Find("VictoryCanvas").GetComponent<Victory>().victory = true;
+
             PlayTrophyVFX();
         }
     }

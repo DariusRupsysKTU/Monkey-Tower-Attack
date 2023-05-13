@@ -42,11 +42,6 @@ public class EnemyHealth : MonoBehaviour
                 anim.SetBool("isEnraged", true);
                 bossEnraged = true;
             }
-
-            /*if(enemyHealth == 0)
-            {
-                PlayerPrefs.SetInt("Victory", 1);
-            }*/
         }
 
 
@@ -63,19 +58,18 @@ public class EnemyHealth : MonoBehaviour
 
             this.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
 
-            int score = PlayerPrefs.GetInt("Score") + 100;
-            PlayerPrefs.SetInt("Score", score);
+            
+            Inventory inventoryManagerScript = GameObject.Find("InventoryCanvas").GetComponent<Inventory>();
+
+            //inventoryManagerScript.IncreaseScore(100);
+
+            Inventory.instance.IncreaseScore((int)100);
 
             if (!itemSpawned)
             {
                 GetComponent<LootBag>().InstantiateLoot(transform.position);
                 itemSpawned = true;
             }
-
-            /*if(isBoss)
-            {
-                PlayerPrefs.SetInt("Victory", 1);
-            }*/
 
             float deathTime = 0.05f;
             Invoke(nameof(DeathAnimation), deathTime);

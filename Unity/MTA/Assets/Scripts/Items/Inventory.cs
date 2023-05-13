@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour, DataPersistence
@@ -34,7 +35,7 @@ public class Inventory : MonoBehaviour, DataPersistence
 
     void Update()
     {
-        // Checks if user clicked button 1
+        /*// Checks if user clicked button 1
         if (Input.GetKeyDown(key1))
         {
             FadeToColor(item1.colors.pressedColor, item1);
@@ -43,51 +44,14 @@ public class Inventory : MonoBehaviour, DataPersistence
         else if (Input.GetKeyUp(key1))
         {
             FadeToColor(item1.colors.normalColor, item1);
-        }
-
-        // Checks if user clicked button 2
-        if (Input.GetKeyDown(key2))
-        {
-            FadeToColor(item2.colors.pressedColor, item2);
-            item2.onClick.Invoke();
-        }
-        else if(Input.GetKeyUp(key2))
-        {
-            FadeToColor(item2.colors.normalColor, item2);
-        }
-
-        // Checks if user clicked button 3
-        if (Input.GetKeyDown(key3))
-        {
-            FadeToColor(item3.colors.pressedColor, item3);
-            item3.onClick.Invoke();
-        }
-        else if(Input.GetKeyUp(key3))
-        {
-            FadeToColor(item3.colors.normalColor, item3);
-        }
-
-        // Checks if user clicked button 4
-        if (Input.GetKeyDown(key4))
-        {
-            FadeToColor(item4.colors.pressedColor, item4);
-            item4.onClick.Invoke();
-        }
-        else if(Input.GetKeyUp(key4))
-        {
-            FadeToColor(item4.colors.normalColor, item4);
-        }
-
-        // Updates the player score
-        score = PlayerPrefs.GetInt("Score");
-        scoreUI.text = "Score: " + PlayerPrefs.GetInt("Score").ToString();
+        }*/
     }
 
-    void FadeToColor(Color color, Button button)
+    /*void FadeToColor(Color color, Button button)
     {
         Graphic graphic = button.GetComponent<Graphic>();
         graphic.CrossFadeColor(color, button.colors.fadeDuration, true, true);
-    }
+    }*/
 
     private void Awake()
     {
@@ -129,13 +93,24 @@ public class Inventory : MonoBehaviour, DataPersistence
         currencyUI.text = "Money: " + currency + "$";
     }
 
+    [Header("Score")]
+    public int score = 0;
+    public Text scoreUI = null;
+    public Text highscoreUI = null;
+
+    public void IncreaseScore(int amount)
+    {
+        score += amount;
+        scoreUI.text = "Score: " + score.ToString();
+    }
+
     public void LoadData(GameData data)
     {
         this.currency = data.currency;
         this.totalCurrency = data.totalCurrency;
         this.score = data.score;
         currencyUI.text = "Money: " + this.currency + "$";
-        PlayerPrefs.SetInt("Score", score);
+        scoreUI.text = "Score: " + score.ToString();
     }
 
     public void SaveData(ref GameData data)
@@ -144,9 +119,4 @@ public class Inventory : MonoBehaviour, DataPersistence
         data.totalCurrency = this.totalCurrency;
         data.score = this.score;
     }
-
-    [Header("Score")]
-    public int score = 0;
-    public Text scoreUI = null;
-    public Text highscoreUI = null;
 }
