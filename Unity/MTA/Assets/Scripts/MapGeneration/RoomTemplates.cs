@@ -43,7 +43,7 @@ public class RoomTemplates : MonoBehaviour
         }
     }
 
-    void RestartScene() 
+    public void RestartScene() 
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }

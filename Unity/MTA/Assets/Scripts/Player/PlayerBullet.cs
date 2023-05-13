@@ -7,7 +7,8 @@ public class PlayerBullet : MonoBehaviour, DataPersistence
 {
     [SerializeField] float bulletSpeed;
     [SerializeField] int damage;
-    [SerializeField] ParticleSystem rockSplashVFX;
+    [SerializeField] float flyTime;
+    public ParticleSystem splashVFX;
 
     private Rigidbody2D bulletRB;
     private GameObject player;
@@ -18,9 +19,8 @@ public class PlayerBullet : MonoBehaviour, DataPersistence
         player = GameObject.FindGameObjectWithTag("Player");
         bulletRB.transform.localScale = new Vector3(1f + (damage * 0.1f), 1f + (damage * 0.1f), 1f + (damage * 0.1f));
         bulletRB.velocity = transform.up * bulletSpeed; 
-        Debug.Log(transform.up);
-        bulletRB.transform.eulerAngles = new Vector3(0f, 0f, bulletRB.transform.eulerAngles.z + 180f); 
-        DestroyBullet(0.5f);
+        bulletRB.transform.eulerAngles = new Vector3(0f, 0f, bulletRB.transform.eulerAngles.z + 90f); 
+        DestroyBullet(flyTime);
     }
 
     private void OnTriggerEnter2D(Collider2D other) 
@@ -76,17 +76,17 @@ public class PlayerBullet : MonoBehaviour, DataPersistence
         damage = 1;
     }
 
-    private void PlayRockSplashVFX()
+    private void PlaySplashVFX()
     {
-        ParticleSystem vfx = Instantiate(rockSplashVFX, this.transform.position, Quaternion.identity);
+        ParticleSystem vfx = Instantiate(splashVFX, this.transform.position, Quaternion.identity);
         vfx.transform.localScale = new Vector3(1f + (damage * 0.1f), 1f + (damage * 0.1f), 1f + (damage * 0.1f));
         vfx.Play();
-        Destroy(vfx.gameObject, rockSplashVFX.main.duration);
+        Destroy(vfx.gameObject, splashVFX.main.duration);
     }
 
     private void DestroyBullet(float waitTime)
     {
-        Invoke(nameof(PlayRockSplashVFX), waitTime);
+        Invoke(nameof(PlaySplashVFX), waitTime);
         Destroy(gameObject, waitTime);
     }
 

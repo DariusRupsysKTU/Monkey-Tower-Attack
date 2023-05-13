@@ -9,6 +9,7 @@ public class DoorManager : MonoBehaviour
     public GameObject enemyManager;
     public EnemyManager enemyManagerScript;
     public EnemySpawner enemySpawnerScript;
+    public RoomTemplates roomTemplatesScript;
     public GameObject player;
     public List<GameObject> doors;
     public int enemyCount;
@@ -32,6 +33,7 @@ public class DoorManager : MonoBehaviour
         index = this.transform.GetSiblingIndex();
         enemyManager = GameObject.Find("Enemy Manager");
         enemyManagerScript = enemyManager.GetComponent<EnemyManager>();
+        roomTemplatesScript = GameObject.Find("Room Templates").GetComponent<RoomTemplates>();
         // Invoke(nameof(GetInfo), setCalculateAfterTime);
 
         GetRoomDoors();
@@ -154,7 +156,14 @@ public class DoorManager : MonoBehaviour
             }
             if (door.TryGetComponent<LocateSynchronizer>(out thisLocator))
             {
-                thisLocator.doorsWithSynchronizer.GetComponent<DoorSynchronizer>().openBothDoors = false;
+                try 
+                {
+                    thisLocator.doorsWithSynchronizer.GetComponent<DoorSynchronizer>().openBothDoors = false;
+                }
+                catch
+                {
+                    roomTemplatesScript.RestartScene();
+                }
             }
         }
     }

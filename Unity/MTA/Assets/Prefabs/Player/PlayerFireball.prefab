@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2070591437271121832}
+  - component: {fileID: 6884659419175917506}
   - component: {fileID: 8757556262490237560}
   - component: {fileID: 7888503501481201007}
   - component: {fileID: 682083972962619511}
-  - component: {fileID: -5081452235099811290}
   - component: {fileID: -8484062557190313707}
   m_Layer: 0
   m_Name: PlayerFireball
@@ -36,6 +36,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6884659419175917506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2740807406522992282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e80d44460a762c842aaf9254d201041b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletSpeed: 2
+  damage: 2
+  flyTime: 5
+  splashVFX: {fileID: 6174840242094541412, guid: c9f721e77ec3c0f469aa07176e630d2e, type: 3}
 --- !u!212 &8757556262490237560
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -135,22 +151,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.04049176, y: 0.040845886}
   m_EdgeRadius: 0
---- !u!114 &-5081452235099811290
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2740807406522992282}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab3ad1e6b4eb1084fa39044bfcdaaa40, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletSpeed: 2
-  damage: 2
-  fireVFX: {fileID: 6174840242094541412, guid: c9f721e77ec3c0f469aa07176e630d2e, type: 3}
-  blastPrefab: {fileID: 6946285813728771451, guid: 1c00c77f58725a94a9aa14e69b8658b0, type: 3}
 --- !u!95 &-8484062557190313707
 Animator:
   serializedVersion: 5

@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2070591437271121832}
+  - component: {fileID: 2946096487476311195}
   - component: {fileID: 8757556262490237560}
   - component: {fileID: 7888503501481201007}
   - component: {fileID: 682083972962619511}
-  - component: {fileID: 2946096487476311195}
   m_Layer: 0
   m_Name: PlayerBullet
   m_TagString: PlayerBullet
@@ -35,6 +35,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2946096487476311195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2740807406522992282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e80d44460a762c842aaf9254d201041b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletSpeed: 3
+  damage: 1
+  flyTime: 0.5
+  splashVFX: {fileID: 6174840242094541412, guid: 5131da294bb7cdf46acf5381977b31a3, type: 3}
 --- !u!212 &8757556262490237560
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -134,18 +150,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.04049176, y: 0.040845886}
   m_EdgeRadius: 0
---- !u!114 &2946096487476311195
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2740807406522992282}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e80d44460a762c842aaf9254d201041b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletSpeed: 3
-  damage: 1
-  rockSplashVFX: {fileID: 6174840242094541412, guid: 5131da294bb7cdf46acf5381977b31a3, type: 3}

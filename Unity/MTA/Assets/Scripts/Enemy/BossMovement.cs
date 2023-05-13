@@ -53,6 +53,8 @@ public class BossMovement : MonoBehaviour
     public float startTimeBetweenShots;
     private float timeBetweenSpawns;
     public float startTimeBetweenSpawns; 
+
+    private GameObject pauseMenu;
     
     private void Awake() 
     {
@@ -111,7 +113,15 @@ public class BossMovement : MonoBehaviour
             }
         }
 
-        KillEveryBossInRoomCheat();
+        if (pauseMenu == null)
+        {
+            pauseMenu = GameObject.Find("PauseCanvas");
+        }
+
+        if (pauseMenu != null && pauseMenu.GetComponent<PauseMenu>().cheatsOn)
+        {
+            KillEveryBossInRoomCheat();
+        }
     }
 
     private void SpawnPawns(bool isEnraged)
@@ -336,7 +346,6 @@ public class BossMovement : MonoBehaviour
         if (other.transform.tag == "Player" && bossHealthScript.enemyHealth > 0)
         {
             playerHealth.DamagePlayer(1, false);
-            thisBossRB.constraints = RigidbodyConstraints2D.FreezeAll;
         }
     }
 
@@ -345,13 +354,7 @@ public class BossMovement : MonoBehaviour
         if (other.transform.tag == "Player" && bossHealthScript.enemyHealth > 0)
         {
             playerHealth.DamagePlayer(1, false);
-            thisBossRB.constraints = RigidbodyConstraints2D.FreezeAll;
         }
-    }
-
-    private void OnCollisionExit2D(Collision2D other) 
-    {
-        thisBossRB.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 
     private void KillEveryBossInRoomCheat()

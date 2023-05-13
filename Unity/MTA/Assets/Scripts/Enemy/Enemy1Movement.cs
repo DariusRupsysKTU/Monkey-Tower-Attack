@@ -38,6 +38,8 @@ public class Enemy1Movement : MonoBehaviour
     private Vector2 point2 = Vector2.zero;
     private bool atPoint1 = true;
     private bool foundPoint2 = false;
+
+    private GameObject pauseMenu;
     
     private void Awake() 
     {
@@ -77,7 +79,15 @@ public class Enemy1Movement : MonoBehaviour
             Explode();
         }
 
-        KillEveryEnemy1InRoomCheat();
+        if (pauseMenu == null)
+        {
+            pauseMenu = GameObject.Find("PauseCanvas");
+        }
+
+        if (pauseMenu != null && pauseMenu.GetComponent<PauseMenu>().cheatsOn)
+        {
+            KillEveryEnemy1InRoomCheat();
+        }
     }
 
     private void FindPlayer()

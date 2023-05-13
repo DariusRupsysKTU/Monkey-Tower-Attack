@@ -47,6 +47,8 @@ public class Enemy2Movement : MonoBehaviour
     private bool foundPoint2 = false;
     private float spawnRange = 0.1f;
 
+    private GameObject pauseMenu;
+
     private void Start()
     {
         if (this.transform.parent.gameObject.TryGetComponent<EnemySpawner>(out thisEnemySpawnerScript))
@@ -86,7 +88,15 @@ public class Enemy2Movement : MonoBehaviour
             Shoot();
         }
 
-        KillEveryEnemy2InRoomCheat();
+        if (pauseMenu == null)
+        {
+            pauseMenu = GameObject.Find("PauseCanvas");
+        }
+
+        if (pauseMenu != null && pauseMenu.GetComponent<PauseMenu>().cheatsOn)
+        {
+            KillEveryEnemy2InRoomCheat();
+        }
     }
     private void Shoot()
     {

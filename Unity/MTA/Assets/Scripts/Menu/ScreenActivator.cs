@@ -15,7 +15,11 @@ public class ScreenActivator : MonoBehaviour
     {
         opposite = !startActive;
         screenUI.SetActive(startActive);
-        StartCoroutine(nameof(ChangeScreen));
+
+        if (screenTime > 0)
+        {
+            StartCoroutine(nameof(ChangeScreen));
+        }
     }
 
     IEnumerator ChangeScreen()

@@ -34,6 +34,7 @@ public class PlayerHealth : MonoBehaviour, DataPersistence
     private Color startColor;
 
     private bool immortalCheatOn = false;
+    private GameObject pauseMenu;
 
     private void Start() 
     {
@@ -109,7 +110,15 @@ public class PlayerHealth : MonoBehaviour, DataPersistence
             playerSpriteRenderer.color = startColor;
         }
 
-        ImmunityCheat();
+        if (pauseMenu == null)
+        {
+            pauseMenu = GameObject.Find("PauseCanvas");
+        }
+
+        if (pauseMenu != null && pauseMenu.GetComponent<PauseMenu>().cheatsOn)
+        {
+            ImmunityCheat();
+        }
     }
 
     private void FindHealthCanvas()
@@ -190,6 +199,7 @@ public class PlayerHealth : MonoBehaviour, DataPersistence
         if (immortalCheatOn)
         {
             playerHealth = 5;
+            prevHealth = 5;
         }
 
         // Debug.Log(prevHealth + " " + playerHealth);

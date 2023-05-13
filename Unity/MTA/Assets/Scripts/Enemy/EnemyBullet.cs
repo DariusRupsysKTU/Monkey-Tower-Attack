@@ -9,7 +9,7 @@ public class EnemyBullet : MonoBehaviour
     public int damage;
     [SerializeField] bool destroyAfterTime;
     [SerializeField] float bulletTime;
-    [SerializeField] ParticleSystem rockSplashVFX;
+    public ParticleSystem rockSplashVFX;
 
     [SerializeField] private AudioSource bulletSound;
 

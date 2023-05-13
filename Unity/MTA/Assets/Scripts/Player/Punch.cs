@@ -17,6 +17,8 @@ public class Punch : MonoBehaviour, DataPersistence
     public Transform DownPuchPoint;
     private Transform LastPP;
     public GameObject bulletPrefab;
+    public ParticleSystem lightningVFX;
+    public ParticleSystem torpedoVFX;
     // Update is called once per frame
     void Update()
     {
@@ -120,8 +122,18 @@ public class Punch : MonoBehaviour, DataPersistence
     {
         parrySound.Play();
         EnemyBullet Enemy3BulletScript = other.GetComponent<EnemyBullet>();
+        // Quaternion rotation = Quaternion.Euler(LastPP.transform.rotation.x, LastPP.transform.rotation.y, LastPP.transform.rotation.z - 90f);
         GameObject parriedBullet = Instantiate(bulletPrefab, LastPP.transform.position, LastPP.transform.rotation);
         parriedBullet.GetComponent<SpriteRenderer>().sprite = other.gameObject.GetComponent<SpriteRenderer>().sprite;
+        if (Enemy3BulletScript.rockSplashVFX.name.Contains("Lightning"))
+        {
+            parriedBullet.GetComponent<PlayerBullet>().splashVFX = lightningVFX;
+        }
+        else
+        {
+            parriedBullet.GetComponent<PlayerBullet>().splashVFX = torpedoVFX;
+        }
+
         Enemy3BulletScript.DestroyBullet(0f);
     }
     void OnDrawGizmosSelected()

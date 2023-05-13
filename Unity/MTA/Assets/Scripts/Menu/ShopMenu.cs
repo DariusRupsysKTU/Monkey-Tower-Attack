@@ -84,11 +84,6 @@ public class ShopMenu : MonoBehaviour
                     PlayerBullet bulletScript = player.GetComponent<Shoot>().bulletPrefab.GetComponent<PlayerBullet>();
                     bulletScript.IncreaseDamage();
                 }
-                else
-                {
-                    PlayerFireball bulletScript = player.GetComponent<Shoot>().bulletPrefab.GetComponent<PlayerFireball>();
-                    bulletScript.IncreaseDamage();
-                }
                 Inventory.instance.DecreaseCurrency(100);
             }
             else if (player.GetComponent<Punch>().enabled)

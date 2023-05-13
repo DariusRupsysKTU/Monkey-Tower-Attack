@@ -11,6 +11,8 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenuUI;
     public Text levelText;
 
+    public bool cheatsOn = false;
+
     private void Start()
     {
         GameIsPaused = false;
@@ -63,5 +65,11 @@ public class PauseMenu : MonoBehaviour
     {
         SceneManager.LoadScene(0);
         SaveSystemManager.instance.SaveGame();
+    }
+
+    public void TurnCheats()
+    {
+        bool opposite = !cheatsOn;
+        cheatsOn = opposite;
     }
 }

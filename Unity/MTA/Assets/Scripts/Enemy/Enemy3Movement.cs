@@ -46,6 +46,8 @@ public class Enemy3Movement : MonoBehaviour
     private int spawnedCount = 0;
 
     private bool tooCloseToWall = false;
+
+    private GameObject pauseMenu;
     
     private void Awake() 
     {
@@ -91,7 +93,15 @@ public class Enemy3Movement : MonoBehaviour
             Divide();
         }
 
-        KillEveryEnemy3InRoomCheat();
+        if (pauseMenu == null)
+        {
+            pauseMenu = GameObject.Find("PauseCanvas");
+        }
+
+        if (pauseMenu != null && pauseMenu.GetComponent<PauseMenu>().cheatsOn)
+        {
+            KillEveryEnemy3InRoomCheat();
+        }
     }
 
     private void Divide()
