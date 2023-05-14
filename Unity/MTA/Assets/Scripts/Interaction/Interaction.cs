@@ -195,9 +195,6 @@ public class Interaction : MonoBehaviour
         }
         else if (trophy)
         {
-            EnemyManager enemyManagerScript = GameObject.Find("Enemy Manager").GetComponent<EnemyManager>();
-            enemyManagerScript.levelNr++;
-            
             GameObject.Find("VictoryCanvas").GetComponent<Victory>().victory = true;
 
             PlayTrophyVFX();

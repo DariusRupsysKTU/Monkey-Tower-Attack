@@ -486,6 +486,7 @@ MonoBehaviour:
   coin: 0
   trophy: 0
   inRange: 0
+  victory: 0
 --- !u!114 &82615824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4040,8 +4041,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1165157654}
-        m_TargetAssemblyTypeName: GameOver, Assembly-CSharp
+      - m_Target: {fileID: 1345687846}
+        m_TargetAssemblyTypeName: Victory, Assembly-CSharp
         m_MethodName: PressedBackToMainMenu
         m_Mode: 1
         m_Arguments:
@@ -9571,6 +9572,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   victoryMenu: {fileID: 1403421893}
   inventory: {fileID: 1606279139}
+  victory: 0
   currencyFinal: {fileID: 1576019895}
   scoreFinal: {fileID: 1170127736}
   levelReached: {fileID: 1747024465}

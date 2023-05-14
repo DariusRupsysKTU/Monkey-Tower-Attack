@@ -57,10 +57,10 @@ public class MainMenuManager : MonoBehaviour
 
     public void LoadGame()
     {
-        SceneManager.LoadScene(1);
-        SaveSystemManager.instance.LoadGame();
         Time.timeScale = 1f;
         PlayerPrefs.SetInt("NewGame", 0);
+        SceneManager.LoadScene(1);
+        SaveSystemManager.instance.LoadGame();
     }
 
     public void BackToMainMenu()

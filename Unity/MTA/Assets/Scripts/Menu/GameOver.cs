@@ -62,7 +62,6 @@ public class GameOver : MonoBehaviour
         }
 
         PlayerPrefs.SetInt("Total money", 0);
-        PlayerPrefs.SetInt("Level", 1);
     }
 
     public void PressedBackToMainMenu()

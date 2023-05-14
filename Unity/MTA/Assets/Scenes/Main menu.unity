@@ -6522,8 +6522,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainMenuUI: {fileID: 540993383}
   optionMenuUI: {fileID: 940708824}
-  graphicsUI: {fileID: 0}
-  audioUI: {fileID: 0}
+  graphicsUI: {fileID: 1755211218}
+  audioUI: {fileID: 1961626279}
   monkeySelectionMenuUI: {fileID: 1227411385}
   continueButton: {fileID: 1612505848}
   selectedMonkey: 0

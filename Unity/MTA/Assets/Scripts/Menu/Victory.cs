@@ -20,11 +20,6 @@ public class Victory : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        /*if(PlayerPrefs.GetInt("LoadedLevel") == 1)
-        {
-            PlayerPrefs.SetInt("NextLevel", 0);
-        }*/
-
         VictoryScreenOn = false;
         victoryMenu.SetActive(false);
         inventory.SetActive(true);
@@ -56,27 +51,22 @@ public class Victory : MonoBehaviour
         {
             PlayerPrefs.SetInt("Highscore", Inventory.instance.score);
         }
+
+        enemyManagerScript.increaseLevel();
+        victory = false;
     }
 
     public void PressedNextLevel()
     {        
-        EnemyManager enemyManagerScript = GameObject.Find("Enemy Manager").GetComponent<EnemyManager>();
-
-        PlayerPrefs.SetInt("NextLevel", 1);
         PlayerPrefs.SetInt("NewGame", 0);
-        PlayerPrefs.SetInt("Level", enemyManagerScript.levelNr);
 
         SceneManager.LoadScene(1);
+        SaveSystemManager.instance.SaveGame();
     }
 
     public void PressedBackToMainMenu()
     {
-        EnemyManager enemyManagerScript = GameObject.Find("Enemy Manager").GetComponent<EnemyManager>();
-
-        PlayerPrefs.SetInt("NextLevel", 0);
-        //PlayerPrefs.SetInt("LoadedLevel", 0);
-
-        PlayerPrefs.SetInt("Level", enemyManagerScript.levelNr);
         SceneManager.LoadScene(0);
+        SaveSystemManager.instance.SaveGame();
     }
 }

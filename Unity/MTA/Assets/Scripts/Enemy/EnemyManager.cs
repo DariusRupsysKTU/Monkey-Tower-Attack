@@ -37,14 +37,10 @@ public class EnemyManager : MonoBehaviour, DataPersistence
         if (PlayerPrefs.GetInt("NextLevel") == 1)
         {
             levelNr = PlayerPrefs.GetInt("Level");
-            Debug.Log(levelNr.ToString());
-            //PlayerPrefs.SetInt("LoadedLevel", 1);
         }
 
-        Debug.Log("po if " + levelNr.ToString());
         roomTemplates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTemplates>();
         Invoke(nameof(GetRooms), waitTime);
-        Debug.Log("po iskvietimo " + levelNr.ToString());
     }
 
     void Update()
@@ -160,6 +156,11 @@ public class EnemyManager : MonoBehaviour, DataPersistence
     void GetRooms()
     {
         rooms = roomTemplates.rooms;
+    }
+
+    public void increaseLevel()
+    {
+        levelNr++;
     }
 
     public void LoadData(GameData data)

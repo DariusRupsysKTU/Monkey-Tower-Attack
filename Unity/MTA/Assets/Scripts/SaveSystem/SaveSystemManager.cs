@@ -31,13 +31,10 @@ public class SaveSystemManager : MonoBehaviour
 
         if(PlayerPrefs.GetInt("NewGame") == 0)
         {
-            //PlayerPrefs.SetInt("LoadedLevel", 1);
             LoadGame();
         }
         else
         {
-            PlayerPrefs.SetInt("NextLevel", 0);
-            //PlayerPrefs.SetInt("LoadedLevel", 0);
             PlayerPrefs.SetInt("Total money", 0);
             NewGame();
         }
