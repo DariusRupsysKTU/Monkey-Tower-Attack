@@ -11,6 +11,10 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenuUI;
     public Text levelText;
 
+    public Text damageText;
+    public Text speedText;
+    public Text cooldownText;
+
     public bool cheatsOn = false;
 
     private void Start()
@@ -48,6 +52,33 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(true);
         EnemyManager enemyManagerScript = GameObject.Find("Enemy Manager").GetComponent<EnemyManager>();
         levelText.text = "LEVEL: " + enemyManagerScript.levelNr.ToString();
+
+        // gets player stats
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+
+        if(player.transform.name.Contains("1"))
+        {
+            damageText.text = "Damage: " + player.GetComponent<Shoot>().bulletPrefab.GetComponent<PlayerBullet>().damage.ToString();
+            speedText.text = "Speed: " + player.GetComponent<PlayerMovement>().moveSpeed.ToString();
+            cooldownText.text = "";
+        }
+        else if(player.transform.name.Contains("2"))
+        {
+            damageText.text = "Damage: " + player.GetComponent<Punch>().damage.ToString();
+            speedText.text = "Speed: " + player.GetComponent<PlayerMovement>().moveSpeed.ToString();
+            cooldownText.text = "";
+        }
+        else 
+        {
+            if(player.GetComponent<Shoot>().bulletPrefab.name.Contains("Fireball"))
+            {
+                damageText.text = "Damage: " + player.GetComponent<Shoot>().bulletPrefab.GetComponent<PlayerBullet>().damage.ToString();
+            }
+
+            speedText.text = "Speed: " + player.GetComponent<PlayerMovement>().moveSpeed.ToString();
+
+            cooldownText.text = "Cooldown: " + player.GetComponent<Shoot>().shootCooldown.ToString();
+        }
 
         // player damage ir movement speed rodyti
 

@@ -17,6 +17,8 @@ public class GameData
 
     public float movementSpeed;
 
+    public float cooldown;
+
     public int playerHealth;
 
     public GameData()
@@ -28,7 +30,9 @@ public class GameData
         
         this.bulletDamage = 1;
         this.punchDamage = 2;
-        this.fireballDamage = 1;
+        this.fireballDamage = 2;
+
+        this.cooldown = 2;
 
         this.movementSpeed = 1f;
 

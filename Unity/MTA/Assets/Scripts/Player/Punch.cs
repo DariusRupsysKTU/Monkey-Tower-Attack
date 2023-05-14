@@ -150,11 +150,21 @@ public class Punch : MonoBehaviour, DataPersistence
 
     public void LoadData(GameData data)
     {
-        this.damage = data.punchDamage;
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+
+        if(player.transform.name.Contains("2"))
+        {
+            this.damage = data.punchDamage;
+        }
     }
 
     public void SaveData(ref GameData data)
     {
-        data.punchDamage = this.damage;
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+
+        if (player.transform.name.Contains("2"))
+        {
+            data.punchDamage = this.damage;
+        }
     }
 }

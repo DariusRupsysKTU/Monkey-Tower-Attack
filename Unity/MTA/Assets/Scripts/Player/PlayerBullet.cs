@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class PlayerBullet : MonoBehaviour, DataPersistence
 {
     [SerializeField] float bulletSpeed;
-    [SerializeField] int damage;
+    [SerializeField] public int damage;
     [SerializeField] float flyTime;
     public ParticleSystem splashVFX;
 
@@ -92,11 +92,29 @@ public class PlayerBullet : MonoBehaviour, DataPersistence
 
     public void LoadData(GameData data)
     {
-        this.damage = data.bulletDamage;
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+
+        if (player.GetComponent<Shoot>().bulletPrefab.name.Contains("Bullet"))
+        {
+            this.damage = data.bulletDamage;
+        }
+        else if (player.GetComponent<Shoot>().bulletPrefab.name.Contains("Fireball"))
+        {
+            this.damage = data.fireballDamage;
+        }
     }
 
     public void SaveData(ref GameData data)
     {
-        data.bulletDamage = this.damage;
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+
+        if (player.GetComponent<Shoot>().bulletPrefab.name.Contains("Bullet"))
+        {
+            data.bulletDamage = this.damage;
+        }
+        else if(player.GetComponent<Shoot>().bulletPrefab.name.Contains("Fireball"))
+        {
+            data.fireballDamage = this.damage;
+        }
     }
 }

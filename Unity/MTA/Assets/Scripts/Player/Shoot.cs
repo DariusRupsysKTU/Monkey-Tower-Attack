@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shoot : MonoBehaviour
+public class Shoot : MonoBehaviour, DataPersistence
 {
     [SerializeField] KeyCode shootKey;
     [SerializeField] GameObject firePoint;
@@ -38,5 +38,25 @@ public class Shoot : MonoBehaviour
     public void DecreaseCooldown()
     {
         shootCooldown = shootCooldown - 0.2f;
+    }
+
+    public void LoadData(GameData data)
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+
+        if (player.GetComponent<Shoot>().bulletPrefab.name.Contains("Fireball"))
+        {
+            this.shootCooldown = data.cooldown;
+        }
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+
+        if (player.GetComponent<Shoot>().bulletPrefab.name.Contains("Fireball"))
+        {
+            data.cooldown = this.shootCooldown;
+        }
     }
 }
