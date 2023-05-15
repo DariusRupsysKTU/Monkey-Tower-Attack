@@ -80,7 +80,7 @@ public class ShopMenu : MonoBehaviour
     {
         if (Inventory.instance.currency >= 100)
         {
-            if (player.GetComponent<Shoot>().enabled)
+            if (player.GetComponent<Shoot>() != null)
             {
                 if (player.GetComponent<Shoot>().bulletPrefab.GetComponent<PlayerBullet>() != null)
                 {
@@ -89,7 +89,7 @@ public class ShopMenu : MonoBehaviour
                 }
                 Inventory.instance.DecreaseCurrency(100);
             }
-            else if (player.GetComponent<Punch>().enabled)
+            else if (player.GetComponent<Punch>() != null)
             {
                 player.GetComponent<Punch>().IncreaseDamage();
                 Inventory.instance.DecreaseCurrency(100);

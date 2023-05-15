@@ -126,6 +126,7 @@ MonoBehaviour:
   shootKey: 103
   firePoint: {fileID: 2758478081405244794}
   bulletPrefab: {fileID: 2740807406522992282, guid: b050b0ab14a3d544d9f4401bdf4bd6b0, type: 3}
+  bulletCount: 1
   shootCooldown: 0
   shootSound: {fileID: 6300272708814446465}
 --- !u!212 &109150129915875345

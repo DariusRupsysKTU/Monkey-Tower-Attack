@@ -164,7 +164,7 @@ public class Interaction : MonoBehaviour
         }
         else if (doubleDamage)
         {
-            if (player.GetComponent<Shoot>().enabled)
+            if (player.GetComponent<Shoot>() != null)
             {
                 if (player.GetComponent<Shoot>().bulletPrefab.GetComponent<PlayerBullet>() != null)
                 {
@@ -174,7 +174,7 @@ public class Interaction : MonoBehaviour
                 }
                 PlayDoubleDamageVFX();
             }
-            else if (player.GetComponent<Punch>().enabled)
+            else if (player.GetComponent<Punch>() != null)
             {
                 Punch punchScript = player.GetComponent<Punch>();
                 punchScript.EnableDoubleDamage(5f);
