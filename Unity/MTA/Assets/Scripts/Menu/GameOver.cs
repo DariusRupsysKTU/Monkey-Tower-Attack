@@ -18,6 +18,10 @@ public class GameOver : MonoBehaviour
     public Text scoreFinal = null;
     public Text levelReached = null;
 
+    public Text damageText;
+    public Text speedText;
+    public Text cooldownText;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,6 +51,33 @@ public class GameOver : MonoBehaviour
         gameOverMenu.SetActive(true);
         Time.timeScale = 0f;
         GameOverScreenOn = true;
+
+        // gets player stats
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+
+        if (player.transform.name.Contains("1"))
+        {
+            damageText.text = "Damage: " + player.GetComponent<Shoot>().bulletPrefab.GetComponent<PlayerBullet>().damage.ToString();
+            speedText.text = "Speed: " + player.GetComponent<PlayerMovement>().moveSpeed.ToString();
+            cooldownText.text = "";
+        }
+        else if (player.transform.name.Contains("2"))
+        {
+            damageText.text = "Damage: " + player.GetComponent<Punch>().damage.ToString();
+            speedText.text = "Speed: " + player.GetComponent<PlayerMovement>().moveSpeed.ToString();
+            cooldownText.text = "";
+        }
+        else
+        {
+            if (player.GetComponent<Shoot>().bulletPrefab.name.Contains("Fireball"))
+            {
+                damageText.text = "Damage: " + player.GetComponent<Shoot>().bulletPrefab.GetComponent<PlayerBullet>().damage.ToString();
+            }
+
+            speedText.text = "Speed: " + player.GetComponent<PlayerMovement>().moveSpeed.ToString();
+
+            cooldownText.text = "Cooldown: " + player.GetComponent<Shoot>().shootCooldown.ToString();
+        }
 
         EnemyManager enemyManagerScript = GameObject.Find("Enemy Manager").GetComponent<EnemyManager>();
         levelReached.text = "LEVEL: " + enemyManagerScript.levelNr.ToString();

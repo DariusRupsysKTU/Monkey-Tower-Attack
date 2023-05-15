@@ -10,6 +10,9 @@ public class SaveSystemManager : MonoBehaviour
     [SerializeField] private string fileName;
     [SerializeField] private bool useEncryption;
 
+    [SerializeField] private PlayerBullet bulletPrefab;
+    [SerializeField] private PlayerBullet fireballPrefab;
+
     private GameData gameData;
     private List<DataPersistence> dataPersistenceObjects;
     private FileDataHandler dataHandler;
@@ -43,6 +46,10 @@ public class SaveSystemManager : MonoBehaviour
     public void NewGame()
     {
         this.gameData = new GameData();
+
+        bulletPrefab.damage = gameData.bulletDamage;
+        fireballPrefab.damage = gameData.fireballDamage;
+
         PlayerPrefs.SetInt("SaveDataExists", 1);
         SaveGame();
     }

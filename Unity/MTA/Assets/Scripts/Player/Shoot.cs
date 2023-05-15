@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class Shoot : MonoBehaviour, DataPersistence
@@ -22,6 +24,8 @@ public class Shoot : MonoBehaviour, DataPersistence
             nextShot = Time.time + shootCooldown;
             FireBullet();
         }
+
+        shootCooldown = Mathf.Round(shootCooldown*10) * 0.1f;
     }
 
     private void FireBullet()

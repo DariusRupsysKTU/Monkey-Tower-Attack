@@ -50,6 +50,7 @@ public class MainMenuManager : MonoBehaviour
     {
         PlayerPrefs.SetInt(nameof(selectedMonkey), selectedMonkey);
         PlayerPrefs.SetInt("NewGame", 1);
+
         SceneManager.LoadScene(1);
         Time.timeScale = 1f;
         SaveSystemManager.instance.NewGame();

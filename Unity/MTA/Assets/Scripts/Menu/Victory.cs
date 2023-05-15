@@ -17,6 +17,10 @@ public class Victory : MonoBehaviour
     public Text scoreFinal = null;
     public Text levelReached = null;
 
+    public Text damageText;
+    public Text speedText;
+    public Text cooldownText;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +44,33 @@ public class Victory : MonoBehaviour
         //Time.timeScale = 0f;
         victoryMenu.SetActive(true);
         VictoryScreenOn = true;
+
+        // gets player stats
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+
+        if (player.transform.name.Contains("1"))
+        {
+            damageText.text = "Damage: " + player.GetComponent<Shoot>().bulletPrefab.GetComponent<PlayerBullet>().damage.ToString();
+            speedText.text = "Speed: " + player.GetComponent<PlayerMovement>().moveSpeed.ToString();
+            cooldownText.text = "";
+        }
+        else if (player.transform.name.Contains("2"))
+        {
+            damageText.text = "Damage: " + player.GetComponent<Punch>().damage.ToString();
+            speedText.text = "Speed: " + player.GetComponent<PlayerMovement>().moveSpeed.ToString();
+            cooldownText.text = "";
+        }
+        else
+        {
+            if (player.GetComponent<Shoot>().bulletPrefab.name.Contains("Fireball"))
+            {
+                damageText.text = "Damage: " + player.GetComponent<Shoot>().bulletPrefab.GetComponent<PlayerBullet>().damage.ToString();
+            }
+
+            speedText.text = "Speed: " + player.GetComponent<PlayerMovement>().moveSpeed.ToString();
+
+            cooldownText.text = "Cooldown: " + player.GetComponent<Shoot>().shootCooldown.ToString();
+        }
 
         currencyFinal.text = "Money earned: " + PlayerPrefs.GetInt("Total money").ToString() + "$";
         scoreFinal.text = "Score: " + Inventory.instance.score.ToString();

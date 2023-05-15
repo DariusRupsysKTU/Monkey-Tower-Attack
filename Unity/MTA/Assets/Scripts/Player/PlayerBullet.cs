@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PlayerBullet : MonoBehaviour, DataPersistence
+public class PlayerBullet : MonoBehaviour
 {
     [SerializeField] float bulletSpeed;
     [SerializeField] public int damage;
@@ -73,7 +73,16 @@ public class PlayerBullet : MonoBehaviour, DataPersistence
 
     public void DisableExtraDamage()
     {
-        damage = 1;
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+
+        if (player.GetComponent<Shoot>().bulletPrefab.name.Contains("Bullet"))
+        {
+            damage = 1;
+        }
+        else if (player.GetComponent<Shoot>().bulletPrefab.name.Contains("Fireball"))
+        {
+            damage = 2;
+        }
     }
 
     private void PlaySplashVFX()
@@ -88,33 +97,5 @@ public class PlayerBullet : MonoBehaviour, DataPersistence
     {
         Invoke(nameof(PlaySplashVFX), waitTime);
         Destroy(gameObject, waitTime);
-    }
-
-    public void LoadData(GameData data)
-    {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-
-        if (player.GetComponent<Shoot>().bulletPrefab.name.Contains("Bullet"))
-        {
-            this.damage = data.bulletDamage;
-        }
-        else if (player.GetComponent<Shoot>().bulletPrefab.name.Contains("Fireball"))
-        {
-            this.damage = data.fireballDamage;
-        }
-    }
-
-    public void SaveData(ref GameData data)
-    {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-
-        if (player.GetComponent<Shoot>().bulletPrefab.name.Contains("Bullet"))
-        {
-            data.bulletDamage = this.damage;
-        }
-        else if(player.GetComponent<Shoot>().bulletPrefab.name.Contains("Fireball"))
-        {
-            data.fireballDamage = this.damage;
-        }
     }
 }
