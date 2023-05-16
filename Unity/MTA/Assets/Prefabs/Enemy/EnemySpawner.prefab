@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6261131567443896402}
   - component: {fileID: 1116843690424911816}
+  - component: {fileID: 3517779649366936339}
   m_Layer: 0
   m_Name: EnemySpawner
   m_TagString: Untagged
@@ -47,4 +48,32 @@ MonoBehaviour:
   enemy: {fileID: 0}
   enemiesLeftToSpawn: 0
   timeBetweenSpawns: 0
-  spawnRange: 0.1
+  randomSpawn: 0
+  roomCenter: {x: 0, y: 0}
+  enemyManagerScript: {fileID: 0}
+  isBossSpawner: 0
+  bossName: 
+  testing: 0
+  topWall: 0
+  bottomWall: 0
+  rightWall: 0
+  leftWall: 0
+  spawnCorrection: 0
+--- !u!114 &3517779649366936339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3498412787205945757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2d89ddb089d6cd4f96edadb983a5157, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  droppedItemPrefab: {fileID: 8658960504137280955, guid: caaeab3680953b44d864e95f247f9ddb, type: 3}
+  trophySpawnVFX: {fileID: 2333878475992172851, guid: bdc004d0b25851746b58913798cfe42d, type: 3}
+  lootList:
+  - {fileID: 11400000, guid: 14d29ea929a0e62429027e52def60af4, type: 2}
+  dropRarestPossible: 1
+  dropForce: 0

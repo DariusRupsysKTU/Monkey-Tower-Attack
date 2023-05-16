@@ -39,9 +39,9 @@ public class Shoot : MonoBehaviour, DataPersistence
         shootSound.Play();            
     }
 
-    public void DecreaseCooldown()
+    public void DecreaseCooldown(float amount)
     {
-        shootCooldown = shootCooldown - 0.2f;
+        shootCooldown -= amount;
     }
 
     public void LoadData(GameData data)

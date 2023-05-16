@@ -5,6 +5,7 @@ using UnityEngine;
 public class LootBag : MonoBehaviour
 {
     public GameObject droppedItemPrefab;
+    public ParticleSystem trophySpawnVFX;
     public List<Loot> lootList = new List<Loot>();
     public bool dropRarestPossible;
     public float dropForce;
@@ -88,9 +89,23 @@ public class LootBag : MonoBehaviour
         {
             obj.GetComponent<Interaction>().coin = true;
         }
+        else if (drop.lootName == "BossCoin")
+        {
+            obj.transform.localScale = obj.transform.localScale * 2;
+            obj.GetComponent<Interaction>().bossCoin = true;
+        }
         else if (drop.lootName == "Trophy")
         {
+            PlayTrophySpawnVFX(obj);
             obj.GetComponent<Interaction>().trophy = true;
         }
+    }
+
+    private void PlayTrophySpawnVFX(GameObject trophy)
+    {
+        ParticleSystem vfx = Instantiate(trophySpawnVFX, trophy.transform.position, Quaternion.identity);
+        vfx.transform.parent = trophy.transform;
+        vfx.Play();
+        Destroy(vfx.gameObject, trophySpawnVFX.main.duration + 1);
     }
 }

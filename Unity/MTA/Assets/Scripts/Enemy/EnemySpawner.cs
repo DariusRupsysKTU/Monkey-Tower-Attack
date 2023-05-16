@@ -24,6 +24,8 @@ public class EnemySpawner : MonoBehaviour
 
     public float spawnCorrection;
 
+    private bool itemSpawned = false;
+
     void Start() 
     {
         if (!testing)
@@ -36,6 +38,18 @@ public class EnemySpawner : MonoBehaviour
         }
         spawnerPosition = this.transform.position;
         StartCoroutine(nameof(SpawnEnemies));    
+    }
+
+    void Update()
+    {
+        if (isBossSpawner && this.gameObject.transform.childCount == 0)
+        {
+            if (!itemSpawned)
+            {
+                GetComponent<LootBag>().InstantiateLoot(transform.position);
+                itemSpawned = true;
+            }
+        }
     }
 
     IEnumerator SpawnEnemies()

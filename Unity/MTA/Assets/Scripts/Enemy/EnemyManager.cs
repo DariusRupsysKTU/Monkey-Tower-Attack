@@ -92,7 +92,7 @@ public class EnemyManager : MonoBehaviour, DataPersistence
                 spawner.name = bossSpawnerName;
                 enemySpawnerScript.enemy = bossPrefab;
                 EnemyHealth bossHealthScript = enemySpawnerScript.enemy.GetComponent<EnemyHealth>();
-                bossHealthScript.enemyHealth = bossHealthScript.enemyHealth * levelNr;
+                bossHealthScript.enemyHealth = 50 * levelNr;
                 enemySpawnerScript.isBossSpawner = true;
                 enemySpawnerScript.bossName = bossName;
             }
@@ -106,6 +106,16 @@ public class EnemyManager : MonoBehaviour, DataPersistence
                     enemyIndex = enemyPrefabs.Length - 1;
                 }
                 enemySpawnerScript.enemy = enemyPrefabs[enemyIndex];
+                EnemyHealth enemyHealthScript = enemySpawnerScript.enemy.GetComponent<EnemyHealth>();
+
+                if (enemyIndex == 0 || enemyIndex == 3)
+                {
+                    enemyHealthScript.enemyHealth = 2 * levelNr;
+                }
+                else if (enemyIndex == 1)
+                {
+                    enemyHealthScript.enemyHealth = 4 * levelNr;
+                }
 
                 int enemiesWillNotSpawn = Random.Range(1, 11);
                 if (enemiesWillNotSpawn == 1)
@@ -114,7 +124,13 @@ public class EnemyManager : MonoBehaviour, DataPersistence
                 }
                 else
                 {
-                    enemySpawnerScript.enemiesLeftToSpawn = Random.Range(levelNr, levelNr + 2);
+                    int enemyCount;
+                    if (levelNr / 2 != 0)
+                        enemyCount = levelNr;
+                    else
+                        enemyCount = levelNr - 1;
+
+                    enemySpawnerScript.enemiesLeftToSpawn = Random.Range(enemyCount, enemyCount + 2);
                 }
                 
                 enemySpawnerScript.timeBetweenSpawns = 0.5f;

@@ -48,9 +48,9 @@ public class PlayerMovement : MonoBehaviour, DataPersistence
         playerRB.velocity = moveForce;
     }
 
-    public void IncreaseSpeed()
+    public void IncreaseSpeed(float amount)
     {
-        moveSpeed = moveSpeed + 0.2f;
+        moveSpeed += amount;
     }
 
     public void EnableSpeedBoost(float time)

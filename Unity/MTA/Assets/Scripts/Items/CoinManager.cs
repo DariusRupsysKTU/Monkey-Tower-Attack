@@ -5,18 +5,14 @@ using UnityEngine.EventSystems;
 
 public class CoinManager : MonoBehaviour
 {
-    public int value = 100;
-    private int score = 0;
-
     [SerializeField] private AudioSource coinPickUp;
 
-    public void UpdateCoins()
+    public void UpdateCoins(int value, int score)
     {
         coinPickUp.Play();
 
         Inventory.instance.IncreaseCurrency(value);
 
-        score = PlayerPrefs.GetInt("Score") + 50;
-        PlayerPrefs.SetInt("Score", score);
+        Inventory.instance.IncreaseScore(score);
     }
 }

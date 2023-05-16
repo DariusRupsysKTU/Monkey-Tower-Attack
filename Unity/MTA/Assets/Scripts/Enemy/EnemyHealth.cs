@@ -58,12 +58,26 @@ public class EnemyHealth : MonoBehaviour
 
             this.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
 
-            
-            Inventory inventoryManagerScript = GameObject.Find("InventoryCanvas").GetComponent<Inventory>();
-
-            //inventoryManagerScript.IncreaseScore(100);
-
-            Inventory.instance.IncreaseScore((int)100);
+            if (isBoss)
+            {
+                Inventory.instance.IncreaseScore(1000);
+            }
+            else if (this.gameObject.name.Contains("1"))
+            {
+                Inventory.instance.IncreaseScore(100);
+            }
+            else if (this.gameObject.name.Contains("2"))
+            {
+                Inventory.instance.IncreaseScore(250);
+            }
+            else if (this.gameObject.name.Contains("3"))
+            {
+                Inventory.instance.IncreaseScore(75);
+            }
+            else
+            {
+                Inventory.instance.IncreaseScore(200);
+            }
 
             if (!itemSpawned)
             {

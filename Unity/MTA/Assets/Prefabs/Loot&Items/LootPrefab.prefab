@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5880662424449008894}
   - component: {fileID: 6885607888979336577}
-  - component: {fileID: 7851848475605958457}
   m_Layer: 0
   m_Name: Collider
   m_TagString: Currency
@@ -49,18 +48,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.06
---- !u!114 &7851848475605958457
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 873892482722071088}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5685c6d40233f7540b53f6e7331965e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8658960504137280955
 GameObject:
   m_ObjectHideFlags: 0
@@ -120,14 +107,17 @@ MonoBehaviour:
   speedBoostVFX: {fileID: 6874349047090508741, guid: 2be8d09cd1414734ba944ee95da1cefe, type: 3}
   doubleDamageVFX: {fileID: 6874349047090508741, guid: 1733884cd87d2584298700328b55e2e0, type: 3}
   coinsVFX: {fileID: 4764992818673111806, guid: 7793fa4e752c3474daa5aeb1be9dc0ad, type: 3}
+  bossCoinsVFX: {fileID: 4764992818673111806, guid: 4b67eae5ce68e0c4fbdd7aa71225a126, type: 3}
   trophyVFX: {fileID: 4764992818673111806, guid: a0381e59a5424734b80edf982e83e4c5, type: 3}
   heal: 0
   fullHeal: 0
   doubleDamage: 0
   speedBoost: 0
   coin: 0
+  bossCoin: 0
   trophy: 0
   inRange: 0
+  victory: 0
 --- !u!114 &2148408997081263485
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,7 +130,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33a3b135a8432f54fafab3771e14eaa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: 100
   coinPickUp: {fileID: -5114452811042858703}
 --- !u!212 &5065245197621633132
 SpriteRenderer:

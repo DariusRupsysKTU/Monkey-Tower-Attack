@@ -100,7 +100,7 @@ public class ShopMenu : MonoBehaviour
     {
         if (Inventory.instance.currency >= 100)
         {
-            player.GetComponent<PlayerMovement>().IncreaseSpeed();
+            player.GetComponent<PlayerMovement>().IncreaseSpeed(0.1f);
             Inventory.instance.DecreaseCurrency(100);
         }
     }
@@ -110,7 +110,7 @@ public class ShopMenu : MonoBehaviour
         {
             if (player.GetComponent<Shoot>().enabled)
             {
-                player.GetComponent<Shoot>().DecreaseCooldown();
+                player.GetComponent<Shoot>().DecreaseCooldown(0.2f);
                 Inventory.instance.DecreaseCurrency(75);
             }
         }

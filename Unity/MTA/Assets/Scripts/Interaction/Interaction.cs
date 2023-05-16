@@ -14,6 +14,7 @@ public class Interaction : MonoBehaviour
     [SerializeField] ParticleSystem speedBoostVFX;
     [SerializeField] ParticleSystem doubleDamageVFX;
     [SerializeField] ParticleSystem coinsVFX;
+    [SerializeField] ParticleSystem bossCoinsVFX;
     [SerializeField] ParticleSystem trophyVFX;
 
     private GameObject player;
@@ -26,6 +27,7 @@ public class Interaction : MonoBehaviour
     public bool doubleDamage;
     public bool speedBoost;
     public bool coin;
+    public bool bossCoin;
     public bool trophy;
 
     [Header("Others")]
@@ -132,6 +134,8 @@ public class Interaction : MonoBehaviour
                 aboveTextScript.text = "speed boost (" + interactKey + ")";
             else if (coin)
                 aboveTextScript.text = "coin (" + interactKey + ")";
+            else if (bossCoin)
+                aboveTextScript.text = "boss coin (" + interactKey + ")";
             else if (trophy)
                 aboveTextScript.text = "trophy (" + interactKey + ")";
         }
@@ -190,8 +194,13 @@ public class Interaction : MonoBehaviour
         }
         else if (coin)
         {
-            GetComponent<CoinManager>().UpdateCoins();
+            GetComponent<CoinManager>().UpdateCoins(100, 50);
             PlayCoinVFX();
+        }
+        else if (bossCoin)
+        {
+            GetComponent<CoinManager>().UpdateCoins(200, 50);
+            PlayBossCoinVFX();
         }
         else if (trophy)
         {
@@ -251,6 +260,14 @@ public class Interaction : MonoBehaviour
     private void PlayCoinVFX()
     {
         ParticleSystem vfx = Instantiate(coinsVFX, player.transform.position, Quaternion.Euler(-90f,0f,0f));
+        vfx.transform.parent = player.transform;
+        vfx.Play();
+        Destroy(vfx.gameObject, coinsVFX.main.duration);
+    }
+
+    private void PlayBossCoinVFX()
+    {
+        ParticleSystem vfx = Instantiate(bossCoinsVFX, player.transform.position, Quaternion.Euler(-90f,0f,0f));
         vfx.transform.parent = player.transform;
         vfx.Play();
         Destroy(vfx.gameObject, coinsVFX.main.duration);
