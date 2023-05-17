@@ -17,6 +17,9 @@ public class Interaction : MonoBehaviour
     [SerializeField] ParticleSystem bossCoinsVFX;
     [SerializeField] ParticleSystem trophyVFX;
 
+    //[SerializeField] AudioSource trophySoundEffect;
+    //[SerializeField] AudioSource coinSoundEffect;
+
     private GameObject player;
     private GameObject aboveText;
     private AboveText aboveTextScript;
@@ -261,6 +264,7 @@ public class Interaction : MonoBehaviour
     {
         ParticleSystem vfx = Instantiate(coinsVFX, player.transform.position, Quaternion.Euler(-90f,0f,0f));
         vfx.transform.parent = player.transform;
+        //coinSoundEffect.Play();
         vfx.Play();
         Destroy(vfx.gameObject, coinsVFX.main.duration);
     }
@@ -277,6 +281,7 @@ public class Interaction : MonoBehaviour
     {
         ParticleSystem vfx = Instantiate(trophyVFX, player.transform.position, Quaternion.Euler(-90f,0f,0f));
         vfx.transform.parent = player.transform;
+        //trophySoundEffect.Play();
         vfx.Play();
         Destroy(vfx.gameObject, trophyVFX.main.duration);
     }
