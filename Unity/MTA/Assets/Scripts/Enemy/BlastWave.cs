@@ -14,6 +14,7 @@ public class BlastWave : MonoBehaviour
     public bool damagePlayer = false;
     public bool goOnStart = false;
     private bool enemyDamaged = false;
+    private bool playerDamaged = false;
 
     private LineRenderer lineRenderer;
 
@@ -77,9 +78,10 @@ public class BlastWave : MonoBehaviour
 
                     collRB.AddForce(distanceVector.normalized * explosionForce);
 
-                    if (collRB.transform.tag == "Player" && !collRB.transform.name.Contains("Monkey2") && damagePlayer)
+                    if (collRB.transform.tag == "Player" && !collRB.transform.name.Contains("Monkey2") && damagePlayer && !playerDamaged)
                     {
                         collRB.GetComponent<PlayerHealth>().DamagePlayer(blastDamage, true);
+                        playerDamaged = true;
                     }
                     if (collRB.transform.tag == "Enemy" && damageEnemy && !enemyDamaged)
                     {

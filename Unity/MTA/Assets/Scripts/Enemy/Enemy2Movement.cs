@@ -83,7 +83,7 @@ public class Enemy2Movement : MonoBehaviour
             MoveEnemy(playerPosition);
         }
 
-        if (Vector2.Distance(thisEnemyPosition, playerPosition) <= visionRange * shootRangeMultiplier)
+        if (Vector2.Distance(thisEnemyPosition, playerPosition) <= visionRange * shootRangeMultiplier && IsInTheRoom(playerPosition))
         {
             Shoot();
         }
