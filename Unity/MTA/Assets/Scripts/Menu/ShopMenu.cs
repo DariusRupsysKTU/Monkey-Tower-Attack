@@ -98,19 +98,19 @@ public class ShopMenu : MonoBehaviour
     }
     public void BuySpeed()
     {
-        if (Inventory.instance.currency >= 100)
+        if (Inventory.instance.currency >= 100 && player.GetComponent<PlayerMovement>().moveSpeed < 2)
         {
-            player.GetComponent<PlayerMovement>().IncreaseSpeed(0.1f);
+            player.GetComponent<PlayerMovement>().IncreaseSpeed(0.05f);
             Inventory.instance.DecreaseCurrency(100);
         }
     }
     public void BuyCooldown()
     {
-        if (Inventory.instance.currency >= 75)
+        if (Inventory.instance.currency >= 75 && player.GetComponent<Shoot>().shootCooldown > 0)
         {
             if (player.GetComponent<Shoot>().enabled)
             {
-                player.GetComponent<Shoot>().DecreaseCooldown(0.2f);
+                player.GetComponent<Shoot>().DecreaseCooldown(0.1f);
                 Inventory.instance.DecreaseCurrency(75);
             }
         }

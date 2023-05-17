@@ -51,6 +51,7 @@ MonoBehaviour:
   damage: 1
   flyTime: 0.2
   splashVFX: {fileID: 6174840242094541412, guid: 65982443d1bd9254a9a7e13ccbb6eb2c, type: 3}
+  parried: 0
 --- !u!212 &8757556262490237560
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -137,7 +138,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.00017145276, y: 0.000057153404}
+  m_Offset: {x: -0.024537094, y: -0.0051285913}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -148,5 +149,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.04049176, y: 0.040845886}
+  m_Size: {x: 0.08990885, y: 0.030474396}
   m_EdgeRadius: 0

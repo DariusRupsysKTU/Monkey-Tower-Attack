@@ -15,4 +15,4 @@ MonoBehaviour:
   id: 
   lootSprite: {fileID: -983283490, guid: 38d8dba2cfa975f418036e1390aa3858, type: 3}
   lootName: Double Damage
-  dropChance: 10
+  dropChance: 3

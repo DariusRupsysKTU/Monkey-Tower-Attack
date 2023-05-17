@@ -3499,7 +3499,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Speed (+0.1)
+  m_text: 'Speed (+0.05)
 
     100$'
   m_isRightToLeft: 0
@@ -12039,7 +12039,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'cooldown (-0.2)
+  m_text: 'cooldown (-0.1)
 
     75$'
   m_isRightToLeft: 0

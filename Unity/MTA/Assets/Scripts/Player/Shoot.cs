@@ -25,7 +25,14 @@ public class Shoot : MonoBehaviour, DataPersistence
             FireBullet();
         }
 
-        shootCooldown = Mathf.Round(shootCooldown*10) * 0.1f;
+        if (shootCooldown <= 0)
+        {
+            shootCooldown = 0;
+        }
+        else
+        {
+            shootCooldown = Mathf.Round(shootCooldown*10) * 0.1f;
+        }
     }
 
     private void FireBullet()
