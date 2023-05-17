@@ -108,13 +108,16 @@ public class EnemyManager : MonoBehaviour, DataPersistence
                 enemySpawnerScript.enemy = enemyPrefabs[enemyIndex];
                 EnemyHealth enemyHealthScript = enemySpawnerScript.enemy.GetComponent<EnemyHealth>();
 
-                if (enemyIndex == 0 || enemyIndex == 3)
+                if (levelNr / 2 == 0)
                 {
-                    enemyHealthScript.enemyHealth = 2 * levelNr;
-                }
-                else if (enemyIndex == 1)
-                {
-                    enemyHealthScript.enemyHealth = 4 * levelNr;
+                    if (enemyIndex == 0 || enemyIndex == 3)
+                    {
+                        enemyHealthScript.enemyHealth = 2 * levelNr;
+                    }
+                    else if (enemyIndex == 1)
+                    {
+                        enemyHealthScript.enemyHealth = 4 * levelNr;
+                    }
                 }
 
                 int enemiesWillNotSpawn = Random.Range(1, 11);

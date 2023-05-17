@@ -69,6 +69,12 @@ public class BlastWave : MonoBehaviour
                 if (distanceVector.magnitude > 0)
                 {
                     float explosionForce = blastForceMultiplier / distanceVector.magnitude;
+                    
+                    // if (!collRB.transform.tag.Contains("Bullet"))
+                    // {
+                    //     collRB.AddForce(distanceVector.normalized * explosionForce);
+                    // }
+
                     collRB.AddForce(distanceVector.normalized * explosionForce);
 
                     if (collRB.transform.tag == "Player" && !collRB.transform.name.Contains("Monkey2") && damagePlayer)

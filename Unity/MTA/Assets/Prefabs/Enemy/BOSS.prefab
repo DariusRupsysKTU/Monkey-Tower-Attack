@@ -65,7 +65,7 @@ MonoBehaviour:
   - {fileID: 2118470136714789618, guid: 133929b92cecc9b4e8aebff9cc6710b2, type: 3}
   bulletPrefab: {fileID: 7513705081393901362, guid: 72e5771e16e0b15499acc5288abb4968, type: 3}
   startTimeBetweenShots: 2
-  startTimeBetweenSpawns: 5
+  startTimeBetweenSpawns: 20
 --- !u!114 &7047832115724650570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,6 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   droppedItemPrefab: {fileID: 8658960504137280955, guid: caaeab3680953b44d864e95f247f9ddb, type: 3}
+  trophySpawnVFX: {fileID: 0}
   lootList:
   - {fileID: 11400000, guid: 0e6b15f8f09c6da43acc2f1357e56025, type: 2}
   dropRarestPossible: 1

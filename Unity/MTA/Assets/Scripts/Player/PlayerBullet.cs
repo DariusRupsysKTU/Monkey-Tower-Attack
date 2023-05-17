@@ -13,13 +13,23 @@ public class PlayerBullet : MonoBehaviour
     private Rigidbody2D bulletRB;
     private GameObject player;
 
+    public bool parried = false;
+
     void Start() 
     {
         bulletRB = this.GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
-        bulletRB.transform.localScale = new Vector3(1f + (damage * 0.1f), 1f + (damage * 0.1f), 1f + (damage * 0.1f));
-        bulletRB.velocity = transform.up * bulletSpeed; 
-        bulletRB.transform.eulerAngles = new Vector3(0f, 0f, bulletRB.transform.eulerAngles.z + 90f); 
+        bulletRB.transform.localScale = new Vector3(1f + (damage * 0.05f), 1f + (damage * 0.05f), 1f + (damage * 0.05f));
+        if (!parried)
+        {
+            bulletRB.velocity = transform.up * bulletSpeed; 
+            bulletRB.transform.eulerAngles = new Vector3(0f, 0f, bulletRB.transform.eulerAngles.z + 90f); 
+        }
+        else
+        {
+            bulletRB.velocity = transform.up * bulletSpeed; 
+            bulletRB.transform.eulerAngles = new Vector3(0f, 0f, bulletRB.transform.eulerAngles.z + 180f); 
+        }
         DestroyBullet(flyTime);
     }
 
@@ -88,7 +98,7 @@ public class PlayerBullet : MonoBehaviour
     private void PlaySplashVFX()
     {
         ParticleSystem vfx = Instantiate(splashVFX, this.transform.position, Quaternion.identity);
-        vfx.transform.localScale = new Vector3(1f + (damage * 0.1f), 1f + (damage * 0.1f), 1f + (damage * 0.1f));
+        vfx.transform.localScale = new Vector3(1f + (damage * 0.05f), 1f + (damage * 0.05f), 1f + (damage * 0.05f));
         vfx.Play();
         Destroy(vfx.gameObject, splashVFX.main.duration);
     }

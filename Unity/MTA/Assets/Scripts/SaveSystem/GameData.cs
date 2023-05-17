@@ -30,7 +30,7 @@ public class GameData
         
         this.bulletDamage = 1;
         this.punchDamage = 2;
-        this.fireballDamage = 2;
+        this.fireballDamage = 3;
 
         this.cooldown = 2;
 

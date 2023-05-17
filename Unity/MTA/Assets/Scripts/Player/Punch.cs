@@ -125,6 +125,8 @@ public class Punch : MonoBehaviour, DataPersistence
         // Quaternion rotation = Quaternion.Euler(LastPP.transform.rotation.x, LastPP.transform.rotation.y, LastPP.transform.rotation.z - 90f);
         GameObject parriedBullet = Instantiate(bulletPrefab, LastPP.transform.position, LastPP.transform.rotation);
         parriedBullet.GetComponent<SpriteRenderer>().sprite = other.gameObject.GetComponent<SpriteRenderer>().sprite;
+        parriedBullet.GetComponent<PlayerBullet>().parried = true;
+
         if (Enemy3BulletScript.rockSplashVFX.name.Contains("Lightning"))
         {
             parriedBullet.GetComponent<PlayerBullet>().splashVFX = lightningVFX;
