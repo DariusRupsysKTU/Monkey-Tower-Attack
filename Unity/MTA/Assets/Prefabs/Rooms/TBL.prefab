@@ -84,6 +84,7 @@ MonoBehaviour:
   enemyManager: {fileID: 0}
   enemyManagerScript: {fileID: 0}
   enemySpawnerScript: {fileID: 0}
+  roomTemplatesScript: {fileID: 0}
   player: {fileID: 0}
   doors: []
   enemyCount: 0

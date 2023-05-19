@@ -4730,6 +4730,7 @@ MonoBehaviour:
   enemyManager: {fileID: 0}
   enemyManagerScript: {fileID: 0}
   enemySpawnerScript: {fileID: 0}
+  roomTemplatesScript: {fileID: 0}
   player: {fileID: 0}
   doors: []
   enemyCount: 0
@@ -7393,15 +7394,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1734579055161432897, guid: e8af098be00a2ad48a8f2b907ffecbd7, type: 3}
       propertyPath: m_TileColorArray.Array.data[0].m_Data.b
-      value: 0.42746803
+      value: 0.40388185
       objectReference: {fileID: 0}
     - target: {fileID: 1734579055161432897, guid: e8af098be00a2ad48a8f2b907ffecbd7, type: 3}
       propertyPath: m_TileColorArray.Array.data[0].m_Data.g
-      value: 0.39250872
+      value: 0.39734328
       objectReference: {fileID: 0}
     - target: {fileID: 1734579055161432897, guid: e8af098be00a2ad48a8f2b907ffecbd7, type: 3}
       propertyPath: m_TileColorArray.Array.data[0].m_Data.r
-      value: 0.73112905
+      value: 0.81586194
       objectReference: {fileID: 0}
     - target: {fileID: 1734579055161432897, guid: e8af098be00a2ad48a8f2b907ffecbd7, type: 3}
       propertyPath: m_TileColorArray.Array.data[1].m_Data.a
@@ -7421,19 +7422,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1734579055161432897, guid: e8af098be00a2ad48a8f2b907ffecbd7, type: 3}
       propertyPath: m_TileColorArray.Array.data[2].m_Data.a
-      value: 3.8012e-41
+      value: 4.9471e-41
       objectReference: {fileID: 0}
     - target: {fileID: 1734579055161432897, guid: e8af098be00a2ad48a8f2b907ffecbd7, type: 3}
       propertyPath: m_TileColorArray.Array.data[2].m_Data.b
-      value: 3.8012e-41
+      value: 4.9471e-41
       objectReference: {fileID: 0}
     - target: {fileID: 1734579055161432897, guid: e8af098be00a2ad48a8f2b907ffecbd7, type: 3}
       propertyPath: m_TileColorArray.Array.data[2].m_Data.g
-      value: 3.8012e-41
+      value: 4.9471e-41
       objectReference: {fileID: 0}
     - target: {fileID: 1734579055161432897, guid: e8af098be00a2ad48a8f2b907ffecbd7, type: 3}
       propertyPath: m_TileColorArray.Array.data[2].m_Data.r
-      value: 3.8012e-41
+      value: 4.9471e-41
       objectReference: {fileID: 0}
     - target: {fileID: 1734579055161432897, guid: e8af098be00a2ad48a8f2b907ffecbd7, type: 3}
       propertyPath: m_TileSpriteArray.Array.data[12].m_Data
