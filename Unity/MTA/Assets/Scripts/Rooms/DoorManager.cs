@@ -138,7 +138,14 @@ public class DoorManager : MonoBehaviour
             }
             if (door.TryGetComponent<LocateSynchronizer>(out thisLocator))
             {
-                thisLocator.doorsWithSynchronizer.GetComponent<DoorSynchronizer>().openBothDoors = true;
+                try 
+                {
+                    thisLocator.doorsWithSynchronizer.GetComponent<DoorSynchronizer>().openBothDoors = true;
+                }
+                catch
+                {
+                    roomTemplatesScript.RestartScene();
+                }
             }
         }
     }
