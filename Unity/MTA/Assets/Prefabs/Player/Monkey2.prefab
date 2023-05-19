@@ -117,6 +117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 643dac771ba990148ace7aaacf68e36b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  punchKey: 103
   animator: {fileID: 8483910135389424133}
   whiffSound: {fileID: 2172845592753126129}
   punchSound: {fileID: 4661763362281263125}

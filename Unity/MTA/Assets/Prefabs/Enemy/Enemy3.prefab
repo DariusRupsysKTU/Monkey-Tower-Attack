@@ -89,6 +89,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   droppedItemPrefab: {fileID: 8658960504137280955, guid: caaeab3680953b44d864e95f247f9ddb, type: 3}
+  trophySpawnVFX: {fileID: 0}
   lootList:
   - {fileID: 11400000, guid: 9260ec87ca319de498933a7a17fedbaf, type: 2}
   - {fileID: 11400000, guid: 5dff42684b10a0c439746679a1569fb4, type: 2}
@@ -183,7 +184,7 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.00037809048}
+  m_Offset: {x: 0, y: 0.02}
   serializedVersion: 2
   m_Radius: 0.054712772
 --- !u!95 &2438931867308101589

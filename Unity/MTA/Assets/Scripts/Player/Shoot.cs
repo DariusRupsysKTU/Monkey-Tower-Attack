@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Shoot : MonoBehaviour, DataPersistence
 {
-    [SerializeField] KeyCode shootKey;
+    public KeyCode shootKey;
     [SerializeField] GameObject firePoint;
     public GameObject bulletPrefab;
     [SerializeField] int bulletCount;
