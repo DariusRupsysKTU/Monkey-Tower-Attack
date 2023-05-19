@@ -37,8 +37,8 @@ public class ItemHealth : MonoBehaviour
                 itemSpawned = true;
             }
 
-            Invoke(nameof(DeathAnimation), deathTime);
-            Invoke(nameof(DestroyBox), deathTime + 0.6f);
+            DeathAnimation();
+            Invoke(nameof(DestroyBox), 0.25f);
         }
     }
 

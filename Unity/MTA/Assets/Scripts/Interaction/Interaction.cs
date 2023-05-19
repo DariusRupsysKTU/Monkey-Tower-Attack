@@ -49,7 +49,10 @@ public class Interaction : MonoBehaviour
             this.transform.tag = "Currency";
         }
 
-        GetComponent<Animator>().enabled = false;
+        if (isPickUp)
+            GetComponent<Animator>().enabled = false;
+        else
+            GetComponent<Animator>().enabled = true;
     }
 
     void Update()
