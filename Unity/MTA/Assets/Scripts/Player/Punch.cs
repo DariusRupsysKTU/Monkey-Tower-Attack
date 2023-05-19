@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Punch : MonoBehaviour, DataPersistence
 {
+    public KeyCode punchKey;
     public Animator animator;
     [SerializeField] private AudioSource whiffSound;
     [SerializeField] private AudioSource punchSound;
@@ -22,7 +23,7 @@ public class Punch : MonoBehaviour, DataPersistence
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("g"))
+        if (Input.GetKeyDown(punchKey))
         {
             Punching();
         }
