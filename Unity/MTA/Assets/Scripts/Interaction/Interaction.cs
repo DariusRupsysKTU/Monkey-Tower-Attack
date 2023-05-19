@@ -23,6 +23,7 @@ public class Interaction : MonoBehaviour
     private GameObject player;
     private GameObject aboveText;
     private AboveText aboveTextScript;
+    private Animator lootAnimation;
 
     [Header("Ability")]
     public bool heal;
@@ -47,10 +48,13 @@ public class Interaction : MonoBehaviour
         {
             this.transform.tag = "Currency";
         }
+
+        GetComponent<Animator>().enabled = false;
     }
 
     void Update()
     {
+
         if (player != null)
         {
             aboveText.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 0.2f, player.transform.position.z);
@@ -63,6 +67,11 @@ public class Interaction : MonoBehaviour
             {
                 PickUp();
             }
+        }
+
+        if (coin || bossCoin)
+        {
+            GetComponent<Animator>().enabled = true;
         }
     }
 
