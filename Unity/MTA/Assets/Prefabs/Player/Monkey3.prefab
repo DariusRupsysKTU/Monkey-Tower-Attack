@@ -138,8 +138,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHealth: 5
   numOfHearts: 5
-  fullHeart: {fileID: 770381076, guid: 227e80f2019ad524f8f10cb35992eda6, type: 3}
-  emptyHeart: {fileID: -148309364, guid: a83427f83e804964a9302659766c41a4, type: 3}
+  fullHeart: {fileID: 108561208, guid: e2c2edc5701f3b448885fffd2049d2a7, type: 3}
+  emptyHeart: {fileID: -884941979, guid: e2c2edc5701f3b448885fffd2049d2a7, type: 3}
   hearts:
   - {fileID: 0}
   - {fileID: 0}
