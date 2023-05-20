@@ -37,13 +37,13 @@ public class Shoot : MonoBehaviour, DataPersistence
 
     private void FireBullet()
     {
+        shootSound.Play();
+        
         for (int j = 0; j < bulletCount; j++)
         {
             Quaternion angle = firePoint.transform.rotation * Quaternion.Euler(0f, 0f, 360 / bulletCount * j);
             Instantiate(bulletPrefab, firePoint.transform.position, angle);
-        }        
-        
-        shootSound.Play();            
+        }                    
     }
 
     public void DecreaseCooldown(float amount)

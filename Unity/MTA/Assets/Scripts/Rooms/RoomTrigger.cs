@@ -27,6 +27,7 @@ public class RoomTrigger : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            other.gameObject.GetComponent<PlayerHealth>().GetImmunityPower(1);
             TransitionRoom(other);
         }    
     }

@@ -164,7 +164,7 @@ public class Enemy1Movement : MonoBehaviour
     {
         if (other.transform.tag == "Player" && enemyHealthScript.enemyHealth > 0)
         {
-            playerHealth.DamagePlayer(damageOnTouch, false);
+            playerHealth.DamagePlayer(damageOnTouch);
             thisEnemyRB.constraints = RigidbodyConstraints2D.FreezeAll;
 
             if (explodes)

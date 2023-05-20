@@ -80,7 +80,7 @@ public class BlastWave : MonoBehaviour
 
                     if (collRB.transform.tag == "Player" && !collRB.transform.name.Contains("Monkey2") && damagePlayer && !playerDamaged)
                     {
-                        collRB.GetComponent<PlayerHealth>().DamagePlayer(blastDamage, true);
+                        collRB.GetComponent<PlayerHealth>().DamagePlayer(blastDamage);
                         playerDamaged = true;
                     }
                     if (collRB.transform.tag == "Enemy" && damageEnemy && !enemyDamaged)

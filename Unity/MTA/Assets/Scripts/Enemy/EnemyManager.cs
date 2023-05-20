@@ -93,6 +93,11 @@ public class EnemyManager : MonoBehaviour, DataPersistence
                 enemySpawnerScript.enemy = bossPrefab;
                 EnemyHealth bossHealthScript = enemySpawnerScript.enemy.GetComponent<EnemyHealth>();
                 bossHealthScript.enemyHealth = 50 * levelNr;
+                BossMovement bossMovementScript = enemySpawnerScript.enemy.GetComponent<BossMovement>();
+                if (bossMovementScript.startTimeBetweenSpawns >= 5)
+                {
+                    bossMovementScript.startTimeBetweenSpawns = 20 - levelNr;
+                }
                 enemySpawnerScript.isBossSpawner = true;
                 enemySpawnerScript.bossName = bossName;
             }

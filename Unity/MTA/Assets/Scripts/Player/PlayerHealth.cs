@@ -26,7 +26,6 @@ public class PlayerHealth : MonoBehaviour, DataPersistence
     [SerializeField] private AudioSource hitSound;
 
     private bool IsImmune;
-    private bool damagedByBlast;
 
     private GameObject healthCanvas;
 
@@ -42,7 +41,6 @@ public class PlayerHealth : MonoBehaviour, DataPersistence
         startColor = playerSpriteRenderer.color;
         prevHealth = playerHealth;
         IsImmune = false;
-        damagedByBlast = false;
         FindHealthCanvas();    
     }
 
@@ -93,7 +91,7 @@ public class PlayerHealth : MonoBehaviour, DataPersistence
             deathSound.Play();
         }
 
-        if (playerHealth < prevHealth && (!IsImmune || damagedByBlast))
+        if (playerHealth < prevHealth && !IsImmune)
         {
             StartCoroutine(GetImmunity(immuneTime));
         }
@@ -136,7 +134,6 @@ public class PlayerHealth : MonoBehaviour, DataPersistence
         IsImmune = true;
         yield return new WaitForSeconds(time);
         IsImmune = false;
-        damagedByBlast = false;
         prevHealth = playerHealth;
     }
 
@@ -145,16 +142,11 @@ public class PlayerHealth : MonoBehaviour, DataPersistence
         StartCoroutine(GetImmunity(time));
     }
 
-    public void DamagePlayer(int amount, bool isBlastDamage) 
+    public void DamagePlayer(int amount) 
     {
-        if (!IsImmune || isBlastDamage && !damagedByBlast)
+        if (!IsImmune)
         {
             playerHealth -= amount;
-            
-            if (isBlastDamage)
-            {
-                damagedByBlast = true;
-            }
 
             hitSound.Play();
         }
