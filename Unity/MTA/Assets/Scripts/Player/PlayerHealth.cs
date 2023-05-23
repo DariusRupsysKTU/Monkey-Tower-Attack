@@ -26,6 +26,7 @@ public class PlayerHealth : MonoBehaviour, DataPersistence
     [SerializeField] private AudioSource hitSound;
 
     private bool IsImmune;
+    private bool IsRoomImmune;
 
     private GameObject healthCanvas;
 
@@ -41,6 +42,7 @@ public class PlayerHealth : MonoBehaviour, DataPersistence
         startColor = playerSpriteRenderer.color;
         prevHealth = playerHealth;
         IsImmune = false;
+        IsRoomImmune = false;
         FindHealthCanvas();    
     }
 
@@ -93,7 +95,7 @@ public class PlayerHealth : MonoBehaviour, DataPersistence
 
         if (playerHealth < prevHealth && !IsImmune)
         {
-            StartCoroutine(GetImmunity(immuneTime));
+            StartCoroutine(GetImmunity(immuneTime, false));
         }
 
         if (IsImmune)
@@ -128,23 +130,32 @@ public class PlayerHealth : MonoBehaviour, DataPersistence
         }
     }
 
-    private IEnumerator GetImmunity(float time)
+    private IEnumerator GetImmunity(float time, bool roomImmune)
     {
+        if (roomImmune)
+        {
+            IsRoomImmune = false;
+            IsRoomImmune = true;
+        }
         IsImmune = false;
         IsImmune = true;
         yield return new WaitForSeconds(time);
         IsImmune = false;
+        if (roomImmune)
+        {
+            IsRoomImmune = false;
+        }
         prevHealth = playerHealth;
     }
 
     public void GetImmunityPower(float time)
     {
-        StartCoroutine(GetImmunity(time));
+        StartCoroutine(GetImmunity(time, true));
     }
 
-    public void DamagePlayer(int amount) 
+    public void DamagePlayer(int amount, bool pierceImmunity) 
     {
-        if (!IsImmune)
+        if (!IsImmune || (pierceImmunity && !IsRoomImmune))
         {
             playerHealth -= amount;
 

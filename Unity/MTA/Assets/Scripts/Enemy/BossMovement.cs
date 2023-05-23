@@ -345,7 +345,7 @@ public class BossMovement : MonoBehaviour
     {
         if (other.transform.tag == "Player" && bossHealthScript.enemyHealth > 0)
         {
-            playerHealth.DamagePlayer(1);
+            playerHealth.DamagePlayer(1,false);
         }
     }
 
@@ -353,7 +353,7 @@ public class BossMovement : MonoBehaviour
     {
         if (other.transform.tag == "Player" && bossHealthScript.enemyHealth > 0)
         {
-            playerHealth.DamagePlayer(1);
+            playerHealth.DamagePlayer(1,false);
         }
     }
 

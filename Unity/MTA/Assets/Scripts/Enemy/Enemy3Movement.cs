@@ -243,7 +243,7 @@ public class Enemy3Movement : MonoBehaviour
     {
         if (other.transform.tag == "Player" && enemyHealthScript.enemyHealth > 0 && playerHealth != null)
         {
-            playerHealth.DamagePlayer(1);
+            playerHealth.DamagePlayer(1, false);
             thisEnemyRB.constraints = RigidbodyConstraints2D.FreezeAll;
         }
     }
@@ -262,7 +262,7 @@ public class Enemy3Movement : MonoBehaviour
     {
         if (other.transform.tag == "Player" && enemyHealthScript.enemyHealth > 0)
         {
-            playerHealth.DamagePlayer(damageOnTouch);
+            playerHealth.DamagePlayer(damageOnTouch, false);
             thisEnemyRB.constraints = RigidbodyConstraints2D.FreezeAll;
         }
         else if (other.transform.tag == "Box")
