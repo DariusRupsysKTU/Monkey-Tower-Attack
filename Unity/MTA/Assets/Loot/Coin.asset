@@ -15,4 +15,4 @@ MonoBehaviour:
   id: 
   lootSprite: {fileID: -2035610454, guid: 2758c84991ed51745ad724a514e8ba39, type: 3}
   lootName: Coin
-  dropChance: 1
+  dropChance: 5
